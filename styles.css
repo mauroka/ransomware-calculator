@@ -1,0 +1,25 @@
+#datosGenerales{
+    padding: 2%;
+    border-style: solid;
+  }
+  
+  #backups{
+    padding: 2%;
+    border-style: solid;
+  }
+  
+  #rescate{
+    padding: 2%;
+    border-style: solid;
+  }
+  #recuperacion{
+    padding: 2%;
+    border-style: solid;
+  }
+  #tabla1{
+    border-bottom: solid;
+    
+   }
+   #tabla2,#tabla3{
+     padding:2%;
+    } 
