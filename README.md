@@ -81,4 +81,4 @@ El calculador de Ransomware es la primera de una serie de herramientas relaciona
 <a href="https://www.linkedin.com/in/nicolasbruna/"> Bruna Nicolás</a>, 
 <a href="https://www.linkedin.com/in/mgraziosi/"> Graziosi Mauro</a>, 
 <a href="https://www.linkedin.com/in/fabricio-quinteros-01b773172/"> Quinteros Fabricio</a> y 
-<a href="#"> Rodríguez Dante</a></span> se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.
+<a href="http://linkedin.com/in/dante-rodriguez-45381b1a7"> Rodríguez Dante</a></span> se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.
