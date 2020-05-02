@@ -1,294 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Security Awareness Risks Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<div id="app">
-    <h1 class="display-4">Ransomware</h1>
-
-     <!--INICIO DATOS GENERALES--> 
-<h2 class="display-5 d-flex justify-content-center">Datos Generales</h2>
-
-
-    <form class="container" id="datosGenerales">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="hLab">Duracion de la jornada laboral</label>
-          <input v-model="hLab" type="number" class="form-control" id="hLab" placeholder="">
+    <div id="app">
+        <h1 class="display-4">Calculador de costos de Ransomware</h1>
+        <p>Conozca los costos directos e indirectos en los que incurriría una organización en el caso de una infección por Ransomware.</p>
+        <div class="alert alert-warning" role="alert">
+            <b>Precaución:</b> Todos los valores monetarios deben ser ingresados en la misma moneda.
         </div>
-        <div class="form-group col-md-6">
-          <label for="cHorasEmpleado">Costo de la hora por empleado</label>
-          <input v-model="cHorasEmpleado" type="number" class="form-control" id="cHorasEmpleado" placeholder="">
-          </div>
-        <div class="form-group col-md-12">
-          <label for="cantEquipos">Cantidad de equipos</label>
-          <input v-model="cantEquipos" type="number" class="form-control" id="cantEquipos" placeholder="">
-          </div>
-      </div>
-      
-    
-
-      
-    </form>
-<!--FIN DATOS GENERALES-->
-
-<!--INICIO BACKUPS-->
-<h2 class="display-5 mt-5 d-flex justify-content-center">Backups</h2>
-
-    <form class="container" id="backups">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="porcenBackup">Porcentaje de informacion respaldada</label>
-          <input v-model="porcenBackup" type="number" class="form-control" id="porcenBackup" placeholder="">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="chRegeInfo">Horas p/usuario para generar informacion no respaldada de su equipo</label>
-          <input v-model="chRegeInfo" type="number" class="form-control" id="chRegeInfo" placeholder="">
-          </div>
-      </div>
-      <div class="form-group">
-        <label for="chUltiBackup">Cantidad de horas laborables desde el ultimo backup</label>
-        <input v-model="chUltiBackup" type="number" class="form-control" id="chUltiBackup" placeholder="">
-
-       
-
-      </div>
-      <div class="form-group ">
-         <label for="chRegeInfoTotal">Cantidad de horas laborales por usuario/equipo para recuperar informacion de la organizacion sin respaldar</label>
-        <input v-model="chRegeInfoTotal" type="number" class="form-control" id="chRegeInfoTotal" placeholder="">
-      </div>
-    
-
-      
-    </form>
-<!--FIN BACKUPS-->
-
-<!--INICIO RECUPERACION-->
-<h2 class="display-5 mt-5 d-flex justify-content-center">Recuperacion</h2>
-<form class="container" id="recuperacion">
-  <div class="form-row" id="tabla1">
-    <div class="form-group col-md-3 ">
-      <p class="mt-4">formatear y reinstalarun equipo,<br> sistemas y aplicaciones (y configuraciones)</p>
-      </div>
-
-      <div class="form-group col-md-3">
-        <label for="chFormatear" class="">Cantidad de horas necesarias por equipo</label>
-        <input v-model="chFormatear" type="number" class="form-control " id="chFormatear" placeholder="">
-        
-      </div>
-
-      <div class="form-group col-md-3">
-        <label for="cFormatear" class="">Costo por equipo</label>
-        <input v-model="cFormatear" type="number" class="form-control " id="cFormatear" placeholder="">
-        
-      </div>
-      
-      <div class="form-group col-md-3">
-        <label for="cantEquiposParaleloFormatear" class="">Cantidad de equipos que se pueden trabajar en paralelo</label>
-        <input v-model="cantEquiposParaleloFormatear" type="number" class="form-control " id="cantEquiposParaleloFormatear" placeholder="">
-        
-      </div>
-      
-  </div>
-
-  <div class="form-row" id="tabla2">
-    <div class="form-group col-md-3 ">
-      <p class="mt-4">restaurar la información de un equipo desde el backup</p>
-      </div>
-      
-      <div class="form-group col-md-3">
-        <label for="chRestaurar" class="">Cantidad de horas necesarias por equipo</label>
-        <input v-model="chRestaurar" type="number" class="form-control " id="chRestaurar" placeholder="">
-        
-      </div>
-
-      <div class="form-group col-md-3">
-        <label for="cRestaurar" class="">Costo por equipo</label>
-        <input v-model="cRestaurar" type="number" class="form-control " id="cRestaurar" placeholder="">
-        
-      </div>
-
-      <div class="form-group col-md-3">
-        <label for="cantEquiposParaleloRestaurar" class="">Cantidad de equipos que se pueden trabajar en paralelo</label>
-        <input v-model="cantEquiposParaleloRestaurar" type="number" class="form-control " id="cantEquiposParaleloRestaurar" placeholder="">
-        
-      </div>
-      
-  </div>
-
-  
-      
-      
-    </form>
-<!--FIN RECUPERACION-->
-
-<!--INICIO RESCATE-->
-<h2 class="display-5 mt-5 d-flex justify-content-center">Rescate</h2>
-
-    <form class="container" id="rescate">
-      <div class="form-group">
-        <label for="cRescate">Costo del rescate</label>
-        <input v-model="cRescate" type="number" class="form-control" id="cRescate" placeholder="">
-
-       
-
-      </div>
-      
-    </form>
-<!--FIN RESCATE-->
-
-<!--INICIO PERDIDAS-->
-    <h2 class="display-5 mt-5 d-flex justify-content-center">Perdidas</h2>
-
-    <form class="container" id="rescate">
-      <div class="form-group">
-        <label for="porcenEquiposInfectados">Porcentaje de equipos que deben limpiarse y recuperar su backup</label>
-        <input v-model="porcenEquiposInfectados" type="number" class="form-control" id="porcenEquiposInfectados" placeholder="">
-
-      </div>
-      <div class="form-group">
-        <label for="cOportunidadVentas">Costo oportunidad de ventas</label>
-        <input v-model="cOportunidadVentas" type="number" class="form-control" id="cOportunidadVentas" placeholder="">
-
-      </div>
-      
-      
-    </form>
-<!--FIN PERDIDAS-->
-    
-    <button class=""v-on:click="mostrar()">asd</button>
-    <p>RESULTADOS PRIMEROS DOS CALCULOS</p>
-   {{cPromedio}} <br>
-   {{cRegeInfo}}
-    <br>
-    <h4>COSTO TECNOLOGICO</h4><br>
-    <strong>RESULTADOS  ctFormatear</strong><br>
-   {{ctFormatear1}}
-   {{ctFormatear2}}
-   {{ctFormatear3}}
-   {{ctFormatear4}}
-   {{ctFormatear5}}
-   {{ctFormatear6}}
-<strong>RESULTADOS  ctRestaurar</strong><br>
-   {{ctRestaurar1}}
-   {{ctRestaurar2}}
-   {{ctRestaurar3}}
-   {{ctRestaurar4}}<br>
-<strong>RESULTADOS  ctRegenerar</strong><br>
-{{ctRegenerar4}}
-{{ctRegenerar5}}
-{{ctRegenerar6}}<br>
-<strong>RESULTADOS  ctRescate</strong><br>
-   {{ctRescate3}}
-   {{ctRescate5}}<br>
-   <h4>COSTO TECNOLOGICO TOTAL</h4><br>
-   {{ct1}}
-   {{ct2}}
-   {{ct3}}
-   {{ct4}}
-   {{ct5}}
-   {{ct6}}
-<h4>COSTO DE NEGOCIO</h4><br>
-<strong>RESULTADOS  cnFormatear1</strong>
-   {{cnFormatear1}}
-   {{cnFormatear2}}
-   {{cnFormatear3}}
-   {{cnFormatear4}}
-   {{cnFormatear5}}
-   {{cnFormatear6}}<br>
-<strong>RESULTADOS  cnRestaurar1</strong>
-   {{cnRestaurar1}}
-   {{cnRestaurar2}}
-   {{cnRestaurar3}}
-   {{cnRestaurar4}}<br>
-   <strong>RESULTADOS  cnRestaurar1</strong>
-   {{cnRegenerar4}}
-   {{cnRegenerar5}}
-   {{cnRegenerar6}}<br>
-   <strong>RESULTADOS  cnTotal HORAS</strong>
-  {{cnTotal1}}
-  {{cnTotal2}}
-  {{cnTotal3}}
-  {{cnTotal4}}
-  {{cnTotal5}}
-  {{cnTotal6}}<br>
-   <strong>RESULTADOS  cnEstable DIAS</strong>
-{{cnEstable1}}
-{{cnEstable2}}
-{{cnEstable3}}
-{{cnEstable4}}
-{{cnEstable5}}
-{{cnEstable6}}<br>
- <strong>RESULTADOS  cnDisponibilidad </strong>
-{{cnDisponibilidad1}}
-{{cnDisponibilidad2}}
-{{cnDisponibilidad3}}
-{{cnDisponibilidad4}}
-{{cnDisponibilidad5}}
-{{cnDisponibilidad6}}<br>
-<strong>RESULTADOS  cnControlar </strong>
-{{cnControlar1}}
-{{cnControlar2}}
-{{cnControlar3}}
-{{cnControlar4}}
-{{cnControlar5}}
-{{cnControlar6}}<br>
-<strong>RESULTADOS  cnImproductividad </strong>
-{{cnImproductividad1}}
-{{cnImproductividad2}}
-{{cnImproductividad3}}
-{{cnImproductividad4}}
-{{cnImproductividad5}}
-{{cnImproductividad6}}<br>
-<strong>RESULTADOS  cnOportunidad </strong>
-{{cnOportunidad1}}
-{{cnOportunidad2}}
-{{cnOportunidad3}}
-{{cnOportunidad4}}
-{{cnOportunidad5}}
-{{cnOportunidad6}}<br>
-<h4>COSTO NEGOCIO TOTAL</h4>
-{{cn1}}
-{{cn2}}
-{{cn3}}
-{{cn4}}
-{{cn5}}
-{{cn6}}<br>
-<h1>TOTAL DE TOTALES</h1>
-{{tTotal1}}
-{{tTotal2}}
-{{tTotal3}}
-{{tTotal4}}
-{{tTotal5}}
-{{tTotal6}}<br>
-<h1>TOTAL DE TOTALES PORCENTAJES</h1>
-<strong>PORCENTAJE CT</strong>
-{{ctPorcen1}}
-{{ctPorcen2}}
-{{ctPorcen3}}
-{{ctPorcen4}}
-{{ctPorcen5}}
-{{ctPorcen6}}<br>
-<strong>PORCENTAJE CN</strong>
-{{cnPorcen1}}
-{{cnPorcen2}}
-{{cnPorcen3}}
-{{cnPorcen4}}
-{{cnPorcen5}}
-{{cnPorcen6}}<br>
-</div>
+        <!--INICIO DATOS GENERALES-->
+        <h2 class="display-5 d-flex justify-content-center">Datos Generales</h2>
+        <form class="container" id="datosGenerales">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="hLab">Duración en horas de la jornada laboral</label>
+                    <input v-model="hLab" type="number" class="form-control" id="hLab" placeholder="">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cHorasEmpleado">Costo promedio por hora de un empleado de la organización</label>
+                    <input v-model="cHorasEmpleado" type="number" class="form-control" id="cHorasEmpleado" placeholder="">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="cantEquipos">Cantidad de equipos de la organización</label>
+                    <input v-model="cantEquipos" type="number" class="form-control" id="cantEquipos" placeholder="">
+                </div>
+            </div>
+        </form>
+        <!--FIN DATOS GENERALES-->
+        <!--INICIO BACKUPS-->
+        <h2 class="display-5 mt-5 d-flex justify-content-center">Copias de seguridad</h2>
+        <form class="container" id="backups">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="porcenBackup">Porcentaje de información respaldada al momento del incidente</label>
+                    <input v-model="porcenBackup" type="number" class="form-control" id="porcenBackup" placeholder="">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="chUltiBackup">Cantidad de horas laborales desde el último backup al momento del incidente</label>
+                    <input v-model="chUltiBackup" type="number" class="form-control" id="chUltiBackup" placeholder="">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="chRegeInfo">Cantidad de horas de horas laborales promedio que necesita trabajar cada usuario para volver a generar la información sin respaldar en su equipo</label>
+                    <input v-model="chRegeInfo" type="number" class="form-control" id="chRegeInfo" placeholder="">
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="chRegeInfoTotal">Cantidad de horas laborales promedio que necesitaría trabajar cada usuario si las copias de seguridad no sirven, y debe recuperarse toda la información de la organización que se considere relevante</label>
+                <input v-model="chRegeInfoTotal" type="number" class="form-control" id="chRegeInfoTotal" placeholder="">
+            </div>
+        </form>
+        <!--FIN BACKUPS-->
+        <!--INICIO RECUPERACION-->
+        <h2 class="display-5 mt-5 d-flex justify-content-center">Recuperación de equipos</h2>
+        <form class="container" id="recuperacion">
+            <div class="form-row" id="tabla1">
+                <div class="form-group col-md-3 ">
+                    <p class="mt-4">Formateo y reinstalación de un equipo, sistema, aplicaciones, y configuraciones</p>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="chFormatear" class="">Cantidad de horas necesarias por equipo</label>
+                    <input v-model="chFormatear" type="number" class="form-control " id="chFormatear" placeholder="">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="cFormatear" class="">Costo por equipo</label>
+                    <input v-model="cFormatear" type="number" class="form-control " id="cFormatear" placeholder="">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="cantEquiposParaleloFormatear" class="">Cantidad de equipos que se pueden trabajar en paralelo</label>
+                    <input v-model="cantEquiposParaleloFormatear" type="number" class="form-control " id="cantEquiposParaleloFormatear" placeholder="">
+                </div>
+            </div>
+            <div class="form-row" id="tabla2">
+                <div class="form-group col-md-3 ">
+                    <p class="mt-4">Restaurado de la información de un equipo desde las copias de seguridad</p>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="chRestaurar" class="">Cantidad de horas necesarias por equipo</label>
+                    <input v-model="chRestaurar" type="number" class="form-control " id="chRestaurar" placeholder="">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="cRestaurar" class="">Costo por equipo</label>
+                    <input v-model="cRestaurar" type="number" class="form-control " id="cRestaurar" placeholder="">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="cantEquiposParaleloRestaurar" class="">Cantidad de equipos que se pueden trabajar en paralelo</label>
+                    <input v-model="cantEquiposParaleloRestaurar" type="number" class="form-control " id="cantEquiposParaleloRestaurar" placeholder="">
+                </div>
+            </div>
+        </form>
+        <!--FIN RECUPERACION-->
+        <!--INICIO RESCATE-->
+        <h2 class="display-5 mt-5 d-flex justify-content-center">Rescate</h2>
+        <form class="container" id="rescate">
+            <div class="form-group">
+                <label for="cRescate">Costo del rescate</label>
+                <input v-model="cRescate" type="number" class="form-control" id="cRescate" placeholder="">
+            </div>
+        </form>
+        <!--FIN RESCATE-->
+        <!--INICIO PERDIDAS-->
+        <h2 class="display-5 mt-5 d-flex justify-content-center">Información de negocio</h2>
+        <form class="container" id="rescate">
+            <div class="form-group">
+                <label for="porcenEquiposInfectados">Porcentaje de equipos que deben recuperarse para que el incidente se considere controlado</label>
+                <input v-model="porcenEquiposInfectados" type="number" class="form-control" id="porcenEquiposInfectados" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="cOportunidadVentas">Costo de oportunidad diario producto de tener el negocio parado por la falta de disponibilidad tanto de los equipos, que se encuentra infectado, como del personal, que está tratando de regenerar la información perdida o no tiene su equipo</label>
+                <input v-model="cOportunidadVentas" type="number" class="form-control" id="cOportunidadVentas" placeholder="">
+            </div>
+        </form>
+        <!--FIN PERDIDAS-->
+        <button class="" v-on:click="mostrar()">asd</button>
+        <p>RESULTADOS PRIMEROS DOS CALCULOS</p>
+        {{cPromedio}} <br>
+        {{cRegeInfo}}
+        <br>
+        <h4>COSTO TECNOLOGICO</h4><br>
+        <strong>RESULTADOS ctFormatear</strong><br>
+        {{ctFormatear1}}
+        {{ctFormatear2}}
+        {{ctFormatear3}}
+        {{ctFormatear4}}
+        {{ctFormatear5}}
+        {{ctFormatear6}}
+        <strong>RESULTADOS ctRestaurar</strong><br>
+        {{ctRestaurar1}}
+        {{ctRestaurar2}}
+        {{ctRestaurar3}}
+        {{ctRestaurar4}}<br>
+        <strong>RESULTADOS ctRegenerar</strong><br>
+        {{ctRegenerar4}}
+        {{ctRegenerar5}}
+        {{ctRegenerar6}}<br>
+        <strong>RESULTADOS ctRescate</strong><br>
+        {{ctRescate3}}
+        {{ctRescate5}}<br>
+        <h4>COSTO TECNOLOGICO TOTAL</h4><br>
+        {{ct1}}
+        {{ct2}}
+        {{ct3}}
+        {{ct4}}
+        {{ct5}}
+        {{ct6}}
+        <h4>COSTO DE NEGOCIO</h4><br>
+        <strong>RESULTADOS cnFormatear1</strong>
+        {{cnFormatear1}}
+        {{cnFormatear2}}
+        {{cnFormatear3}}
+        {{cnFormatear4}}
+        {{cnFormatear5}}
+        {{cnFormatear6}}<br>
+        <strong>RESULTADOS cnRestaurar1</strong>
+        {{cnRestaurar1}}
+        {{cnRestaurar2}}
+        {{cnRestaurar3}}
+        {{cnRestaurar4}}<br>
+        <strong>RESULTADOS cnRestaurar1</strong>
+        {{cnRegenerar4}}
+        {{cnRegenerar5}}
+        {{cnRegenerar6}}<br>
+        <strong>RESULTADOS cnTotal HORAS</strong>
+        {{cnTotal1}}
+        {{cnTotal2}}
+        {{cnTotal3}}
+        {{cnTotal4}}
+        {{cnTotal5}}
+        {{cnTotal6}}<br>
+        <strong>RESULTADOS cnEstable DIAS</strong>
+        {{cnEstable1}}
+        {{cnEstable2}}
+        {{cnEstable3}}
+        {{cnEstable4}}
+        {{cnEstable5}}
+        {{cnEstable6}}<br>
+        <strong>RESULTADOS cnDisponibilidad </strong>
+        {{cnDisponibilidad1}}
+        {{cnDisponibilidad2}}
+        {{cnDisponibilidad3}}
+        {{cnDisponibilidad4}}
+        {{cnDisponibilidad5}}
+        {{cnDisponibilidad6}}<br>
+        <strong>RESULTADOS cnControlar </strong>
+        {{cnControlar1}}
+        {{cnControlar2}}
+        {{cnControlar3}}
+        {{cnControlar4}}
+        {{cnControlar5}}
+        {{cnControlar6}}<br>
+        <strong>RESULTADOS cnImproductividad </strong>
+        {{cnImproductividad1}}
+        {{cnImproductividad2}}
+        {{cnImproductividad3}}
+        {{cnImproductividad4}}
+        {{cnImproductividad5}}
+        {{cnImproductividad6}}<br>
+        <strong>RESULTADOS cnOportunidad </strong>
+        {{cnOportunidad1}}
+        {{cnOportunidad2}}
+        {{cnOportunidad3}}
+        {{cnOportunidad4}}
+        {{cnOportunidad5}}
+        {{cnOportunidad6}}<br>
+        <h4>COSTO NEGOCIO TOTAL</h4>
+        {{cn1}}
+        {{cn2}}
+        {{cn3}}
+        {{cn4}}
+        {{cn5}}
+        {{cn6}}<br>
+        <h1>TOTAL DE TOTALES</h1>
+        {{tTotal1}}
+        {{tTotal2}}
+        {{tTotal3}}
+        {{tTotal4}}
+        {{tTotal5}}
+        {{tTotal6}}<br>
+        <h1>TOTAL DE TOTALES PORCENTAJES</h1>
+        <strong>PORCENTAJE CT</strong>
+        {{ctPorcen1}}
+        {{ctPorcen2}}
+        {{ctPorcen3}}
+        {{ctPorcen4}}
+        {{ctPorcen5}}
+        {{ctPorcen6}}<br>
+        <strong>PORCENTAJE CN</strong>
+        {{cnPorcen1}}
+        {{cnPorcen2}}
+        {{cnPorcen3}}
+        {{cnPorcen4}}
+        {{cnPorcen5}}
+        {{cnPorcen6}}<br>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
     <script>
-        
     </script>
 </body>
+
 </html>
