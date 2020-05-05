@@ -1,11 +1,8 @@
 const app = new Vue({
     el:'#app',
     data:{
-        function(){
-            return{
-                page: 1,
-            }
-        },
+        page: 1,
+        
       //DATOS GENERALES
         hLab:undefined,
         cHorasEmpleado:undefined,
