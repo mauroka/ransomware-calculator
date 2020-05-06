@@ -2,7 +2,7 @@ const app = new Vue({
     el:'#app',
     data:{
         page: 1,
-        
+        resultado:false,
       //DATOS GENERALES
         hLab:undefined,
         cHorasEmpleado:undefined,
@@ -182,6 +182,7 @@ const app = new Vue({
 
     methods:{
         mostrar: function(){
+            this.resultado=true,
             this.calculoSueltos(),
             this.escenario(),
             this.costoTecnologico(),

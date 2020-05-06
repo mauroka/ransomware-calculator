@@ -359,88 +359,7 @@
           </div>
 
           <!-- Content Row -->
-          <div class="row">
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50"
-                              aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Content Row -->
+          
 
           <div class="row">
 
@@ -451,8 +370,8 @@
 
           </div>
           <div class="progress" style="height: 5px;">
-            <div class="progress-bar" role="progressbar" v-bind:aria-valuenow="(100/4)*page"
-              v-bind:style="{width: (100/4)*page +'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar" role="progressbar" v-bind:aria-valuenow="(100/5)*page"
+              v-bind:style="{width: (100/5)*page +'%'}" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <!-- Content Row -->
           <div class="row">
@@ -618,14 +537,131 @@
               </div>
             
           </div>
-            <div class="row">
-              <div class="col-md-12" style="text-align: right;">
+            <div class="row mb-5">
+              
+              <div class="col-md-12 " style="text-align: right;" v-if="page ===5">
+                <button type="button" class="btn btn-outline-primary" :disabled="page == 1"
+                v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
+                <button type="button" class="btn btn-outline-primary" 
+                  v-on:click="mostrar()"  role="button">Calcular</button><!--resultado = !resultado-->
+              </div>
+              <div class="col-md-12" style="text-align: right;" v-else>
                 <button type="button" class="btn btn-outline-primary" :disabled="page == 1"
                   v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
-                <button type="button" class="btn btn-outline-primary" :disabled="page == 4"
+                <button type="button" class="btn btn-outline-primary" :disabled="page == 5"
                   v-on:click="page += 1;" role="button">Siguiente</button>
               </div>
             </div>
+            <transition name="slide-fade2">
+            <div class="row" v-show="resultado">
+              
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Mejor escenario</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal1}}</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Optimista</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal2}}</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Medio</div>
+                        <div class="row no-gutters align-items-center">
+                          <div class="col-auto">
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${{tTotal3}}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Pending Requests Card Example -->
+              <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pesimista</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal4}}</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-danger shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Desastroso</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal5}}</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-secondary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Tacaño</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal6}}</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </transition>
+            <!-- Content Row -->
             <!-- Content Column -->
 
             <!-- Project Card Example -->
@@ -685,7 +721,7 @@
 
 
 
-            {{hLab}}
+            
 
 
           
