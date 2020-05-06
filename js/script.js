@@ -7,8 +7,6 @@ const app = new Vue({
         hLab:undefined,
         cHorasEmpleado:undefined,
         cantEquipos:undefined,
-
-    
   //BACKUPS
         porcenBackup:undefined,
         chRegeInfo:undefined,
@@ -173,8 +171,11 @@ const app = new Vue({
     ctPorcen3:undefined,
     ctPorcen4:undefined,
     ctPorcen5:undefined,
-    ctPorcen6:undefined
+    ctPorcen6:undefined,
+
+    
    
+
     
     
         
@@ -183,6 +184,7 @@ const app = new Vue({
     methods:{
         mostrar: function(){
             this.resultado=true,
+            this.validate(),
             this.calculoSueltos(),
             this.escenario(),
             this.costoTecnologico(),
@@ -191,6 +193,31 @@ const app = new Vue({
   
 
         },
+        validate: function(){
+            switch (this.page) {
+                case 1: //Datos generales validacion
+                  if(this.hLab === undefined || this.hLab.length === 0){
+                      alert("Todos los campos son obligatorios")
+                  }else{
+                    this.page += 1
+                  }
+                    break;
+                case 2: //Bakcups validacion
+                  
+                    break;
+                
+                case 3: // Recuperacion de equipos validacion
+                  
+                    break;
+                case 4: //Rescate validacion
+                    
+                    break;
+                case 5: //Información de negocio validacion
+                    
+                    break;
+              }
+        },
+
         calculoSueltos: function(){
             this.cPromedio=this.chRegeInfo*this.cHorasEmpleado,
             this.cRegeInfo=this.cHorasEmpleado*this.chUltiBackup

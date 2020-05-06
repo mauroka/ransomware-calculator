@@ -389,11 +389,11 @@
                   <div class="card-body">
                     <form class="container" id="datosGenerales">
                       <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                           <label for="hLab">Duración en horas de la jornada laboral</label>
                           <input v-model="hLab" type="number" class="form-control" id="hLab" placeholder="">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                           <label for="cHorasEmpleado">Costo promedio por hora de un empleado de la organización</label>
                           <input v-model="cHorasEmpleado" type="number" class="form-control" id="cHorasEmpleado"
                             placeholder="">
@@ -451,21 +451,21 @@
                   <div class="card-body">
                     <form class="container" id="recuperacion">
                       <div class="form-row" id="tabla1">
-                        <div class="form-group col-md-3 ">
+                        <div class="form-group col-md-12 ">
                           <p class="mt-4">Formateo y reinstalación de un equipo, sistema, aplicaciones, y
                             configuraciones</p>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-12">
                           <label for="chFormatear" class="">Cantidad de horas necesarias por equipo</label>
                           <input v-model="chFormatear" type="number" class="form-control " id="chFormatear"
                             placeholder="">
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-12">
                           <label for="cFormatear" class="">Costo por equipo</label>
                           <input v-model="cFormatear" type="number" class="form-control " id="cFormatear"
                             placeholder="">
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-12">
                           <label for="cantEquiposParaleloFormatear" class="">Cantidad de equipos que se pueden trabajar
                             en paralelo</label>
                           <input v-model="cantEquiposParaleloFormatear" type="number" class="form-control "
@@ -473,20 +473,20 @@
                         </div>
                       </div>
                       <div class="form-row" id="tabla2">
-                        <div class="form-group col-md-3 ">
+                        <div class="form-group col-md-12 ">
                           <p class="mt-4">Restaurado de la información de un equipo desde las copias de seguridad</p>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-12">
                           <label for="chRestaurar" class="">Cantidad de horas necesarias por equipo</label>
                           <input v-model="chRestaurar" type="number" class="form-control " id="chRestaurar"
                             placeholder="">
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-12">
                           <label for="cRestaurar" class="">Costo por equipo</label>
                           <input v-model="cRestaurar" type="number" class="form-control " id="cRestaurar"
                             placeholder="">
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-12">
                           <label for="cantEquiposParaleloRestaurar" class="">Cantidad de equipos que se pueden trabajar
                             en paralelo</label>
                           <input v-model="cantEquiposParaleloRestaurar" type="number" class="form-control "
@@ -510,7 +510,7 @@
                     </form>
                   </div>
                 </div>
-
+                <!--INFORMACION DE NEGOCIO-->
                 <div class="card shadow mb-4" v-if="page === 5" key="page5">
                   <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Información de negocio</h6>
@@ -549,7 +549,7 @@
                 <button type="button" class="btn btn-outline-primary" :disabled="page == 1"
                   v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
                 <button type="button" class="btn btn-outline-primary" :disabled="page == 5"
-                  v-on:click="page += 1;" role="button">Siguiente</button>
+                  v-on:click="validate()" role="button">Siguiente</button>
               </div>
             </div>
             <transition name="slide-fade2">
@@ -661,63 +661,14 @@
               
             </div>
           </transition>
+          {{prueba}}
             <!-- Content Row -->
             <!-- Content Column -->
 
             <!-- Project Card Example -->
 
 
-            <!-- Color System -->
-            <div class="row">
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-primary text-white shadow">
-                  <div class="card-body">
-                    Primary
-                    <div class="text-white-50 small">#4e73df</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-success text-white shadow">
-                  <div class="card-body">
-                    Success
-                    <div class="text-white-50 small">#1cc88a</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-info text-white shadow">
-                  <div class="card-body">
-                    Info
-                    <div class="text-white-50 small">#36b9cc</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-warning text-white shadow">
-                  <div class="card-body">
-                    Warning
-                    <div class="text-white-50 small">#f6c23e</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-danger text-white shadow">
-                  <div class="card-body">
-                    Danger
-                    <div class="text-white-50 small">#e74a3b</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-secondary text-white shadow">
-                  <div class="card-body">
-                    Secondary
-                    <div class="text-white-50 small">#858796</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
 
 
 
