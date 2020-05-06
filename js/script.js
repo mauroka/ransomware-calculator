@@ -3,6 +3,7 @@ const app = new Vue({
     data:{
         page: 1,
         resultado:false,
+        error:false,
       //DATOS GENERALES
         hLab:undefined,
         cHorasEmpleado:undefined,
@@ -184,7 +185,6 @@ const app = new Vue({
     methods:{
         mostrar: function(){
             this.resultado=true,
-            this.validate(),
             this.calculoSueltos(),
             this.escenario(),
             this.costoTecnologico(),
@@ -193,27 +193,58 @@ const app = new Vue({
   
 
         },
+        isValid: function(v){
+            if(v === undefined || isNaN(v) || v==="" || v<"1"){
+                
+                return false
+            }else{
+                
+                return true;
+                
+            }
+        },
         validate: function(){
             switch (this.page) {
-                case 1: //Datos generales validacion
-                  if(this.hLab === undefined || this.hLab.length === 0){
-                      alert("Todos los campos son obligatorios")
-                  }else{
-                    this.page += 1
-                  }
+                case 1: //DATOS GENERALES VALIDACION
+                    if (this.isValid(this.hLab) && this.isValid(this.cHorasEmpleado) && this.isValid(this.cantEquipos)){
+                        this.error=false
+                        this.page += 1
+                    }else{
+                        this.error=true
+                    }
                     break;
-                case 2: //Bakcups validacion
-                  
+                case 2: //BACKUPS VALIDACION
+                    if (this.isValid(this.porcenBackup) && this.isValid(this.chUltiBackup) && this.isValid(this.chRegeInfo) && this.isValid(this.chRegeInfoTotal)){
+                        this.error=false
+                        this.page += 1
+                    }else{
+                        this.error=true
+                    }
                     break;
                 
                 case 3: // Recuperacion de equipos validacion
-                  
+                    if (this.isValid(this.chFormatear) && this.isValid(this.cFormatear) && this.isValid(this.cantEquiposParaleloFormatear) && this.isValid(this.chRestaurar) && this.isValid(this.cRestaurar) && this.isValid(this.cantEquiposParaleloRestaurar)) {
+                        this.error = false
+                        this.page += 1
+                    } else {
+                        this.error = true
+                    }
                     break;
                 case 4: //Rescate validacion
-                    
+                    if (this.isValid(this.cRescate)) {
+                        this.error = false
+                        this.page += 1
+                    } else {
+                        this.error = true
+                    }
                     break;
-                case 5: //Información de negocio validacion
-                    
+                case 5: //INFORMACION DE NEGOCIO VALIDACION
+                    if (this.isValid(this.porcenEquiposInfectados) && this.isValid(this.cOportunidadVentas)) {
+                        this.error = false
+                        this.mostrar()
+                    } else {
+                        this.error = true
+                    }
                     break;
               }
         },

@@ -387,7 +387,8 @@
                     <h6 class="m-0 font-weight-bold text-primary">Datos Generales</h6>
                   </div>
                   <div class="card-body">
-                    <form class="container" id="datosGenerales">
+                    <h6 class="text-danger" v-show="error">*Todos los campos deben ser completados correctamente</h6>
+                    <form  class="container" id="datosGenerales">
                       <div class="form-row">
                         <div class="form-group col-md-12">
                           <label for="hLab">Duración en horas de la jornada laboral</label>
@@ -413,6 +414,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Copias de seguridad</h6>
                   </div>
                   <div class="card-body">
+                    <h6 class="text-danger" v-show="error">*Todos los campos deben ser completados correctamente</h6>
                     <form class="container" id="backups">
                       <div class="form-row">
                         <div class="form-group col-md-12">
@@ -449,6 +451,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Recuperacion de equipos</h6>
                   </div>
                   <div class="card-body">
+                    <h6 class="text-danger" v-show="error">*Todos los campos deben ser completados correctamente</h6>
                     <form class="container" id="recuperacion">
                       <div class="form-row" id="tabla1">
                         <div class="form-group col-md-12 ">
@@ -502,6 +505,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Rescate</h6>
                   </div>
                   <div class="card-body">
+                    <h6 class="text-danger" v-show="error">*Todos los campos deben ser completados correctamente</h6>
                     <form class="container" id="rescate">
                       <div class="form-group">
                         <label for="cRescate">Costo del rescate</label>
@@ -516,6 +520,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Información de negocio</h6>
                   </div>
                   <div class="card-body">
+                    <h6 class="text-danger" v-show="error">*Todos los campos deben ser completados correctamente</h6>
                     <form class="container" id="rescate">
                       <div class="form-group">
                         <label for="porcenEquiposInfectados">Porcentaje de equipos que deben recuperarse para que el
@@ -543,7 +548,7 @@
                 <button type="button" class="btn btn-outline-primary" :disabled="page == 1"
                 v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
                 <button type="button" class="btn btn-outline-primary" 
-                  v-on:click="mostrar()"  role="button">Calcular</button><!--resultado = !resultado-->
+                  v-on:click="validate()"  role="button">Calcular</button><!--resultado = !resultado-->
               </div>
               <div class="col-md-12" style="text-align: right;" v-else>
                 <button type="button" class="btn btn-outline-primary" :disabled="page == 1"
