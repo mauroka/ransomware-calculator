@@ -14,6 +14,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    
 </head>
 
 <body id="page-top">
@@ -36,6 +37,7 @@
                     <i class="fas fa-money-check-alt"></i>
                     <span>Calculador de costos de Ransomware</span></a>
             </li>
+            
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
@@ -224,13 +226,133 @@
                                         </form>
                                     </div>
                                 </div>
+
+                                <div class="card shadow mb-4" v-if="page === 6" key="page6">
+                                  <div class="card-header py-3">
+                                      <h6 class="m-0 font-weight-bold text-primary">Resultados</h6>
+                                  </div>
+                                  <div class="card-body">
+                                    
+                                      <div class="row" v-show="resultado">
+                                          <!-- Earnings (Monthly) Card Example -->
+                                          <div class="col-xl-4 col-md-6 mb-4">
+                                              <div class="card border-left-primary shadow h-100 py-2">
+                                                  <div class="card-body">
+                                                      <div class="row no-gutters align-items-center">
+                                                          <div class="col mr-2">
+                                                              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Mejor escenario</div>
+                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal1}}</div>
+                                                          </div>
+                                                          <div class="col-auto">
+                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <!-- Earnings (Monthly) Card Example -->
+                                          <div class="col-xl-4 col-md-6 mb-4">
+                                              <div class="card border-left-success shadow h-100 py-2">
+                                                  <div class="card-body">
+                                                      <div class="row no-gutters align-items-center">
+                                                          <div class="col mr-2">
+                                                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Optimista</div>
+                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal2}}</div>
+                                                          </div>
+                                                          <div class="col-auto">
+                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <!-- Earnings (Monthly) Card Example -->
+                                          <div class="col-xl-4 col-md-6 mb-4">
+                                              <div class="card border-left-info shadow h-100 py-2">
+                                                  <div class="card-body">
+                                                      <div class="row no-gutters align-items-center">
+                                                          <div class="col mr-2">
+                                                              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Medio</div>
+                                                              <div class="row no-gutters align-items-center">
+                                                                  <div class="col-auto">
+                                                                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${{tTotal3}}</div>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                          <div class="col-auto">
+                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <!-- Pending Requests Card Example -->
+                                          <div class="col-xl-4 col-md-6 mb-4">
+                                              <div class="card border-left-warning shadow h-100 py-2">
+                                                  <div class="card-body">
+                                                      <div class="row no-gutters align-items-center">
+                                                          <div class="col mr-2">
+                                                              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pesimista</div>
+                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal4}}</div>
+                                                          </div>
+                                                          <div class="col-auto">
+                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-xl-4 col-md-6 mb-4">
+                                              <div class="card border-left-danger shadow h-100 py-2">
+                                                  <div class="card-body">
+                                                      <div class="row no-gutters align-items-center">
+                                                          <div class="col mr-2">
+                                                              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Desastroso</div>
+                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal5}}</div>
+                                                          </div>
+                                                          <div class="col-auto">
+                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-xl-4 col-md-6 mb-4">
+                                              <div class="card border-left-secondary shadow h-100 py-2">
+                                                  <div class="card-body">
+                                                      <div class="row no-gutters align-items-center">
+                                                          <div class="col mr-2">
+                                                              <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Tacaño</div>
+                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal6}}</div>
+                                                          </div>
+                                                          <div class="col-auto">
+                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  
+                                  </div>
+                                  <!--GRAFICOS-->
+                                  
+
+                              </div>
+
+                              
+
+                              
                             </transition>
                         </div>
                     </div>
+                    <!--BOTONES FORMULARIO-->
                     <div class="row mb-5">
                         <div class="col-md-12 " style="text-align: right;" v-if="page ===5">
                             <button type="button" class="btn btn-outline-primary" :disabled="page == 1" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
+                            <!--<button type="button" class="btn btn-outline-primary" v-on:click="validate()" role="button">Calcular</button>-->
                             <button type="button" class="btn btn-outline-primary" v-on:click="validate()" role="button">Calcular</button>
+                            
                             <!--resultado = !resultado-->
                         </div>
                         <div class="col-md-12" style="text-align: right;" v-else>
@@ -238,109 +360,19 @@
                             <button type="button" class="btn btn-outline-primary" :disabled="page == 5" v-on:click="validate()" role="button">Siguiente</button>
                         </div>
                     </div>
-                    <transition name="slide-fade2">
-                        <div class="row" v-show="resultado">
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-4 col-md-6 mb-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Mejor escenario</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal1}}</div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-4 col-md-6 mb-4">
-                                <div class="card border-left-success shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Optimista</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal2}}</div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-4 col-md-6 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Medio</div>
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${{tTotal3}}</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Pending Requests Card Example -->
-                            <div class="col-xl-4 col-md-6 mb-4">
-                                <div class="card border-left-warning shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pesimista</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal4}}</div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6 mb-4">
-                                <div class="card border-left-danger shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Desastroso</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal5}}</div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6 mb-4">
-                                <div class="card border-left-secondary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Tacaño</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal6}}</div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <!--RESULTADOS-->
+                    <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="chart-bar">
+                          <canvas id="myBarChart"></canvas>
                         </div>
-                    </transition>
-                    {{prueba}}
+                        <hr>
+                        Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
+                      </div>
+                    </div>
                     <!-- Content Row -->
                     <!-- Content Column -->
                     <!-- Project Card Example -->
@@ -395,8 +427,11 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-bar-demo.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="js/script.js"></script>
+    
 </body>
 
 </html>

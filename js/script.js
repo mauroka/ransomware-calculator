@@ -2,7 +2,7 @@ const app = new Vue({
     el:'#app',
     data:{
         page: 1,
-        resultado:false,
+        resultado:true,
         error:false,
       //DATOS GENERALES
         hLab:undefined,
@@ -184,7 +184,7 @@ const app = new Vue({
 
     methods:{
         mostrar: function(){
-            this.resultado=true,
+            this.page += 1,
             this.calculoSueltos(),
             this.escenario(),
             this.costoTecnologico(),
