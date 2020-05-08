@@ -233,8 +233,8 @@
                                   <!--CARD ESCENARIOS-->
                                   <div class="card-body">
                                       <div class="row" v-show="resultado">
-                                          <!-- Earnings (Monthly) Card Example -->
-                                          <div class="col-xl-4 col-md-6 mb-4">
+                                          <!--ESCENARIO 1-->
+                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(1, 'Mejor escenario')" type="button">
                                               <div class="card border-left-primary shadow h-100 py-2">
                                                   <div class="card-body">
                                                       <div class="row no-gutters align-items-center">
@@ -249,8 +249,8 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <!-- Earnings (Monthly) Card Example -->
-                                          <div class="col-xl-4 col-md-6 mb-4">
+                                          <!--ESCENARIO 2-->
+                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(2, 'Optimista')" type="button">
                                               <div class="card border-left-success shadow h-100 py-2">
                                                   <div class="card-body">
                                                       <div class="row no-gutters align-items-center">
@@ -265,8 +265,8 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <!-- Earnings (Monthly) Card Example -->
-                                          <div class="col-xl-4 col-md-6 mb-4">
+                                          <!--ESCENARIO 3-->
+                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(3, 'Medio')" type="button">
                                               <div class="card border-left-info shadow h-100 py-2">
                                                   <div class="card-body">
                                                       <div class="row no-gutters align-items-center">
@@ -285,8 +285,8 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <!-- Pending Requests Card Example -->
-                                          <div class="col-xl-4 col-md-6 mb-4">
+                                          <!--ESCENARIO 4-->
+                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(4, 'Pesimista')" type="button">
                                               <div class="card border-left-warning shadow h-100 py-2">
                                                   <div class="card-body">
                                                       <div class="row no-gutters align-items-center">
@@ -301,7 +301,8 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="col-xl-4 col-md-6 mb-4">
+                                          <!--ESCENARIO 5-->
+                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(5, 'Desastroso')" type="button">
                                               <div class="card border-left-danger shadow h-100 py-2">
                                                   <div class="card-body">
                                                       <div class="row no-gutters align-items-center">
@@ -316,7 +317,8 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <div class="col-xl-4 col-md-6 mb-4">
+                                          <!--ESCENARIO 6-->
+                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(6, 'Tacaño')" type="button">
                                               <div class="card border-left-secondary shadow h-100 py-2">
                                                   <div class="card-body">
                                                       <div class="row no-gutters align-items-center">
@@ -350,7 +352,7 @@
                     </div>
                     <!--GRAFICOS-->
                     <div v-show="page === 6">
-                        <div class="card shadow mb-4" > <!---->
+                        <div class="card shadow mb-4" > 
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Gráfico de Barras</h6>
                             </div>
@@ -360,9 +362,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mb-5">
-                            <div class="col-md-12" style="text-align: right;">
+                        <div class="row mb-5" v-if="!escenario">
+                            <div class="col-md-12" style="text-align: right;" >
                                 <button type="button" class="btn btn-outline-primary" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
+                                <button type="button" class="btn btn-outline-primary" disabled v-on:click="validate()" role="button">Calcular</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="chartEscenario">
+                        <div class="card shadow mb-4" v-show="escenario" > 
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Detalles de escenario: {{nombreEscenario}}</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-bar">
+                                    <canvas id="chart2"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-12" style="text-align: right;" v-if="escenario">
+                                <button type="button" class="btn btn-outline-primary" v-on:click="page -= 1; ocultaGrafico();" role="button">Anterior</button> &nbsp;
                                 <button type="button" class="btn btn-outline-primary" disabled v-on:click="validate()" role="button">Calcular</button>
                             </div>
                         </div>
@@ -424,8 +444,8 @@
     <script src="js/demo/chart-bar-demo.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-scrollto"></script>
     <script src="js/script.js"></script>
-    
 </body>
 
 </html>

@@ -4,6 +4,8 @@ const app = new Vue({
         page: 1,
         resultado:true,
         error:false,
+        escenario:false,
+        nombreEscenario:"",
       //DATOS GENERALES
         hLab:undefined,
         cHorasEmpleado:undefined,
@@ -187,10 +189,42 @@ const app = new Vue({
         mostrar: function(){
             this.page += 1,
             this.calculoSueltos(),
-            this.escenario(),
             this.costoTecnologico(),
             this.costoNegocio(),
             this.costoTotal()
+        },
+        escenarioChart(){
+            var ctx = document.getElementById('chart2').getContext('2d');
+            if (window.grafica2) {
+                window.grafica2.clear();
+                window.grafica2.destroy();
+            }
+            window.grafica2= new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Mejor escenario', 'Optimista', 'Medio', 'Pesimista', 'Desastroso'],
+                    datasets: [{
+                        label: 'Comparativa de escenarios',
+                        data: [this.tTotal1, this.tTotal2, this.tTotal2, this.tTotal4, this.tTotal5],
+                        backgroundColor: [
+                            this.primary,
+                            this.success,
+                            this.info,
+                            this.warning,
+                            this.danger,
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
         },
         showChart(){
             var ctx = document.getElementById('myBarChart').getContext('2d');
@@ -281,8 +315,38 @@ const app = new Vue({
                     break;
               }
         },
-        escenario: function(){
+        mostrarEscenario: function(nEscenario, nombre){
+            this.nombreEscenario=nombre
+            this.escenario=true
+            switch(nEscenario){
+                case 1:
+                    //llamar a la funcion escenarioChart() y pasarle los parametros correspondientes al escenario
+                    //escenarioChart(nombre)
+                    break;
 
+                case 2:
+
+                    break;
+
+                case 3:
+                    
+                    break;
+
+                case 4:
+
+                    break; 
+
+                case 5:
+                    
+                    break;
+
+                case 6:
+
+                    break;  
+            }
+        },
+        ocultaGrafico: function(){
+            this.escenario=false
         },
         calculoSueltos: function(){
             this.cPromedio=this.chRegeInfo*this.cHorasEmpleado,
@@ -461,4 +525,8 @@ const app = new Vue({
 
         }
     }
+})
+
+VueScrollTo.setDefaults({
+    duration: 1500,
 })
