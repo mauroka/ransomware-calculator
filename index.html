@@ -74,7 +74,7 @@
                         <!-- Pie Chart -->
                     </div>
                     <div class="progress" style="height: 5px;">
-                        <div class="progress-bar" role="progressbar" v-bind:aria-valuenow="(100/5)*page" v-bind:style="{width: (100/5)*page +'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" v-bind:aria-valuenow="(100/6)*page" v-bind:style="{width: (100/6)*page +'%'}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <!-- Content Row -->
                     <div class="row">
@@ -226,13 +226,12 @@
                                         </form>
                                     </div>
                                 </div>
-
                                 <div class="card shadow mb-4" v-if="page === 6" key="page6">
                                   <div class="card-header py-3">
                                       <h6 class="m-0 font-weight-bold text-primary">Resultados</h6>
                                   </div>
+                                  <!--CARD ESCENARIOS-->
                                   <div class="card-body">
-                                    
                                       <div class="row" v-show="resultado">
                                           <!-- Earnings (Monthly) Card Example -->
                                           <div class="col-xl-4 col-md-6 mb-4">
@@ -333,45 +332,40 @@
                                               </div>
                                           </div>
                                       </div>
-                                  
                                   </div>
-                                  <!--GRAFICOS-->
-                                  
-
                               </div>
-
-                              
-
-                              
                             </transition>
                         </div>
                     </div>
                     <!--BOTONES FORMULARIO-->
                     <div class="row mb-5">
-                        <div class="col-md-12 " style="text-align: right;" v-if="page ===5">
+                        <div class="col-md-12 " style="text-align: right;" v-if=" page === 5">
                             <button type="button" class="btn btn-outline-primary" :disabled="page == 1" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
-                            <!--<button type="button" class="btn btn-outline-primary" v-on:click="validate()" role="button">Calcular</button>-->
-                            <button type="button" class="btn btn-outline-primary" v-on:click="validate()" role="button">Calcular</button>
-                            
-                            <!--resultado = !resultado-->
+                            <button type="button" class="btn btn-outline-primary" :disabled="page == 6" v-on:click="validate()" role="button">Calcular</button>
                         </div>
-                        <div class="col-md-12" style="text-align: right;" v-else>
+                        <div class="col-md-12" style="text-align: right;" v-else-if="page != 6">
                             <button type="button" class="btn btn-outline-primary" :disabled="page == 1" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
                             <button type="button" class="btn btn-outline-primary" :disabled="page == 5" v-on:click="validate()" role="button">Siguiente</button>
                         </div>
                     </div>
-                    <!--RESULTADOS-->
-                    <div class="card shadow mb-4">
-                      <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
-                      </div>
-                      <div class="card-body">
-                        <div class="chart-bar">
-                          <canvas id="myBarChart"></canvas>
+                    <!--GRAFICOS-->
+                    <div v-show="page === 6">
+                        <div class="card shadow mb-4" > <!---->
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Gráfico de Barras</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-bar">
+                                    <canvas id="myBarChart"></canvas>
+                                </div>
+                            </div>
                         </div>
-                        <hr>
-                        Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
-                      </div>
+                        <div class="row mb-5">
+                            <div class="col-md-12" style="text-align: right;">
+                                <button type="button" class="btn btn-outline-primary" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
+                                <button type="button" class="btn btn-outline-primary" disabled v-on:click="validate()" role="button">Calcular</button>
+                            </div>
+                        </div>
                     </div>
                     <!-- Content Row -->
                     <!-- Content Column -->

@@ -174,12 +174,13 @@ const app = new Vue({
     ctPorcen5:undefined,
     ctPorcen6:undefined,
 
-    
-   
-
-    
-    
-        
+    //COLORS
+    primary:"#4e73df",
+    success: "#1cc88a", 
+    info: "#36b9cc",                                        
+    warning: "#f6c23e",
+    danger: "#e74a3b",
+    secondary:"#858796", 
     },
 
     methods:{
@@ -190,35 +191,29 @@ const app = new Vue({
             this.costoTecnologico(),
             this.costoNegocio(),
             this.costoTotal()
-  
-
         },
         showChart(){
             var ctx = document.getElementById('myBarChart').getContext('2d');
-            var myChart = new Chart(ctx, {
+            //si ya existe, la destruimos y creamos otra nueva.
+            if (window.grafica) {
+                window.grafica.clear();
+                window.grafica.destroy();
+            }
+            window.grafica = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: ['Mejor escenario', 'Optimista', 'Medio', 'Pesimista', 'Desastroso', 'Tacaño'],
                     datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
+                        label: 'Comparativa de escenarios',
+                        data: [this.tTotal1, this.tTotal2, this.tTotal2, this.tTotal4, this.tTotal5, this.tTotal6],
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
+                            this.primary,
+                            this.success,
+                            this.info,
+                            this.warning,
+                            this.danger,
+                            this.secondary
+                        ]
                     }]
                 },
                 options: {
@@ -232,24 +227,23 @@ const app = new Vue({
                 }
             });
         },
+
         isValid: function(v){
             if(v === undefined || isNaN(v) || v==="" || v<"1"){
-                
                 return false
             }else{
-                
                 return true;
-                
             }
         },
-        validate: function(){
+
+        validate: function(){ 
             switch (this.page) {
                 case 1: //DATOS GENERALES VALIDACION
                     if (this.isValid(this.hLab) && this.isValid(this.cHorasEmpleado) && this.isValid(this.cantEquipos)){
                         this.error=false
                         this.page += 1
                     }else{
-                        this.error=true
+                        this.error=true //MUESTRA MENSAJE
                     }
                     break;
                 case 2: //BACKUPS VALIDACION
@@ -260,8 +254,7 @@ const app = new Vue({
                         this.error=true
                     }
                     break;
-                
-                case 3: // Recuperacion de equipos validacion
+                case 3: // RECUPERACION DE INFORMACION VALIDACIOND
                     if (this.isValid(this.chFormatear) && this.isValid(this.cFormatear) && this.isValid(this.cantEquiposParaleloFormatear) && this.isValid(this.chRestaurar) && this.isValid(this.cRestaurar) && this.isValid(this.cantEquiposParaleloRestaurar)) {
                         this.error = false
                         this.page += 1
@@ -269,7 +262,7 @@ const app = new Vue({
                         this.error = true
                     }
                     break;
-                case 4: //Rescate validacion
+                case 4: //RESCATE VALIDACION
                     if (this.isValid(this.cRescate)) {
                         this.error = false
                         this.page += 1
@@ -288,18 +281,12 @@ const app = new Vue({
                     break;
               }
         },
+        escenario: function(){
 
+        },
         calculoSueltos: function(){
             this.cPromedio=this.chRegeInfo*this.cHorasEmpleado,
             this.cRegeInfo=this.cHorasEmpleado*this.chUltiBackup
-            
-            
-            
-           
-        },
-
-        escenario: function(){
-
         },
         costoTecnologico: function(){
             //CALCULOS FORMATEAR
@@ -330,7 +317,6 @@ const app = new Vue({
             this.ct6=this.ctFormatear6+this.ctRegenerar6
             
         },
-
         costoNegocio: function(){
             //CALCULOS FORMATEO
             if(((this.cantEquipos*0.2)/this.cantEquiposParaleloFormatear)>1){
@@ -449,21 +435,15 @@ const app = new Vue({
             this.cn4=this.cnImproductividad4+this.cnOportunidad4
             this.cn5=this.cnImproductividad5+this.cnOportunidad5
             this.cn6=this.cnImproductividad6+this.cnOportunidad6
-            
 
-
-
-            
-
-            
         },
         costoTotal: function(){
-            this.tTotal1=this.ct1+this.cn1
-            this.tTotal2=this.ct2+this.cn2
-            this.tTotal3=this.ct3+this.cn3
-            this.tTotal4=this.ct4+this.cn4
-            this.tTotal5=this.ct5+this.cn5
-            this.tTotal6=this.ct6+this.cn6
+            this.tTotal1=Math.round((this.ct1+this.cn1)* 1000)/1000
+            this.tTotal2=Math.round((this.ct2+this.cn2)* 1000)/1000
+            this.tTotal3=Math.round((this.ct3+this.cn3)* 1000)/1000
+            this.tTotal4=Math.round((this.ct4+this.cn4)* 1000)/1000
+            this.tTotal5=Math.round((this.ct5+this.cn5)* 1000)/1000
+            this.tTotal6=Math.round((this.ct6+this.cn6)* 1000)/1000
             //PORCENTAJES CT
             this.ctPorcen1=Math.round((this.ct1/this.tTotal1)*100)
             this.ctPorcen2=Math.round((this.ct2/this.tTotal2)*100)
