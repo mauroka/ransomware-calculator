@@ -5,16 +5,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="El calculador de costos de Ransomware es una herramienta de software libre que permite, a partir de datos básicos de entrada, conocer los costos en los que incurriría una organización en el caso de una infección por Ransomware.">
-    <meta name="author" content="Security Awareness Risks Calculator - Phishing and Ransomware in terms of money por Abratte Pablo, Bruna Nicolás, Graziosi Mauro, Quinteros Fabricio y Rodríguez Dante se distribuye bajo una Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional.">
+    <meta name="description"
+        content="El calculador de costos de Ransomware es una herramienta de software libre que permite, a partir de datos básicos de entrada, conocer los costos en los que incurriría una organización en el caso de una infección por Ransomware.">
+    <meta name="author"
+        content="Security Awareness Risks Calculator - Phishing and Ransomware in terms of money por Abratte Pablo, Bruna Nicolás, Graziosi Mauro, Quinteros Fabricio y Rodríguez Dante se distribuye bajo una Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional.">
     <title>Security Awareness Risks Calculator</title>
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    
+
 </head>
 
 <body id="page-top">
@@ -37,7 +41,7 @@
                     <i class="fas fa-money-check-alt"></i>
                     <span>Calculador de costos de Ransomware</span></a>
             </li>
-            
+
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
@@ -51,7 +55,8 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link" href="https://github.com/mauroka/ransomware-calculator" target="_blank" role="button">
+                            <a class="nav-link" href="https://github.com/mauroka/ransomware-calculator" target="_blank"
+                                role="button">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Visitar Repositorio</span>
                             </a>
                         </li>
@@ -63,7 +68,8 @@
                     <!-- Page Heading -->
                     <div class="align-items-center justify-content-between mb-4">
                         <h1 class="h3 text-gray-800">Calculador de costos de Ransomware</h1>
-                        <p class="text-gray-800">Conozca los costos directos e indirectos en los que incurriría una organización en el caso de una infección por Ransomware.</p>
+                        <p class="text-gray-800">Conozca los costos directos e indirectos en los que incurriría una
+                            organización en el caso de una infección por Ransomware.</p>
                         <div class="alert alert-warning" role="alert">
                             <b>Precaución:</b> Todos los valores monetarios deben ser ingresados en la misma moneda.
                         </div>
@@ -74,7 +80,8 @@
                         <!-- Pie Chart -->
                     </div>
                     <div class="progress" style="height: 5px;">
-                        <div class="progress-bar" role="progressbar" v-bind:aria-valuenow="(100/6)*page" v-bind:style="{width: (100/6)*page +'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" v-bind:aria-valuenow="(100/6)*page"
+                            v-bind:style="{width: (100/6)*page +'%'}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <!-- Content Row -->
                     <div class="row">
@@ -87,20 +94,26 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Datos Generales</h6>
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en todos los campos</h6>
+                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en
+                                            todos los campos</h6>
                                         <form class="container" id="datosGenerales">
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="hLab">Duración en horas de la jornada laboral</label>
-                                                    <input v-model="hLab" type="number" class="form-control" id="hLab" placeholder="">
+                                                    <input v-model="hLab" type="number" class="form-control" id="hLab"
+                                                        placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label for="cHorasEmpleado">Costo promedio por hora de un empleado de la organización</label>
-                                                    <input v-model="cHorasEmpleado" type="number" class="form-control" id="cHorasEmpleado" placeholder="">
+                                                    <label for="cHorasEmpleado">Costo promedio por hora de un empleado
+                                                        de la organización</label>
+                                                    <input v-model="cHorasEmpleado" type="number" class="form-control"
+                                                        id="cHorasEmpleado" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label for="cantEquipos">Cantidad de equipos de la organización</label>
-                                                    <input v-model="cantEquipos" type="number" class="form-control" id="cantEquipos" placeholder="">
+                                                    <label for="cantEquipos">Cantidad de equipos de la
+                                                        organización</label>
+                                                    <input v-model="cantEquipos" type="number" class="form-control"
+                                                        id="cantEquipos" placeholder="">
                                                 </div>
                                             </div>
                                         </form>
@@ -112,29 +125,40 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Copias de seguridad</h6>
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en todos los campos</h6>
+                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en
+                                            todos los campos</h6>
                                         <form class="container" id="backups">
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="porcenBackup">Porcentaje de información respaldada al momento del
+                                                    <label for="porcenBackup">Porcentaje de información respaldada al
+                                                        momento del
                                                         incidente</label>
-                                                    <input v-model="porcenBackup" type="number" class="form-control" id="porcenBackup" placeholder="">
+                                                    <input v-model="porcenBackup" type="number" class="form-control"
+                                                        id="porcenBackup" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label for="chUltiBackup">Cantidad de horas laborales desde el último backup al momento del
+                                                    <label for="chUltiBackup">Cantidad de horas laborales desde el
+                                                        último backup al momento del
                                                         incidente</label>
-                                                    <input v-model="chUltiBackup" type="number" class="form-control" id="chUltiBackup" placeholder="">
+                                                    <input v-model="chUltiBackup" type="number" class="form-control"
+                                                        id="chUltiBackup" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label for="chRegeInfo">Cantidad de horas de horas laborales promedio que necesita trabajar
-                                                        cada usuario para volver a generar la información sin respaldar en su equipo</label>
-                                                    <input v-model="chRegeInfo" type="number" class="form-control" id="chRegeInfo" placeholder="">
+                                                    <label for="chRegeInfo">Cantidad de horas de horas laborales
+                                                        promedio que necesita trabajar
+                                                        cada usuario para volver a generar la información sin respaldar
+                                                        en su equipo</label>
+                                                    <input v-model="chRegeInfo" type="number" class="form-control"
+                                                        id="chRegeInfo" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label for="chRegeInfoTotal">Cantidad de horas laborales promedio que necesitaría trabajar cada
-                                                        usuario si las copias de seguridad no funcionan, y debe recuperarse toda la información de la
+                                                    <label for="chRegeInfoTotal">Cantidad de horas laborales promedio
+                                                        que necesitaría trabajar cada
+                                                        usuario si las copias de seguridad no funcionan, y debe
+                                                        recuperarse toda la información de la
                                                         organización que se considere relevante</label>
-                                                    <input v-model="chRegeInfoTotal" type="number" class="form-control" id="chRegeInfoTotal" placeholder="">
+                                                    <input v-model="chRegeInfoTotal" type="number" class="form-control"
+                                                        id="chRegeInfoTotal" placeholder="">
                                                 </div>
                                             </div>
                                         </form>
@@ -146,44 +170,59 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Recuperacion de equipos</h6>
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en todos los campos</h6>
+                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en
+                                            todos los campos</h6>
                                         <form class="container" id="recuperacion">
                                             <div class="form-row" id="tabla1">
                                                 <div class="form-group col-md-12 ">
-                                                    <p class="mt-4 font-weight-bold text-primary">Formateo y reinstalación de un equipo, sistema, aplicaciones, y
+                                                    <p class="mt-4 font-weight-bold text-primary">Formateo y
+                                                        reinstalación de un equipo, sistema, aplicaciones, y
                                                         configuraciones</p>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label for="chFormatear" class="">Cantidad de horas necesarias por equipo</label>
-                                                    <input v-model="chFormatear" type="number" class="form-control " id="chFormatear" placeholder="">
+                                                    <label for="chFormatear" class="">Cantidad de horas necesarias por
+                                                        equipo</label>
+                                                    <input v-model="chFormatear" type="number" class="form-control "
+                                                        id="chFormatear" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="cFormatear" class="">Costo por equipo</label>
-                                                    <input v-model="cFormatear" type="number" class="form-control " id="cFormatear" placeholder="">
+                                                    <input v-model="cFormatear" type="number" class="form-control "
+                                                        id="cFormatear" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label for="cantEquiposParaleloFormatear" class="">Cantidad de equipos que se pueden trabajar
+                                                    <label for="cantEquiposParaleloFormatear" class="">Cantidad de
+                                                        equipos que se pueden trabajar
                                                         en paralelo</label>
-                                                    <input v-model="cantEquiposParaleloFormatear" type="number" class="form-control " id="cantEquiposParaleloFormatear" placeholder="">
+                                                    <input v-model="cantEquiposParaleloFormatear" type="number"
+                                                        class="form-control " id="cantEquiposParaleloFormatear"
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                             <hr>
                                             <div class="form-row" id="tabla2">
                                                 <div class="form-group col-md-12 ">
-                                                    <p class="mt-4 font-weight-bold text-primary">Restaurado de la información de un equipo desde las copias de seguridad</p>
+                                                    <p class="mt-4 font-weight-bold text-primary">Restaurado de la
+                                                        información de un equipo desde las copias de seguridad</p>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label for="chRestaurar" class="">Cantidad de horas necesarias por equipo</label>
-                                                    <input v-model="chRestaurar" type="number" class="form-control " id="chRestaurar" placeholder="">
+                                                    <label for="chRestaurar" class="">Cantidad de horas necesarias por
+                                                        equipo</label>
+                                                    <input v-model="chRestaurar" type="number" class="form-control "
+                                                        id="chRestaurar" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="cRestaurar" class="">Costo por equipo</label>
-                                                    <input v-model="cRestaurar" type="number" class="form-control " id="cRestaurar" placeholder="">
+                                                    <input v-model="cRestaurar" type="number" class="form-control "
+                                                        id="cRestaurar" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label for="cantEquiposParaleloRestaurar" class="">Cantidad de equipos que se pueden trabajar
+                                                    <label for="cantEquiposParaleloRestaurar" class="">Cantidad de
+                                                        equipos que se pueden trabajar
                                                         en paralelo</label>
-                                                    <input v-model="cantEquiposParaleloRestaurar" type="number" class="form-control " id="cantEquiposParaleloRestaurar" placeholder="">
+                                                    <input v-model="cantEquiposParaleloRestaurar" type="number"
+                                                        class="form-control " id="cantEquiposParaleloRestaurar"
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </form>
@@ -195,11 +234,13 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Rescate</h6>
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en todos los campos</h6>
+                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en
+                                            todos los campos</h6>
                                         <form class="container" id="rescate">
                                             <div class="form-group">
                                                 <label for="cRescate">Costo del rescate</label>
-                                                <input v-model="cRescate" type="number" class="form-control" id="cRescate" placeholder="">
+                                                <input v-model="cRescate" type="number" class="form-control"
+                                                    id="cRescate" placeholder="">
                                             </div>
                                         </form>
                                     </div>
@@ -210,147 +251,178 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Información de negocio</h6>
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en todos los campos</h6>
+                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en
+                                            todos los campos</h6>
                                         <form class="container" id="rescate">
                                             <div class="form-group">
-                                                <label for="porcenEquiposInfectados">Porcentaje de equipos que deben recuperarse para que el
+                                                <label for="porcenEquiposInfectados">Porcentaje de equipos que deben
+                                                    recuperarse para que el
                                                     incidente se considere controlado</label>
-                                                <input v-model="porcenEquiposInfectados" type="number" class="form-control" id="porcenEquiposInfectados" placeholder="">
+                                                <input v-model="porcenEquiposInfectados" type="number"
+                                                    class="form-control" id="porcenEquiposInfectados" placeholder="">
                                             </div>
                                             <div class="form-group">
-                                                <label for="cOportunidadVentas">Costo de oportunidad diario producto de tener el negocio parado
-                                                    por la falta de disponibilidad tanto de los equipos, que se encuentran infectados, como del
-                                                    personal, que está tratando de regenerar la información perdida o no tiene su equipo</label>
-                                                <input v-model="cOportunidadVentas" type="number" class="form-control" id="cOportunidadVentas" placeholder="">
+                                                <label for="cOportunidadVentas">Costo de oportunidad diario producto de
+                                                    tener el negocio parado
+                                                    por la falta de disponibilidad tanto de los equipos, que se
+                                                    encuentran infectados, como del
+                                                    personal, que está tratando de regenerar la información perdida o no
+                                                    tiene su equipo</label>
+                                                <input v-model="cOportunidadVentas" type="number" class="form-control"
+                                                    id="cOportunidadVentas" placeholder="">
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="card shadow mb-4" v-if="page === 6" key="page6">
-                                  <div class="card-header py-3">
-                                      <h6 class="m-0 font-weight-bold text-primary">Resultados</h6>
-                                  </div>
-                                  <!--CARD ESCENARIOS-->
-                                  <div class="card-body">
-                                      <div class="row" v-show="resultado">
-                                          <!-- Earnings (Monthly) Card Example -->
-                                          <div class="col-xl-4 col-md-6 mb-4">
-                                              <div class="card border-left-primary shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Mejor escenario</div>
-                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal1}}</div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <!-- Earnings (Monthly) Card Example -->
-                                          <div class="col-xl-4 col-md-6 mb-4">
-                                              <div class="card border-left-success shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Optimista</div>
-                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal2}}</div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <!-- Earnings (Monthly) Card Example -->
-                                          <div class="col-xl-4 col-md-6 mb-4">
-                                              <div class="card border-left-info shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Medio</div>
-                                                              <div class="row no-gutters align-items-center">
-                                                                  <div class="col-auto">
-                                                                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${{tTotal3}}</div>
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <!-- Pending Requests Card Example -->
-                                          <div class="col-xl-4 col-md-6 mb-4">
-                                              <div class="card border-left-warning shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pesimista</div>
-                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal4}}</div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="col-xl-4 col-md-6 mb-4">
-                                              <div class="card border-left-danger shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Desastroso</div>
-                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal5}}</div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="col-xl-4 col-md-6 mb-4">
-                                              <div class="card border-left-secondary shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Tacaño</div>
-                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal6}}</div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Resultados</h6>
+                                    </div>
+                                    <!--CARD ESCENARIOS-->
+                                    <div class="card-body">
+                                        <div class="row" v-show="resultado">
+                                            <!-- Earnings (Monthly) Card Example -->
+                                            <div class="col-xl-4 col-md-6 mb-4">
+                                                <div class="card border-left-primary shadow h-100 py-2">
+                                                    <div class="card-body">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col mr-2">
+                                                                <div
+                                                                    class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                    Mejor escenario</div>
+                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                    ${{tTotal1}}</div>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Earnings (Monthly) Card Example -->
+                                            <div class="col-xl-4 col-md-6 mb-4">
+                                                <div class="card border-left-success shadow h-100 py-2">
+                                                    <div class="card-body">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col mr-2">
+                                                                <div
+                                                                    class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                                    Optimista</div>
+                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                    ${{tTotal2}}</div>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Earnings (Monthly) Card Example -->
+                                            <div class="col-xl-4 col-md-6 mb-4">
+                                                <div class="card border-left-info shadow h-100 py-2">
+                                                    <div class="card-body">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col mr-2">
+                                                                <div
+                                                                    class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                                    Medio</div>
+                                                                <div class="row no-gutters align-items-center">
+                                                                    <div class="col-auto">
+                                                                        <div
+                                                                            class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                                            ${{tTotal3}}</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Pending Requests Card Example -->
+                                            <div class="col-xl-4 col-md-6 mb-4">
+                                                <div class="card border-left-warning shadow h-100 py-2">
+                                                    <div class="card-body">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col mr-2">
+                                                                <div
+                                                                    class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                                    Pesimista</div>
+                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                    ${{tTotal4}}</div>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-md-6 mb-4">
+                                                <div class="card border-left-danger shadow h-100 py-2">
+                                                    <div class="card-body">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col mr-2">
+                                                                <div
+                                                                    class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                                    Desastroso</div>
+                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                    ${{tTotal5}}</div>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-md-6 mb-4">
+                                                <div class="card border-left-secondary shadow h-100 py-2">
+                                                    <div class="card-body">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col mr-2">
+                                                                <div
+                                                                    class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                                                    Tacaño</div>
+                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                    ${{tTotal6}}</div>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </transition>
                         </div>
                     </div>
                     <!--BOTONES FORMULARIO-->
                     <div class="row mb-5">
                         <div class="col-md-12 " style="text-align: right;" v-if=" page === 5">
-                            <button type="button" class="btn btn-outline-primary" :disabled="page == 1" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
-                            <button type="button" class="btn btn-outline-primary" :disabled="page == 6" v-on:click="validate()" role="button">Calcular</button>
+                            <button type="button" class="btn btn-outline-primary" :disabled="page == 1"
+                                v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
+                            <button type="button" class="btn btn-outline-primary" :disabled="page == 6"
+                                v-on:click="validate()" role="button">Calcular</button>
                         </div>
                         <div class="col-md-12" style="text-align: right;" v-else-if="page != 6">
-                            <button type="button" class="btn btn-outline-primary" :disabled="page == 1" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
-                            <button type="button" class="btn btn-outline-primary" :disabled="page == 5" v-on:click="validate()" role="button">Siguiente</button>
+                            <button type="button" class="btn btn-outline-primary" :disabled="page == 1"
+                                v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
+                            <button type="button" class="btn btn-outline-primary" :disabled="page == 5"
+                                v-on:click="validate()" role="button">Siguiente</button>
                         </div>
                     </div>
                     <!--GRAFICOS-->
                     <div v-show="page === 6">
-                        <div class="card shadow mb-4" > <!---->
+                        <div class="card shadow mb-4">
+                            <!---->
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Gráfico de Barras</h6>
                             </div>
@@ -362,8 +434,10 @@
                         </div>
                         <div class="row mb-5">
                             <div class="col-md-12" style="text-align: right;">
-                                <button type="button" class="btn btn-outline-primary" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
-                                <button type="button" class="btn btn-outline-primary" disabled v-on:click="validate()" role="button">Calcular</button>
+                                <button type="button" class="btn btn-outline-primary" v-on:click="page -= 1;"
+                                    role="button">Anterior</button> &nbsp;
+                                <button type="button" class="btn btn-outline-primary" disabled v-on:click="validate()"
+                                    role="button">Calcular</button>
                             </div>
                         </div>
                     </div>
@@ -392,7 +466,8 @@
         <i class="fas fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -425,7 +500,19 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="js/script.js"></script>
-    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82084411-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-82084411-3');
+    </script>
 </body>
 
 </html>
