@@ -226,118 +226,1209 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="card shadow mb-4" v-if="page === 6" key="page6">
-                                  <div class="card-header py-3">
-                                      <h6 class="m-0 font-weight-bold text-primary">Resultados</h6>
-                                  </div>
-                                  <!--CARD ESCENARIOS-->
-                                  <div class="card-body">
-                                      <div class="row" v-show="resultado">
-                                          <!--ESCENARIO 1-->
-                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(1, 'Mejor escenario')" type="button">
-                                              <div class="card border-left-primary shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Mejor escenario</div>
-                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal1}}</div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <!--ESCENARIO 2-->
-                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(2, 'Optimista')" type="button">
-                                              <div class="card border-left-success shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Optimista</div>
-                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal2}}</div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <!--ESCENARIO 3-->
-                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(3, 'Medio')" type="button">
-                                              <div class="card border-left-info shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Medio</div>
-                                                              <div class="row no-gutters align-items-center">
-                                                                  <div class="col-auto">
-                                                                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${{tTotal3}}</div>
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <!--ESCENARIO 4-->
-                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(4, 'Pesimista')" type="button">
-                                              <div class="card border-left-warning shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pesimista</div>
-                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal4}}</div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <!--ESCENARIO 5-->
-                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(5, 'Desastroso')" type="button">
-                                              <div class="card border-left-danger shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Desastroso</div>
-                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal5}}</div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <!--ESCENARIO 6-->
-                                          <div class="col-xl-4 col-md-6 mb-4" href="#" v-scroll-to="'#chartEscenario'" v-on:click="mostrarEscenario(6, 'Tacaño')" type="button">
-                                              <div class="card border-left-secondary shadow h-100 py-2">
-                                                  <div class="card-body">
-                                                      <div class="row no-gutters align-items-center">
-                                                          <div class="col mr-2">
-                                                              <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Tacaño</div>
-                                                              <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal6}}</div>
-                                                          </div>
-                                                          <div class="col-auto">
-                                                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
+                                
+                                
+                              
                             </transition>
+                            
                         </div>
+                        <!--CARD ESCENARIOS-->
+                        <transition name="slide-fade">
+                        <div class="card shadow mb-4 col-3" v-if="page === 6" key="page6">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Resultados</h6>
+                            </div>
+                            <!--CARD ESCENARIOS-->
+                            <div class="card-body " >
+                                <div class="row " v-show="resultado">
+                                    <!--ESCENARIO 1-->
+                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(1, 'Mejor escenario');" type="button">
+                                        <div class="card border-left-primary shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Mejor escenario</div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal1}}</div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--ESCENARIO 2-->
+                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(2, 'Optimista')" type="button">
+                                        <div class="card border-left-success shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Optimista</div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal2}}</div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--ESCENARIO 3-->
+                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(3, 'Medio')" type="button">
+                                        <div class="card border-left-info shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Medio</div>
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col-auto">
+                                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${{tTotal3}}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--ESCENARIO 4-->
+                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(4, 'Pesimista')" type="button">
+                                        <div class="card border-left-warning shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pesimista</div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal4}}</div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--ESCENARIO 5-->
+                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(5, 'Desastroso')" type="button">
+                                        <div class="card border-left-danger shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Desastroso</div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal5}}</div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--ESCENARIO 6-->
+                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(6, 'Tacaño')" type="button">
+                                        <div class="card border-left-secondary shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Tacaño</div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal6}}</div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+
+                    <div id="descripcion-escenarios" v-show="escenario" class="col-9">
+                        <div class="card shadow mb-4" > 
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-success">{{nombreEscenario}}</h6>
+                            </div>
+                            <div class="card-body">
+                                <div v-if="nombreEscenario === 'Mejor escenario'">
+                                    <!--TABLA DE ESCENARIOS-->
+                                    <table class="table table-bordered table-white">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Escenario</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos de la organización infectados por Ransomware</th>
+                                            <td scope="col">20</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Descifrador del Ransomware</th>
+                                            <td scope="col">Existe descifrador</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Pago del rescate</th>
+                                            <td scope="col">No aplica</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Copias de seguridad de la organización y estado de las mismas   </th>
+                                            <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--CARD COSTO TECNOLOGICO-->
+                                    <div class="row">
+                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
+                                            <div class="card border-left-primary shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct1}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--CARD COSTO DE NEGOCIO-->
+                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn" type="button">
+                                            <div class="card border-left-primary shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo de Negocio</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn1}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo Tecnologico</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de limpiar los equipos</th>
+                                                <td scope="col">{{ctFormatear1}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                                <td scope="col">{{ctRestaurar1}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de volver a generar la información perdida</th>
+                                                <td scope="col">0</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Costo del Rescate</th>
+                                                <td scope="col">0</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo De Negocio</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                                <td scope="col">{{cnFormatear1}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                                <td scope="col">{{cnRestaurar1}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                                <td scope="col">0</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                                <td scope="col">{{cnTotal1}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                                <td scope="col">{{cnEstable1}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                                <td scope="col">{{cnDisponibilidad1}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                                <td scope="col">{{cnControlar1}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                                <td scope="col">{{cnImproductividad1}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                                <td scope="col">{{cnOportunidad1}}</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div v-if="nombreEscenario === 'Optimista'">
+                                    <table class="table table-bordered table-white">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Escenario</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos de la organización infectados por Ransomware</th>
+                                            <td scope="col">50</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Descifrador del Ransomware</th>
+                                            <td scope="col">Existe descifrador</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Pago del rescate</th>
+                                            <td scope="col">No aplica</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Copias de seguridad de la organización y estado de las mismas   </th>
+                                            <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <div class="row">
+                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
+                                            <div class="card border-left-success shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Costo Tecnologico</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct2}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--CARD COSTO DE NEGOCIO-->
+                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn" type="button">
+                                            <div class="card border-left-success shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Costo de Negocio</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn2}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo Tecnologico</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de limpiar los equipos</th>
+                                                <td scope="col">{{ctFormatear2}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                                <td scope="col">{{ctRestaurar2}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de volver a generar la información perdida</th>
+                                                <td scope="col">0</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Costo del Rescate</th>
+                                                <td scope="col">0</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo De Negocio</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                                <td scope="col">{{cnFormatear2}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                                <td scope="col">{{cnRestaurar2}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                                <td scope="col">0</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                                <td scope="col">{{cnTotal2}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                                <td scope="col">{{cnEstable2}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                                <td scope="col">{{cnDisponibilidad2}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                                <td scope="col">{{cnControlar2}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                                <td scope="col">{{cnImproductividad2}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                                <td scope="col">{{cnOportunidad2}}</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                
+                                <div v-if="nombreEscenario === 'Medio'">
+                                    <table class="table table-bordered table-white">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Escenario</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos de la organización infectados por Ransomware</th>
+                                            <td scope="col">80</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Descifrador del Ransomware</th>
+                                            <td scope="col">No existe descrifrador</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Pago del rescate</th>
+                                            <td scope="col">Paga el rescate y obtiene la clave</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Copias de seguridad de la organización y estado de las mismas   </th>
+                                            <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="row">
+                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
+                                            <div class="card border-left-info shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Costo Tecnologico</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct3}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--CARD COSTO DE NEGOCIO-->
+                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn" type="button">
+                                            <div class="card border-left-info shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Costo de Negocio</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn3}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo Tecnologico</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de limpiar los equipos</th>
+                                                <td scope="col">{{ctFormatear3}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                                <td scope="col">{{ctRestaurar3}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de volver a generar la información perdida</th>
+                                                <td scope="col">0</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Costo del Rescate</th>
+                                                <td scope="col">{{cRescate}}</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo De Negocio</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                                <td scope="col">{{cnFormatear3}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                                <td scope="col">{{cnRestaurar3}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                                <td scope="col">0</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                                <td scope="col">{{cnTotal3}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                                <td scope="col">{{cnEstable3}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                                <td scope="col">{{cnDisponibilidad3}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                                <td scope="col">{{cnControlar3}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                                <td scope="col">{{cnImproductividad3}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                                <td scope="col">{{cnOportunidad3}}</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div v-if="nombreEscenario === 'Pesimista'">
+                                    <table class="table table-bordered table-white">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Escenario</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos de la organización infectados por Ransomware</th>
+                                            <td scope="col">80</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Descifrador del Ransomware</th>
+                                            <td scope="col">No existe descrifrador</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Pago del rescate</th>
+                                            <td scope="col">No paga el rescate</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Copias de seguridad de la organización y estado de las mismas   </th>
+                                            <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="row">
+                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
+                                            <div class="card border-left-warning shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Costo Tecnologico</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct4}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--CARD COSTO DE NEGOCIO-->
+                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn" type="button">
+                                            <div class="card border-left-warning shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Costo de Negocio</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn4}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo Tecnologico</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de limpiar los equipos</th>
+                                                <td scope="col">{{ctFormatear4}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                                <td scope="col">{{ctRestaurar4}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de volver a generar la información perdida</th>
+                                                <td scope="col">{{ctRegenerar4}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Costo del Rescate</th>
+                                                <td scope="col">0</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo De Negocio</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                                <td scope="col">{{cnFormatear4}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                                <td scope="col">{{cnRestaurar4}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                                <td scope="col">{{cnRegenerar4}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                                <td scope="col">{{cnTotal4}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                                <td scope="col">{{cnEstable4}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                                <td scope="col">{{cnDisponibilidad4}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                                <td scope="col">{{cnControlar4}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                                <td scope="col">{{cnImproductividad4}}</td>
+                                              </tr>
+
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                                <td scope="col">{{cnOportunidad4}}</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div v-if="nombreEscenario === 'Desastroso'">
+                                    <table class="table table-bordered table-white">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Escenario</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos de la organización infectados por Ransomware</th>
+                                            <td scope="col">100</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Descifrador del Ransomware</th>
+                                            <td scope="col">No existe descrifrador</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Pago del rescate</th>
+                                            <td scope="col">Paga el rescate y no obtiene la clave</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Copias de seguridad de la organización y estado de las mismas   </th>
+                                            <td scope="col">No hay copias de seguridad disponibles, o las existentes no sirven</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="row">
+                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
+                                            <div class="card border-left-danger shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo Tecnologico</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct5}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--CARD COSTO DE NEGOCIO-->
+                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn" type="button">
+                                            <div class="card border-left-danger shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn5}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo Tecnologico</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de limpiar los equipos</th>
+                                                <td scope="col">{{ctFormatear5}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                                <td scope="col">0</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de volver a generar la información perdida</th>
+                                                <td scope="col">{{ctRegenerar5}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Costo del Rescate</th>
+                                                <td scope="col">{{cRescate}}</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo De Negocio</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                                <td scope="col">{{cnFormatear5}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                                <td scope="col">0</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                                <td scope="col">{{cnRegenerar5}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                                <td scope="col">{{cnTotal5}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                                <td scope="col">{{cnEstable5}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                                <td scope="col">{{cnDisponibilidad5}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                                <td scope="col">{{cnControlar5}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                                <td scope="col">{{cnImproductividad5}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                                <td scope="col">{{cnOportunidad5}}</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div v-if="nombreEscenario === 'Tacaño'">
+                                    <table class="table table-bordered table-white">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Escenario</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos de la organización infectados por Ransomware</th>
+                                            <td scope="col">100</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Descifrador del Ransomware</th>
+                                            <td scope="col">No existe descrifrador</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Pago del rescate</th>
+                                            <td scope="col">No paga el rescate</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Copias de seguridad de la organización y estado de las mismas   </th>
+                                            <td scope="col">No hay copias de seguridad disponibles, o las existentes no sirven</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+
+                                      <div class="row">
+                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
+                                            <div class="card border-left-secondary shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Costo Tecnologico</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct6}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--CARD COSTO DE NEGOCIO-->
+                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn" type="button">
+                                            <div class="card border-left-secondary shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Costo de Negocio</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn6}}</div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo Tecnologico</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de limpiar los equipos</th>
+                                                <td scope="col">{{ctFormatear6}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                                <td scope="col">0</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de volver a generar la información perdida</th>
+                                                <td scope="col">{{ctRegenerar6}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Costo del Rescate</th>
+                                                <td scope="col">0</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th scope="col">Costo De Negocio</th>
+                                                <th scope="col">{{nombreEscenario}}</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                                <td scope="col">{{cnFormatear6}}</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                                <td scope="col">0</td>
+                                                
+                                              </tr>
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                                <td scope="col">{{cnRegenerar6}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                                <td scope="col">{{cnTotal6}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                                <td scope="col">{{cnEstable6}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                                <td scope="col">{{cnDisponibilidad6}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                                <td scope="col">{{cnControlar6}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                                <td scope="col">{{cnImproductividad6}}</td>
+                                              </tr>
+    
+                                              <tr>
+                                                
+                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                                <td scope="col">{{cnOportunidad6}}</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+
+
+                                <!--<div class="chart-bar">
+                                    <canvas id="myBarChart"></canvas>
+                                </div>-->
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+
+
+                        <!--<div v-show="page === 6" class="col-9">
+                            <div class="card shadow mb-4" > 
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Gráfico de Barras</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="myBarChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-5" v-if="!escenario">
+                                <div class="col-md-12" style="text-align: right;" >
+                                    <button type="button" class="btn btn-outline-primary" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
+                                    <button type="button" class="btn btn-outline-primary" disabled v-on:click="validate()" role="button">Calcular</button>
+                                </div>
+                            </div>
+                        </div>-->
+                    
                     </div>
                     <!--BOTONES FORMULARIO-->
                     <div class="row mb-5">
@@ -351,42 +1442,8 @@
                         </div>
                     </div>
                     <!--GRAFICOS-->
-                    <div v-show="page === 6">
-                        <div class="card shadow mb-4" > 
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Gráfico de Barras</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-bar">
-                                    <canvas id="myBarChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-5" v-if="!escenario">
-                            <div class="col-md-12" style="text-align: right;" >
-                                <button type="button" class="btn btn-outline-primary" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
-                                <button type="button" class="btn btn-outline-primary" disabled v-on:click="validate()" role="button">Calcular</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="chartEscenario">
-                        <div class="card shadow mb-4" v-show="escenario" > 
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Detalles de escenario: {{nombreEscenario}}</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-bar">
-                                    <canvas id="chart2"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-5">
-                            <div class="col-md-12" style="text-align: right;" v-if="escenario">
-                                <button type="button" class="btn btn-outline-primary" v-on:click="page -= 1; ocultaGrafico();" role="button">Anterior</button> &nbsp;
-                                <button type="button" class="btn btn-outline-primary" disabled v-on:click="validate()" role="button">Calcular</button>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    
                     <!-- Content Row -->
                     <!-- Content Column -->
                     <!-- Project Card Example -->

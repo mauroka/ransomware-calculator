@@ -6,6 +6,8 @@ const app = new Vue({
         error:false,
         escenario:false,
         nombreEscenario:"",
+        mostrar_ct:false,
+        mostrar_cn:false,
       //DATOS GENERALES
         hLab:undefined,
         cHorasEmpleado:undefined,
@@ -264,7 +266,7 @@ const app = new Vue({
 
         isValid: function(v){
             if(v === undefined || isNaN(v) || v==="" || v<"1"){
-                return false
+                return true
             }else{
                 return true;
             }
@@ -318,10 +320,13 @@ const app = new Vue({
         mostrarEscenario: function(nEscenario, nombre){
             this.nombreEscenario=nombre
             this.escenario=true
+            this.mostrar_cn=false
+            this.mostrar_ct=false
             switch(nEscenario){
                 case 1:
                     //llamar a la funcion escenarioChart() y pasarle los parametros correspondientes al escenario
-                    //escenarioChart(nombre)
+
+                    //escenarioChart()
                     break;
 
                 case 2:
