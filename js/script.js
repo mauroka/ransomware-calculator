@@ -195,72 +195,24 @@ const app = new Vue({
             this.costoNegocio(),
             this.costoTotal()
         },
-        escenarioChart(){
-            var ctx = document.getElementById('chart2').getContext('2d');
+        escenarioChart(cnTotal, ctTotal,colorn,colort){
+            var ctx = document.getElementById('chart').getContext('2d');
             if (window.grafica2) {
                 window.grafica2.clear();
                 window.grafica2.destroy();
             }
             window.grafica2= new Chart(ctx, {
-                type: 'bar',
+                type: 'pie',
                 data: {
-                    labels: ['Mejor escenario', 'Optimista', 'Medio', 'Pesimista', 'Desastroso'],
+                    labels: ['Costo Tecnológico', 'Costo de Negocio'],
                     datasets: [{
-                        label: 'Comparativa de escenarios',
-                        data: [this.tTotal1, this.tTotal2, this.tTotal2, this.tTotal4, this.tTotal5],
+                        data: [cnTotal, ctTotal],
                         backgroundColor: [
-                            this.primary,
-                            this.success,
-                            this.info,
-                            this.warning,
-                            this.danger,
+                            colorn,
+                            colort,
                         ]
                     }]
                 },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-        },
-        showChart(){
-            var ctx = document.getElementById('myBarChart').getContext('2d');
-            //si ya existe, la destruimos y creamos otra nueva.
-            if (window.grafica) {
-                window.grafica.clear();
-                window.grafica.destroy();
-            }
-            window.grafica = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Mejor escenario', 'Optimista', 'Medio', 'Pesimista', 'Desastroso', 'Tacaño'],
-                    datasets: [{
-                        label: 'Comparativa de escenarios',
-                        data: [this.tTotal1, this.tTotal2, this.tTotal2, this.tTotal4, this.tTotal5, this.tTotal6],
-                        backgroundColor: [
-                            this.primary,
-                            this.success,
-                            this.info,
-                            this.warning,
-                            this.danger,
-                            this.secondary
-                        ]
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
             });
         },
 
@@ -310,7 +262,6 @@ const app = new Vue({
                     if (this.isValid(this.porcenEquiposInfectados) && this.isValid(this.cOportunidadVentas)) {
                         this.error = false
                         this.mostrar()
-                        this.showChart()
                     } else {
                         this.error = true
                     }
@@ -325,33 +276,36 @@ const app = new Vue({
             switch(nEscenario){
                 case 1:
                     //llamar a la funcion escenarioChart() y pasarle los parametros correspondientes al escenario
-
-                    //escenarioChart()
+                    this.escenarioChart(this.ctPorcen1, this.cnPorcen1, this.primary, this.secondary)
+                    
                     break;
 
                 case 2:
-
+                    this.escenarioChart(this.ctPorcen2, this.cnPorcen2, this.primary, this.secondary)
                     break;
 
                 case 3:
-                    
+                    this.escenarioChart(this.ctPorcen3, this.cnPorcen3, this.primary, this.secondary)
                     break;
 
                 case 4:
-
+                    this.escenarioChart(this.ctPorcen4, this.cnPorcen4, this.primary, this.secondary)
                     break; 
 
                 case 5:
-                    
+                    this.escenarioChart(this.ctPorcen5, this.cnPorcen5, this.primary, this.secondary)
                     break;
 
                 case 6:
-
+                    this.escenarioChart(this.ctPorcen6, this.cnPorcen6, this.primary, this.secondary)
                     break;  
             }
         },
         ocultaGrafico: function(){
             this.escenario=false
+        },
+        ocultaCt: function(oculta){
+            this.mostrar_ct=false;
         },
         calculoSueltos: function(){
             this.cPromedio=this.chRegeInfo*this.cHorasEmpleado,
@@ -530,8 +484,4 @@ const app = new Vue({
 
         }
     }
-})
-
-VueScrollTo.setDefaults({
-    duration: 1500,
 })
