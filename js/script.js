@@ -224,8 +224,8 @@ const app = new Vue({
                     datasets: [{
                         data: [cnTotal, ctTotal],
                         backgroundColor: [
-                            "#e74a3b",
                             "#4e73df",
+                            "#e74a3b",
                         ]
                     }]
                 },
