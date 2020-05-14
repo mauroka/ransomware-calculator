@@ -266,7 +266,7 @@ const app = new Vue({
 
         isValid: function(v){
             if(v === undefined || isNaN(v) || v==="" || v<"1"){
-                return true
+                return false
             }else{
                 return true;
             }
