@@ -195,6 +195,7 @@ const app = new Vue({
             this.costoTecnologico(),
             this.costoNegocio(),
             this.costoTotal()
+            this.globalChart()
         },
         removeclass: function(div,div2){
             div.classList.remove("text-primary")
@@ -211,24 +212,84 @@ const app = new Vue({
             div2.classList.remove("text-danger")
             div2.classList.remove("text-secondary")
         },
-        escenarioChart(cnTotal, ctTotal,colorn,colort){
+        globalChart(){
+            var ctx = document.getElementById('globalchart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Mejor escenario', 'Optimista', 'Medio', 'Pesimista', 'Desastroso', 'Tacaño'],
+                    datasets: [{
+                        data: [this.tTotal1, this.tTotal2, this.tTotal3, this.tTotal4, this.tTotal5, this.tTotal6],
+                        backgroundColor: [
+                            this.primary,
+                            this.success,
+                            this.info,
+                            this.warning,
+                            this.danger,
+                            this.secondary,
+                        ]
+                    }]
+                },
+                options:{
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        titleMarginBottom: 10,
+                        titleFontColor: '#6e707e',
+                        titleFontSize: 14,
+                        backgroundColor: "rgb(255,255,255)",
+                        bodyFontColor: "#858796",
+                        borderColor: '#dddfeb',
+                        borderWidth: 1,
+                        xPadding: 15,
+                        yPadding: 15,
+                        displayColors: false,
+                        caretPadding: 10,
+                        callbacks: {
+                          label: function(tooltipItem, chart) {
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            return datasetLabel + '$ ' + tooltipItem.yLabel;
+                            }
+                        }
+                    }
+                }
+            });
+        },
+        escenarioChart(cnTotal, ctTotal){
             var ctx = document.getElementById('chart').getContext('2d');
             if (window.grafica2) {
                 window.grafica2.clear();
                 window.grafica2.destroy();
             }
             window.grafica2= new Chart(ctx, {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     labels: ['Costo Tecnológico', 'Costo de Negocio'],
                     datasets: [{
                         data: [cnTotal, ctTotal],
                         backgroundColor: [
-                            colorn,
-                            colort,
+                            "#4e73df",
+                            "#e74a3b",
                         ]
                     }]
                 },
+                options:{
+                    legend: {
+                        position: "right",
+                        align: "middle",
+                    },
+                    tooltips: {
+                      backgroundColor: "rgb(255,255,255)",
+                      bodyFontColor: "#858796",
+                      borderColor: '#dddfeb',
+                      borderWidth: 1,
+                      xPadding: 15,
+                      yPadding: 15,
+                      displayColors: false,
+                      caretPadding: 10,
+                    },
+                }
             });
         },
 
@@ -298,38 +359,38 @@ const app = new Vue({
                     //llamar a la funcion escenarioChart() y pasarle los parametros correspondientes al escenario
                     div.classList.add("text-primary")
                     div2.classList.add("text-primary")
-                    this.escenarioChart(this.ctPorcen1, this.cnPorcen1, this.primary, this.secondary)
+                    this.escenarioChart(this.ctPorcen1, this.cnPorcen1)
                     
                     break;
 
                 case 2:
                     div.classList.add("text-success")
                     div2.classList.add("text-success")
-                    this.escenarioChart(this.ctPorcen2, this.cnPorcen2, this.success, this.secondary)
+                    this.escenarioChart(this.ctPorcen2, this.cnPorcen2)
                     break;
 
                 case 3:
                     div.classList.add("text-info")
                     div2.classList.add("text-info")
-                    this.escenarioChart(this.ctPorcen3, this.cnPorcen3, this.info, this.secondary)
+                    this.escenarioChart(this.ctPorcen3, this.cnPorcen3)
                     break;
                     
                 case 4:
                     div.classList.add("text-warning")
                     div2.classList.add("text-warning")
-                    this.escenarioChart(this.ctPorcen4, this.cnPorcen4, this.warning, this.secondary)
+                    this.escenarioChart(this.ctPorcen4, this.cnPorcen4)
                     break; 
 
                 case 5:
                     div.classList.add("text-danger")
                     div2.classList.add("text-danger")
-                    this.escenarioChart(this.ctPorcen5, this.cnPorcen5, this.danger, this.secondary)
+                    this.escenarioChart(this.ctPorcen5, this.cnPorcen5)
                     break;
 
                 case 6:
                     div.classList.add("text-secondary")
                     div2.classList.add("text-secondary")
-                    this.escenarioChart(this.ctPorcen6, this.cnPorcen6, this.secondary, this.primary)
+                    this.escenarioChart(this.ctPorcen6, this.cnPorcen6)
                     break;  
             }
         },
