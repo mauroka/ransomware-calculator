@@ -256,7 +256,7 @@
                                
                                 <div class="row " v-show="resultado">
                                     <!--ESCENARIO 1-->
-                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(1, 'Mejor escenario');" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#"  v-on:click="mostrarEscenario(1, 'Mejor escenario');">
                                         <div class="card border-left-primary shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -272,7 +272,7 @@
                                         </div>
                                     </div>
                                     <!--ESCENARIO 2-->
-                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(2, 'Optimista')" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#"  v-on:click="mostrarEscenario(2, 'Optimista')">
                                         <div class="card border-left-success shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -288,7 +288,7 @@
                                         </div>
                                     </div>
                                     <!--ESCENARIO 3-->
-                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(3, 'Medio')" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#"  v-on:click="mostrarEscenario(3, 'Medio')">
                                         <div class="card border-left-info shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -308,7 +308,7 @@
                                         </div>
                                     </div>
                                     <!--ESCENARIO 4-->
-                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(4, 'Pesimista')" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#"  v-on:click="mostrarEscenario(4, 'Pesimista')">
                                         <div class="card border-left-warning shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -324,7 +324,7 @@
                                         </div>
                                     </div>
                                     <!--ESCENARIO 5-->
-                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(5, 'Desastroso')" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#"  v-on:click="mostrarEscenario(5, 'Desastroso')">
                                         <div class="card border-left-danger shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -340,7 +340,7 @@
                                         </div>
                                     </div>
                                     <!--ESCENARIO 6-->
-                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(6, 'Tacaño')" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#"  v-on:click="mostrarEscenario(6, 'Tacaño')">
                                         <div class="card border-left-secondary shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -405,7 +405,7 @@
                                     </table>
                                     <!--CARD COSTO TECNOLOGICO-->
                                     <div class="row">
-                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
+                                        <div class="col-6 mb-4 btn-escenario"  v-on:click="mostrar_ct = !mostrar_ct">
                                             <div class="card border-left-primary shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
@@ -421,12 +421,12 @@
                                             </div>
                                         </div>
                                         <!--CARD COSTO DE NEGOCIO-->
-                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn; ocultaCt()" type="button">
-                                            <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="col-6 mb-4 btn-escenario"   v-on:click="mostrar_cn = !mostrar_cn; ocultaCt()">
+                                            <div class="card border-left-danger shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo de Negocio</div>
+                                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
                                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn1}}</div>
                                                         </div>
                                                         <div class="col-auto">
@@ -579,12 +579,12 @@
                                     </table>
                                     
                                     <div class="row">
-                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
-                                            <div class="card border-left-success shadow h-100 py-2">
+                                        <div class="col-6 mb-4 btn-escenario"  v-on:click="mostrar_ct = !mostrar_ct">
+                                            <div class="card border-left-primary shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Costo Tecnologico</div>
+                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
                                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct2}}</div>
                                                         </div>
                                                         <div class="col-auto">
@@ -595,12 +595,12 @@
                                             </div>
                                         </div>
                                         <!--CARD COSTO DE NEGOCIO-->
-                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn; ocultaCt()" type="button">
-                                            <div class="card border-left-success shadow h-100 py-2">
+                                        <div class="col-6 mb-4 btn-escenario"   v-on:click="mostrar_cn = !mostrar_cn; ocultaCt()">
+                                            <div class="card border-left-danger shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Costo de Negocio</div>
+                                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
                                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn2}}</div>
                                                         </div>
                                                         <div class="col-auto">
@@ -753,12 +753,12 @@
                                     </table>
 
                                     <div class="row">
-                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
-                                            <div class="card border-left-info shadow h-100 py-2">
+                                        <div class="col-6 mb-4 btn-escenario"  v-on:click="mostrar_ct = !mostrar_ct">
+                                            <div class="card border-left-primary shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Costo Tecnologico</div>
+                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
                                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct3}}</div>
                                                         </div>
                                                         <div class="col-auto">
@@ -769,12 +769,12 @@
                                             </div>
                                         </div>
                                         <!--CARD COSTO DE NEGOCIO-->
-                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn; ocultaCt()" type="button">
-                                            <div class="card border-left-info shadow h-100 py-2">
+                                        <div class="col-6 mb-4 btn-escenario"   v-on:click="mostrar_cn = !mostrar_cn; ocultaCt()">
+                                            <div class="card border-left-danger shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Costo de Negocio</div>
+                                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
                                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn3}}</div>
                                                         </div>
                                                         <div class="col-auto">
@@ -926,12 +926,12 @@
                                     </table>
 
                                     <div class="row">
-                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
-                                            <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="col-6 mb-4 btn-escenario"  v-on:click="mostrar_ct = !mostrar_ct">
+                                            <div class="card border-left-primary shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Costo Tecnologico</div>
+                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
                                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct4}}</div>
                                                         </div>
                                                         <div class="col-auto">
@@ -942,12 +942,12 @@
                                             </div>
                                         </div>
                                         <!--CARD COSTO DE NEGOCIO-->
-                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn; ocultaCt()" type="button">
-                                            <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="col-6 mb-4 btn-escenario"   v-on:click="mostrar_cn = !mostrar_cn; ocultaCt()">
+                                            <div class="card border-left-danger shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Costo de Negocio</div>
+                                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
                                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn4}}</div>
                                                         </div>
                                                         <div class="col-auto">
@@ -1099,12 +1099,12 @@
                                     </table>
 
                                     <div class="row">
-                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
-                                            <div class="card border-left-danger shadow h-100 py-2">
+                                        <div class="col-6 mb-4 btn-escenario"  v-on:click="mostrar_ct = !mostrar_ct">
+                                            <div class="card border-left-primary shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo Tecnologico</div>
+                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
                                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct5}}</div>
                                                         </div>
                                                         <div class="col-auto">
@@ -1115,7 +1115,7 @@
                                             </div>
                                         </div>
                                         <!--CARD COSTO DE NEGOCIO-->
-                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn; ocultaCt()" type="button">
+                                        <div class="col-6 mb-4 btn-escenario"   v-on:click="mostrar_cn = !mostrar_cn; ocultaCt()">
                                             <div class="card border-left-danger shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
@@ -1272,12 +1272,12 @@
                                       </table>
 
                                       <div class="row">
-                                        <div class="col-6 mb-4"  v-on:click="mostrar_ct = !mostrar_ct" type="button">
-                                            <div class="card border-left-secondary shadow h-100 py-2">
+                                        <div class="col-6 mb-4 btn-escenario"  v-on:click="mostrar_ct = !mostrar_ct">
+                                            <div class="card border-left-primary shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Costo Tecnologico</div>
+                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
                                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct6}}</div>
                                                         </div>
                                                         <div class="col-auto">
@@ -1288,12 +1288,12 @@
                                             </div>
                                         </div>
                                         <!--CARD COSTO DE NEGOCIO-->
-                                        <div class="col-6 mb-4"   v-on:click="mostrar_cn = !mostrar_cn;ocultaCt()" type="button">
-                                            <div class="card border-left-secondary shadow h-100 py-2">
+                                        <div class="col-6 mb-4 btn-escenario"   v-on:click="mostrar_cn = !mostrar_cn;ocultaCt()">
+                                            <div class="card border-left-danger shadow h-100 py-2">
                                                 <div class="card-body">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Costo de Negocio</div>
+                                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
                                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn6}}</div>
                                                         </div>
                                                         <div class="col-auto">
