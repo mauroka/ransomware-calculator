@@ -211,7 +211,7 @@ const app = new Vue({
             div2.classList.remove("text-danger")
             div2.classList.remove("text-secondary")
         },
-        escenarioChart(cnTotal, ctTotal,colorn,colort){
+        escenarioChart(cnTotal, ctTotal){
             var ctx = document.getElementById('chart').getContext('2d');
             if (window.grafica2) {
                 window.grafica2.clear();
@@ -224,11 +224,17 @@ const app = new Vue({
                     datasets: [{
                         data: [cnTotal, ctTotal],
                         backgroundColor: [
-                            colorn,
-                            colort,
+                            "#e74a3b",
+                            "#4e73df",
                         ]
                     }]
                 },
+                options:{
+                    legend: {
+                        position: "right",
+                        align: "middle",
+                    }
+                }
             });
         },
 
@@ -298,38 +304,38 @@ const app = new Vue({
                     //llamar a la funcion escenarioChart() y pasarle los parametros correspondientes al escenario
                     div.classList.add("text-primary")
                     div2.classList.add("text-primary")
-                    this.escenarioChart(this.ctPorcen1, this.cnPorcen1, this.primary, this.secondary)
+                    this.escenarioChart(this.ctPorcen1, this.cnPorcen1)
                     
                     break;
 
                 case 2:
                     div.classList.add("text-success")
                     div2.classList.add("text-success")
-                    this.escenarioChart(this.ctPorcen2, this.cnPorcen2, this.success, this.secondary)
+                    this.escenarioChart(this.ctPorcen2, this.cnPorcen2)
                     break;
 
                 case 3:
                     div.classList.add("text-info")
                     div2.classList.add("text-info")
-                    this.escenarioChart(this.ctPorcen3, this.cnPorcen3, this.info, this.secondary)
+                    this.escenarioChart(this.ctPorcen3, this.cnPorcen3)
                     break;
                     
                 case 4:
                     div.classList.add("text-warning")
                     div2.classList.add("text-warning")
-                    this.escenarioChart(this.ctPorcen4, this.cnPorcen4, this.warning, this.secondary)
+                    this.escenarioChart(this.ctPorcen4, this.cnPorcen4)
                     break; 
 
                 case 5:
                     div.classList.add("text-danger")
                     div2.classList.add("text-danger")
-                    this.escenarioChart(this.ctPorcen5, this.cnPorcen5, this.danger, this.secondary)
+                    this.escenarioChart(this.ctPorcen5, this.cnPorcen5)
                     break;
 
                 case 6:
                     div.classList.add("text-secondary")
                     div2.classList.add("text-secondary")
-                    this.escenarioChart(this.ctPorcen6, this.cnPorcen6, this.secondary, this.primary)
+                    this.escenarioChart(this.ctPorcen6, this.cnPorcen6)
                     break;  
             }
         },

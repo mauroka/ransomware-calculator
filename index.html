@@ -144,7 +144,7 @@
                                 <!--RECUPERACION DE EQUIPOS-->
                                 <div class="card shadow mb-4" v-if="page === 3" key="page3">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Recuperacion de equipos</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Recuperación de equipos</h6>
                                     </div>
                                     <div class="card-body">
                                         <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en todos los campos</h6>
@@ -231,15 +231,12 @@
                         </div>
                         <!--CARD ESCENARIOS-->
                         <transition name="slide-fade">
-                        <div class="card shadow mb-4 col-3" v-if="page === 6" key="page6">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Resultados</h6>
-                            </div>
+                        <div class="mb-4 col-lg-12" v-if="page === 6" key="page6">
                             <!--CARD ESCENARIOS-->
-                            <div class="card-body " >
+                            <div>
                                 <div class="row " v-show="resultado">
                                     <!--ESCENARIO 1-->
-                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(1, 'Mejor escenario');" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(1, 'Mejor escenario');" type="button">
                                         <div class="card border-left-primary shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -255,7 +252,7 @@
                                         </div>
                                     </div>
                                     <!--ESCENARIO 2-->
-                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(2, 'Optimista')" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(2, 'Optimista')" type="button">
                                         <div class="card border-left-success shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -271,7 +268,7 @@
                                         </div>
                                     </div>
                                     <!--ESCENARIO 3-->
-                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(3, 'Medio')" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(3, 'Medio')" type="button">
                                         <div class="card border-left-info shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -291,7 +288,7 @@
                                         </div>
                                     </div>
                                     <!--ESCENARIO 4-->
-                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(4, 'Pesimista')" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(4, 'Pesimista')" type="button">
                                         <div class="card border-left-warning shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -307,7 +304,7 @@
                                         </div>
                                     </div>
                                     <!--ESCENARIO 5-->
-                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(5, 'Desastroso')" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(5, 'Desastroso')" type="button">
                                         <div class="card border-left-danger shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -323,7 +320,7 @@
                                         </div>
                                     </div>
                                     <!--ESCENARIO 6-->
-                                    <div class="col-12 mb-4" href="#"  v-on:click="mostrarEscenario(6, 'Tacaño')" type="button">
+                                    <div class="col-lg-4 col-md-6 mb-4" href="#"  v-on:click="mostrarEscenario(6, 'Tacaño')" type="button">
                                         <div class="card border-left-secondary shadow h-100 py-2">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -343,7 +340,7 @@
                         </div>
                     </transition>
 
-                    <div id="descripcion-escenarios" v-show="escenario" class="col-9">
+                    <div id="descripcion-escenarios" v-show="escenario" class="col-lg-12">
                         <div class="card shadow mb-4" > 
                             <div class="card-header py-3">
                                 <h6 id="card2"class="m-0 font-weight-bold">{{nombreEscenario}}</h6>
@@ -419,109 +416,110 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo Tecnologico</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de limpiar los equipos</th>
-                                                <td scope="col">{{ctFormatear1}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                <td scope="col">{{ctRestaurar1}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de volver a generar la información perdida</th>
-                                                <td scope="col">0</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Costo del Rescate</th>
-                                                <td scope="col">0</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo De Negocio</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                <td scope="col">{{cnFormatear1}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                <td scope="col">{{cnRestaurar1}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                <td scope="col">0</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                <td scope="col">{{cnTotal1}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                <td scope="col">{{cnEstable1}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                <td scope="col">{{cnDisponibilidad1}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                <td scope="col">{{cnControlar1}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                <td scope="col">{{cnImproductividad1}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                <td scope="col">{{cnOportunidad1}}</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
+
+                                    <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                    <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo Tecnologico</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de limpiar los equipos</th>
+                                            <td scope="col">{{ctFormatear1}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                            <td scope="col">{{ctRestaurar1}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de volver a generar la información perdida</th>
+                                            <td scope="col">0</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo del Rescate</th>
+                                            <td scope="col">0</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                    <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo De Negocio</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                            <td scope="col">{{cnFormatear1}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                            <td scope="col">{{cnRestaurar1}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                            <td scope="col">0</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                            <td scope="col">{{cnTotal1}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                            <td scope="col">{{cnEstable1}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                            <td scope="col">{{cnDisponibilidad1}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                            <td scope="col">{{cnControlar1}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                            <td scope="col">{{cnImproductividad1}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                            <td scope="col">{{cnOportunidad1}}</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div v-if="nombreEscenario === 'Optimista'">
                                     <table class="table table-bordered table-white">
@@ -593,109 +591,108 @@
                                             </div>
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo Tecnologico</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de limpiar los equipos</th>
-                                                <td scope="col">{{ctFormatear2}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                <td scope="col">{{ctRestaurar2}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de volver a generar la información perdida</th>
-                                                <td scope="col">0</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Costo del Rescate</th>
-                                                <td scope="col">0</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo De Negocio</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                <td scope="col">{{cnFormatear2}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                <td scope="col">{{cnRestaurar2}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                <td scope="col">0</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                <td scope="col">{{cnTotal2}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                <td scope="col">{{cnEstable2}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                <td scope="col">{{cnDisponibilidad2}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                <td scope="col">{{cnControlar2}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                <td scope="col">{{cnImproductividad2}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                <td scope="col">{{cnOportunidad2}}</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
-                                    
+                                    <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo Tecnologico</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de limpiar los equipos</th>
+                                            <td scope="col">{{ctFormatear2}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                            <td scope="col">{{ctRestaurar2}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de volver a generar la información perdida</th>
+                                            <td scope="col">0</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo del Rescate</th>
+                                            <td scope="col">0</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                    <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo De Negocio</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                            <td scope="col">{{cnFormatear2}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                            <td scope="col">{{cnRestaurar2}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                            <td scope="col">0</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                            <td scope="col">{{cnTotal2}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                            <td scope="col">{{cnEstable2}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                            <td scope="col">{{cnDisponibilidad2}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                            <td scope="col">{{cnControlar2}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                            <td scope="col">{{cnImproductividad2}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                            <td scope="col">{{cnOportunidad2}}</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
                                     
                                 </div>
                                 <div v-if="nombreEscenario === 'Medio'">
@@ -767,109 +764,109 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo Tecnologico</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de limpiar los equipos</th>
-                                                <td scope="col">{{ctFormatear3}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                <td scope="col">{{ctRestaurar3}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de volver a generar la información perdida</th>
-                                                <td scope="col">0</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Costo del Rescate</th>
-                                                <td scope="col">{{cRescate}}</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo De Negocio</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                <td scope="col">{{cnFormatear3}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                <td scope="col">{{cnRestaurar3}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                <td scope="col">0</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                <td scope="col">{{cnTotal3}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                <td scope="col">{{cnEstable3}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                <td scope="col">{{cnDisponibilidad3}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                <td scope="col">{{cnControlar3}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                <td scope="col">{{cnImproductividad3}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                <td scope="col">{{cnOportunidad3}}</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
+                                    <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                    <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo Tecnologico</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de limpiar los equipos</th>
+                                            <td scope="col">{{ctFormatear3}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                            <td scope="col">{{ctRestaurar3}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de volver a generar la información perdida</th>
+                                            <td scope="col">0</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo del Rescate</th>
+                                            <td scope="col">{{cRescate}}</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                    <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo De Negocio</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                            <td scope="col">{{cnFormatear3}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                            <td scope="col">{{cnRestaurar3}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                            <td scope="col">0</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                            <td scope="col">{{cnTotal3}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                            <td scope="col">{{cnEstable3}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                            <td scope="col">{{cnDisponibilidad3}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                            <td scope="col">{{cnControlar3}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                            <td scope="col">{{cnImproductividad3}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                            <td scope="col">{{cnOportunidad3}}</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div v-if="nombreEscenario === 'Pesimista'">
                                     <table class="table table-bordered table-white">
@@ -940,109 +937,109 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo Tecnologico</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de limpiar los equipos</th>
-                                                <td scope="col">{{ctFormatear4}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                <td scope="col">{{ctRestaurar4}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de volver a generar la información perdida</th>
-                                                <td scope="col">{{ctRegenerar4}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Costo del Rescate</th>
-                                                <td scope="col">0</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo De Negocio</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                <td scope="col">{{cnFormatear4}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                <td scope="col">{{cnRestaurar4}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                <td scope="col">{{cnRegenerar4}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                <td scope="col">{{cnTotal4}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                <td scope="col">{{cnEstable4}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                <td scope="col">{{cnDisponibilidad4}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                <td scope="col">{{cnControlar4}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                <td scope="col">{{cnImproductividad4}}</td>
-                                              </tr>
-
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                <td scope="col">{{cnOportunidad4}}</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
+                                    <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                    <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo Tecnologico</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de limpiar los equipos</th>
+                                            <td scope="col">{{ctFormatear4}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                            <td scope="col">{{ctRestaurar4}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de volver a generar la información perdida</th>
+                                            <td scope="col">{{ctRegenerar4}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo del Rescate</th>
+                                            <td scope="col">0</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                    <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo De Negocio</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                            <td scope="col">{{cnFormatear4}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                            <td scope="col">{{cnRestaurar4}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                            <td scope="col">{{cnRegenerar4}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                            <td scope="col">{{cnTotal4}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                            <td scope="col">{{cnEstable4}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                            <td scope="col">{{cnDisponibilidad4}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                            <td scope="col">{{cnControlar4}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                            <td scope="col">{{cnImproductividad4}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                            <td scope="col">{{cnOportunidad4}}</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div v-if="nombreEscenario === 'Desastroso'">
                                     <table class="table table-bordered table-white">
@@ -1113,109 +1110,109 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo Tecnologico</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de limpiar los equipos</th>
-                                                <td scope="col">{{ctFormatear5}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                <td scope="col">0</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de volver a generar la información perdida</th>
-                                                <td scope="col">{{ctRegenerar5}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Costo del Rescate</th>
-                                                <td scope="col">{{cRescate}}</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo De Negocio</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                <td scope="col">{{cnFormatear5}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                <td scope="col">0</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                <td scope="col">{{cnRegenerar5}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                <td scope="col">{{cnTotal5}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                <td scope="col">{{cnEstable5}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                <td scope="col">{{cnDisponibilidad5}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                <td scope="col">{{cnControlar5}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                <td scope="col">{{cnImproductividad5}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                <td scope="col">{{cnOportunidad5}}</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
+                                    <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                    <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo Tecnologico</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de limpiar los equipos</th>
+                                            <td scope="col">{{ctFormatear5}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                            <td scope="col">0</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de volver a generar la información perdida</th>
+                                            <td scope="col">{{ctRegenerar5}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo del Rescate</th>
+                                            <td scope="col">{{cRescate}}</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                    <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo De Negocio</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                            <td scope="col">{{cnFormatear5}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                            <td scope="col">0</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                            <td scope="col">{{cnRegenerar5}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                            <td scope="col">{{cnTotal5}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                            <td scope="col">{{cnEstable5}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                            <td scope="col">{{cnDisponibilidad5}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                            <td scope="col">{{cnControlar5}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                            <td scope="col">{{cnImproductividad5}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                            <td scope="col">{{cnOportunidad5}}</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div v-if="nombreEscenario === 'Tacaño'">
                                     <table class="table table-bordered table-white">
@@ -1286,123 +1283,123 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_ct">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo Tecnologico</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de limpiar los equipos</th>
-                                                <td scope="col">{{ctFormatear6}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                <td scope="col">0</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de volver a generar la información perdida</th>
-                                                <td scope="col">{{ctRegenerar6}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Costo del Rescate</th>
-                                                <td scope="col">0</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <table class="table table-bordered table-white" v-show="mostrar_cn">
-                                            <thead>
-                                              <tr>
-                                                
-                                                <th scope="col">Costo De Negocio</th>
-                                                <th scope="col">{{nombreEscenario}}</th>
-                                                
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                <td scope="col">{{cnFormatear6}}</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                <td scope="col">0</td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                <td scope="col">{{cnRegenerar6}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                <td scope="col">{{cnTotal6}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                <td scope="col">{{cnEstable6}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                <td scope="col">{{cnDisponibilidad6}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                <td scope="col">{{cnControlar6}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                <td scope="col">{{cnImproductividad6}}</td>
-                                              </tr>
-    
-                                              <tr>
-                                                
-                                                <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                <td scope="col">{{cnOportunidad6}}</td>
-                                              </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
+                                    <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                    <table class="table table-bordered table-white" v-show="mostrar_ct">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo Tecnologico</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de limpiar los equipos</th>
+                                            <td scope="col">{{ctFormatear6}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de restaurar las copias de seguridad</th>
+                                            <td scope="col">0</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de volver a generar la información perdida</th>
+                                            <td scope="col">{{ctRegenerar6}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo del Rescate</th>
+                                            <td scope="col">0</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                    <table class="table table-bordered table-white" v-show="mostrar_cn">
+                                        <thead>
+                                          <tr>
+                                            
+                                            <th scope="col">Costo De Negocio</th>
+                                            <th scope="col">{{nombreEscenario}}</th>
+                                            
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
+                                            <td scope="col">{{cnFormatear6}}</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
+                                            <td scope="col">0</td>
+                                            
+                                          </tr>
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
+                                            <td scope="col">{{cnRegenerar6}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
+                                            <td scope="col">{{cnTotal6}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
+                                            <td scope="col">{{cnEstable6}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
+                                            <td scope="col">{{cnDisponibilidad6}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Días laborales necesarios para controlar el incidente</th>
+                                            <td scope="col">{{cnControlar6}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
+                                            <td scope="col">{{cnImproductividad6}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            
+                                            <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
+                                            <td scope="col">{{cnOportunidad6}}</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <!--GRAFICO DE TORTA-->
                                 <div class="card shadow mb-4" > 
                                   <div class="card-header py-3">
-                                      <h6 id="card3" class="m-0 font-weight-bold">Gráfico de Torta</h6>
+                                      <h6 id="card3" class="m-0 font-weight-bold">Comparativa entre costos</h6>
                                   </div>
-                                  <div class="card-body">
+                                  <div class="card-body offset-lg-2 col-lg-8 col-md-12">
                                       <div class="chart-pie-demo">
                                           <canvas id="chart"></canvas>
                                       </div>
                                   </div>
                               </div>
                               <!--BOTONES PAGINA 6-->
-                              <div class="row mb-5" v-if="page==6">
+                              <div class="row" v-if="page==6">
                                   <div class="col-md-12" style="text-align: right;" >
                                       <button type="button" class="btn btn-outline-primary" v-on:click="ocultaGrafico(); page -= 1 " role="button">Anterior</button> &nbsp;
                                       <button type="button" class="btn btn-outline-primary" disabled v-on:click="validate()" role="button">Calcular</button>
@@ -1413,12 +1410,12 @@
                     </div>
                     </div>
                     <!--BOTONES FORMULARIO-->
-                    <div class="row mb-5">
-                        <div class="col-md-12 " style="text-align: right;" v-if=" page === 5">
+                    <div class="row">
+                        <div class="col-md-12 mb-3" style="text-align: right;" v-if=" page === 5">
                             <button type="button" class="btn btn-outline-primary" :disabled="page == 1" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
                             <button type="button" class="btn btn-outline-primary" :disabled="page == 6" v-on:click="validate()" role="button">Calcular</button>
                         </div>
-                        <div class="col-md-12" style="text-align: right;" v-else-if="page != 6">
+                        <div class="col-md-12 mb-3" style="text-align: right;" v-else-if="page != 6">
                             <button type="button" class="btn btn-outline-primary" :disabled="page == 1" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
                             <button type="button" class="btn btn-outline-primary" :disabled="page == 5" v-on:click="validate()" role="button">Siguiente</button>
                         </div>
@@ -1440,28 +1437,7 @@
         <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
