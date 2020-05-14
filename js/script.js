@@ -186,6 +186,7 @@ const app = new Vue({
     danger: "#e74a3b",
     secondary:"#858796", 
     },
+    
 
     methods:{
         mostrar: function(){
@@ -194,6 +195,21 @@ const app = new Vue({
             this.costoTecnologico(),
             this.costoNegocio(),
             this.costoTotal()
+        },
+        removeclass: function(div,div2){
+            div.classList.remove("text-primary")
+            div.classList.remove("text-success")
+            div.classList.remove("text-info")
+            div.classList.remove("text-warning")
+            div.classList.remove("text-danger")
+            div.classList.remove("text-secondary")
+
+            div2.classList.remove("text-primary")
+            div2.classList.remove("text-success")
+            div2.classList.remove("text-info")
+            div2.classList.remove("text-warning")
+            div2.classList.remove("text-danger")
+            div2.classList.remove("text-secondary")
         },
         escenarioChart(cnTotal, ctTotal,colorn,colort){
             var ctx = document.getElementById('chart').getContext('2d');
@@ -218,7 +234,7 @@ const app = new Vue({
 
         isValid: function(v){
             if(v === undefined || isNaN(v) || v==="" || v<"1"){
-                return false
+                return true
             }else{
                 return true;
             }
@@ -262,6 +278,7 @@ const app = new Vue({
                     if (this.isValid(this.porcenEquiposInfectados) && this.isValid(this.cOportunidadVentas)) {
                         this.error = false
                         this.mostrar()
+                        this.mostrarEscenario(1, 'Mejor escenario');
                     } else {
                         this.error = true
                     }
@@ -273,31 +290,46 @@ const app = new Vue({
             this.escenario=true
             this.mostrar_cn=false
             this.mostrar_ct=false
+            var div=document.getElementById("card2");
+            var div2=document.getElementById("card3");
+            this.removeclass(div,div2)
             switch(nEscenario){
                 case 1:
                     //llamar a la funcion escenarioChart() y pasarle los parametros correspondientes al escenario
+                    div.classList.add("text-primary")
+                    div2.classList.add("text-primary")
                     this.escenarioChart(this.ctPorcen1, this.cnPorcen1, this.primary, this.secondary)
                     
                     break;
 
                 case 2:
-                    this.escenarioChart(this.ctPorcen2, this.cnPorcen2, this.primary, this.secondary)
+                    div.classList.add("text-success")
+                    div2.classList.add("text-success")
+                    this.escenarioChart(this.ctPorcen2, this.cnPorcen2, this.success, this.secondary)
                     break;
 
                 case 3:
-                    this.escenarioChart(this.ctPorcen3, this.cnPorcen3, this.primary, this.secondary)
+                    div.classList.add("text-info")
+                    div2.classList.add("text-info")
+                    this.escenarioChart(this.ctPorcen3, this.cnPorcen3, this.info, this.secondary)
                     break;
-
+                    
                 case 4:
-                    this.escenarioChart(this.ctPorcen4, this.cnPorcen4, this.primary, this.secondary)
+                    div.classList.add("text-warning")
+                    div2.classList.add("text-warning")
+                    this.escenarioChart(this.ctPorcen4, this.cnPorcen4, this.warning, this.secondary)
                     break; 
 
                 case 5:
-                    this.escenarioChart(this.ctPorcen5, this.cnPorcen5, this.primary, this.secondary)
+                    div.classList.add("text-danger")
+                    div2.classList.add("text-danger")
+                    this.escenarioChart(this.ctPorcen5, this.cnPorcen5, this.danger, this.secondary)
                     break;
 
                 case 6:
-                    this.escenarioChart(this.ctPorcen6, this.cnPorcen6, this.primary, this.secondary)
+                    div.classList.add("text-secondary")
+                    div2.classList.add("text-secondary")
+                    this.escenarioChart(this.ctPorcen6, this.cnPorcen6, this.secondary, this.primary)
                     break;  
             }
         },
