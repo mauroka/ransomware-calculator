@@ -195,6 +195,7 @@ const app = new Vue({
             this.costoTecnologico(),
             this.costoNegocio(),
             this.costoTotal()
+            this.globalChart()
         },
         removeclass: function(div,div2){
             div.classList.remove("text-primary")
@@ -210,6 +211,26 @@ const app = new Vue({
             div2.classList.remove("text-warning")
             div2.classList.remove("text-danger")
             div2.classList.remove("text-secondary")
+        },
+        globalChart(){
+            var ctx = document.getElementById('globalchart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Mejor escenario', 'Optimista', 'Medio', 'Pesimista', 'Desastroso', 'Tacaño'],
+                    datasets: [{
+                        data: [this.tTotal1, this.tTotal2, this.tTotal3, this.tTotal4, this.tTotal5, this.tTotal6],
+                        backgroundColor: [
+                            this.primary,
+                            this.success,
+                            this.info,
+                            this.warning,
+                            this.danger,
+                            this.secondary,
+                        ]
+                    }]
+                },
+            });
         },
         escenarioChart(cnTotal, ctTotal){
             var ctx = document.getElementById('chart').getContext('2d');
