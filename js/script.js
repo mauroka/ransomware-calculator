@@ -218,7 +218,7 @@ const app = new Vue({
                 window.grafica2.destroy();
             }
             window.grafica2= new Chart(ctx, {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     labels: ['Costo Tecnológico', 'Costo de Negocio'],
                     datasets: [{
@@ -233,7 +233,17 @@ const app = new Vue({
                     legend: {
                         position: "right",
                         align: "middle",
-                    }
+                    },
+                    tooltips: {
+                      backgroundColor: "rgb(255,255,255)",
+                      bodyFontColor: "#858796",
+                      borderColor: '#dddfeb',
+                      borderWidth: 1,
+                      xPadding: 15,
+                      yPadding: 15,
+                      displayColors: false,
+                      caretPadding: 10,
+                    },
                 }
             });
         },
