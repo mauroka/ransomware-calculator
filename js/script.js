@@ -312,7 +312,7 @@ const app = new Vue({
                     }
                     break;
                 case 2: //BACKUPS VALIDACION
-                    if (this.isValid(this.porcenBackup) && this.isValid(this.chUltiBackup) && this.isValid(this.chRegeInfo) && this.isValid(this.chRegeInfoTotal)){
+                    if (this.isValid(this.porcenBackup) && this.isValid(this.chUltiBackup) && this.isValid(this.chRegeInfoTotal)){
                         this.error=false
                         this.page += 1
                     }else{
@@ -401,7 +401,7 @@ const app = new Vue({
             this.mostrar_ct=false;
         },
         calculoSueltos: function(){
-            this.cPromedio=this.chRegeInfo*this.cHorasEmpleado,
+            this.cPromedio=this.chUltiBackup*this.cHorasEmpleado,
             this.cRegeInfo=this.cHorasEmpleado*this.chUltiBackup
         },
         costoTecnologico: function(){
@@ -495,7 +495,7 @@ const app = new Vue({
                 this.cnRestaurar4=parseInt(this.chRestaurar)
             }
             //CALCULOS REGENERAR
-            this.cnRegenerar4=parseInt(this.chRegeInfo),
+            this.cnRegenerar4=parseInt(this.chUltiBackup),
             this.cnRegenerar5=parseInt(this.chRegeInfoTotal)
             this.cnRegenerar6=parseInt(this.chRegeInfoTotal)
 
