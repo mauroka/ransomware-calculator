@@ -13,7 +13,6 @@ const app = new Vue({
         cHorasEmpleado:undefined,
         cantEquipos:undefined,
   //BACKUPS
-        porcenBackup:undefined,
         chRegeInfo:undefined,
         chUltiBackup:undefined,
         chRegeInfoTotal:undefined,
@@ -312,7 +311,7 @@ const app = new Vue({
                     }
                     break;
                 case 2: //BACKUPS VALIDACION
-                    if (this.isValid(this.porcenBackup) && this.isValid(this.chUltiBackup) && this.isValid(this.chRegeInfoTotal)){
+                    if (this.isValid(this.chUltiBackup) && this.isValid(this.chRegeInfoTotal)){
                         this.error=false
                         this.page += 1
                     }else{
