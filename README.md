@@ -5,52 +5,45 @@ El calculador de costos de Ransomware es una herramienta de software libre que p
 Los costos son presentados en diferentes escenarios:
 
 <table>
-  <tr>
-    <th>Escenarios</th>
-    <th>Mejor escenario</th>
-    <th>Optimista</th>
-    <th>Medio</th>
-    <th>Pesimista</th>
-    <th>Desastroso</th>
-    <th>Tacaño</th>
-  </tr>
-  <tr>
-    <td>Descifrador del Ransomware</td>
-    <td>Existe descifrador</td>
-    <td>Existe descifrador</td>
-    <td>No existe descifrador</td>
-    <td>No existe descifrador</td>
-    <td>No existe descifrador</td>
-    <td>No existe descifrador</td>
-  </tr>
-  <tr>
-    <td>Pago del rescate</td>
-    <td>No aplica</td>
-    <td>No aplica</td>
-    <td>Paga el rescate y obtiene la clave</td>
-    <td>No paga el rescate</td>
-    <td>Paga el rescate y no obtiene la clave</td>
-    <td>No paga el rescate</td>
-  </tr>
-  <tr>
-    <td>Porcentaje de equipos de la organización infectados por Ransomware</td>
-    <td>20</td>
-    <td>50</td>
-    <td>80</td>
-    <td>80</td>
-    <td>100</td>
-    <td>100</td>
-  </tr>
-  <tr>
-    <td>Copias de seguridad y estado de las mismas </td>
-    <td>Hay copias de seguridad y funcionan</td>
-    <td>Hay copias de seguridad y funcionan</td>
-    <td>Hay copias de seguridad y funcionan</td>
-    <td>Hay copias de seguridad y funcionan</td>
-    <td>No hay copias de seguridad o no sirven</td>
-    <td>No hay copias de seguridad o no sirven</td>
-  </tr>
-</table>
+  <thead>
+      <tr>
+          <th>Escenarios</th>
+          <th>Mejor escenario</th>
+          <th>Optimista</th>
+          <th>Medio</th>
+          <th>Pesimista</th>
+          <th>Desastroso</th>
+          <th>Tacaño</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Descifrador del Ransomware</td>
+          <td colspan="2">Existe descifrador</td>
+          <td colspan="4">No existe descifrador</td>
+      </tr>
+      <tr>
+          <td>Pago del rescate</td>
+          <td colspan="2">No aplica</td>
+          <td>Paga el rescate y obtiene la clave</td>
+          <td>No paga el rescate</td>
+          <td>Paga el rescate y no obtiene la clave</td>
+          <td>No paga el rescate</td>
+      </tr>
+      <tr>
+          <td>Porcentaje de equipos de la organización infectados por Ransomware</td>
+          <td>20%</td>
+          <td>50%</td>
+          <td colspan="2">80%</td>
+          <td colspan="2">100%</td>
+      </tr>
+      <tr>
+          <td>Copias de seguridad y estado de las mismas </td>
+          <td colspan="4">Hay copias de seguridad y funcionan</td>
+          <td colspan="2">No hay copias de seguridad o no sirven</td>
+      </tr>
+  </tbody>
+  </table>
 
 # Objetivo
 
