@@ -409,7 +409,7 @@
                                                     <div class="card-body">
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
+                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
                                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct1}}</div>
                                                             </div>
                                                             <div class="col-auto">
@@ -437,10 +437,11 @@
                                             </div>
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                        <transition name="slide-fade">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">Costo Tecnologico</th>
+                                                    <th scope="col">Costo Tecnológico</th>
                                                     <th scope="col">{{nombreEscenario}}</th>
                                                 </tr>
                                             </thead>
@@ -463,7 +464,9 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        </transition>
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                        <transition name="slide-fade">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
                                             <thead class="thead-dark">
                                                 <tr>
@@ -510,6 +513,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        </transition>
                                     </div>
                                     <div v-if="nombreEscenario === 'Optimista'">
                                         <table class="table table-striped table-bordered table-hover">
@@ -552,7 +556,7 @@
                                                     <div class="card-body">
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
+                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
                                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct2}}</div>
                                                             </div>
                                                             <div class="col-auto">
@@ -580,10 +584,11 @@
                                             </div>
                                             <!--DESAGREGADO COSTO TECNOLOGICO-->
                                         </div>
+                                        <transition name="slide-fade">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">Costo Tecnologico</th>
+                                                    <th scope="col">Costo Tecnológico</th>
                                                     <th scope="col">{{nombreEscenario}}</th>
                                                 </tr>
                                             </thead>
@@ -606,7 +611,9 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        </transition>
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                        <transition name="slide-fade">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
                                             <thead class="thead-dark">
                                                 <tr>
@@ -653,6 +660,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        </transition>
                                     </div>
                                     <div v-if="nombreEscenario === 'Medio'">
                                         <table class="table table-striped table-bordered table-hover">
@@ -695,7 +703,7 @@
                                                     <div class="card-body">
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
+                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
                                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct3}}</div>
                                                             </div>
                                                             <div class="col-auto">
@@ -723,10 +731,11 @@
                                             </div>
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                        <transition name="slide-fade">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">Costo Tecnologico</th>
+                                                    <th scope="col">Costo Tecnológico</th>
                                                     <th scope="col">{{nombreEscenario}}</th>
                                                 </tr>
                                             </thead>
@@ -749,7 +758,9 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        </transition>
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                        <transition name="slide-fade">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
                                             <thead class="thead-dark">
                                                 <tr>
@@ -796,6 +807,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </transition>
                                     </div>
                                     <div v-if="nombreEscenario === 'Pesimista'">
                                         <table class="table table-striped table-bordered table-hover">
@@ -838,7 +850,7 @@
                                                     <div class="card-body">
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
+                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
                                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct4}}</div>
                                                             </div>
                                                             <div class="col-auto">
@@ -866,10 +878,11 @@
                                             </div>
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                        <transition name="slide-fade">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">Costo Tecnologico</th>
+                                                    <th scope="col">Costo Tecnológico</th>
                                                     <th scope="col">{{nombreEscenario}}</th>
                                                 </tr>
                                             </thead>
@@ -892,7 +905,9 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        </transition>
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                        <transition name="slide-fade">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
                                             <thead class="thead-dark">
                                                 <tr>
@@ -939,6 +954,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </transition>
                                     </div>
                                     <div v-if="nombreEscenario === 'Desastroso'">
                                         <table class="table table-striped table-bordered table-hover">
@@ -981,7 +997,7 @@
                                                     <div class="card-body">
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
+                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
                                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct5}}</div>
                                                             </div>
                                                             <div class="col-auto">
@@ -1009,10 +1025,11 @@
                                             </div>
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                        <transition name="slide-fade">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">Costo Tecnologico</th>
+                                                    <th scope="col">Costo Tecnológico</th>
                                                     <th scope="col">{{nombreEscenario}}</th>
                                                 </tr>
                                             </thead>
@@ -1035,7 +1052,9 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        </transition>
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
+                                        <transition name="slide-fade">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
                                             <thead class="thead-dark">
                                                 <tr>
@@ -1082,6 +1101,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </transition>
                                     </div>
                                     <div v-if="nombreEscenario === 'Tacaño'">
                                         <table class="table table-striped table-bordered table-hover">
@@ -1124,7 +1144,7 @@
                                                     <div class="card-body">
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnologico</div>
+                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
                                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct6}}</div>
                                                             </div>
                                                             <div class="col-auto">
@@ -1152,10 +1172,11 @@
                                             </div>
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
+                                        <transition name="slide-fade">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">Costo Tecnologico</th>
+                                                    <th scope="col">Costo Tecnológico</th>
                                                     <th scope="col">{{nombreEscenario}}</th>
                                                 </tr>
                                             </thead>
@@ -1178,6 +1199,8 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        </transition>
+                                        <transition name="slide-fade">
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
                                             <thead class="thead-dark">
@@ -1226,6 +1249,7 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    </transition>
                                     <!--GRAFICO DE TORTA-->
                                     <div class="card shadow mb-4">
                                         <div class="card-header py-3">
