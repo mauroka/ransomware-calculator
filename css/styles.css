@@ -47,3 +47,26 @@ input[type=number] {
 .btn-escenario:hover{
   cursor: pointer;
 }
+
+.card-title {
+  font-size: 1.3rem !important;
+}
+
+.scenario-details{
+  text-align: center;
+}
+
+.specific-scenario-details{
+  margin-bottom: 24px;
+}
+
+.step-count {
+    display: block;
+  }  
+
+@media only screen and (max-width: 600px){
+  .step-count {
+    display: none;
+  }  
+}
+
