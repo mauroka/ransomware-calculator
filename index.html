@@ -269,106 +269,13 @@
                                         </div>
                                     </div>
                                     <div class="row " v-show="resultado">
-                                        <!--ESCENARIO 1-->
-                                        <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#" v-on:click="mostrarEscenario(1, 'Mejor escenario');">
-                                            <div class="card border-left-primary shadow h-100 py-2">
-                                                <div class="card-body">
-                                                    <div class="row no-gutters align-items-center">
-                                                        <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Mejor escenario</div>
-                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal1}}</div>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--ESCENARIO 2-->
-                                        <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#" v-on:click="mostrarEscenario(2, 'Optimista')">
-                                            <div class="card border-left-success shadow h-100 py-2">
-                                                <div class="card-body">
-                                                    <div class="row no-gutters align-items-center">
-                                                        <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Optimista</div>
-                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal2}}</div>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--ESCENARIO 3-->
-                                        <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#" v-on:click="mostrarEscenario(3, 'Medio')">
-                                            <div class="card border-left-info shadow h-100 py-2">
-                                                <div class="card-body">
-                                                    <div class="row no-gutters align-items-center">
-                                                        <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Medio</div>
-                                                            <div class="row no-gutters align-items-center">
-                                                                <div class="col-auto">
-                                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${{tTotal3}}</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--ESCENARIO 4-->
-                                        <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#" v-on:click="mostrarEscenario(4, 'Pesimista')">
-                                            <div class="card border-left-warning shadow h-100 py-2">
-                                                <div class="card-body">
-                                                    <div class="row no-gutters align-items-center">
-                                                        <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pesimista</div>
-                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal4}}</div>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--ESCENARIO 5-->
-                                        <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#" v-on:click="mostrarEscenario(5, 'Desastroso')">
-                                            <div class="card border-left-danger shadow h-100 py-2">
-                                                <div class="card-body">
-                                                    <div class="row no-gutters align-items-center">
-                                                        <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Desastroso</div>
-                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal5}}</div>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--ESCENARIO 6-->
-                                        <div class="col-lg-4 col-md-6 mb-4 btn-escenario" href="#" v-on:click="mostrarEscenario(6, 'Tacaño')">
-                                            <div class="card border-left-secondary shadow h-100 py-2">
-                                                <div class="card-body">
-                                                    <div class="row no-gutters align-items-center">
-                                                        <div class="col mr-2">
-                                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Tacaño</div>
-                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{tTotal6}}</div>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <!--ESCENARIOS-->
+                                        <scenario-card label="Mejor escenario" v-bind:value="tTotal1" color-class="primary"     @clicked="mostrarEscenario(1, 'Mejor escenario')"></scenario-card>
+                                        <scenario-card label="Optimista"       v-bind:value="tTotal2" color-class="success"     @clicked="mostrarEscenario(2, 'Optimista')"></scenario-card>
+                                        <scenario-card label="Medio"           v-bind:value="tTotal3" color-class="info"        @clicked="mostrarEscenario(3, 'Medio')"></scenario-card>
+                                        <scenario-card label="Pesimista"       v-bind:value="tTotal4" color-class="warning"     @clicked="mostrarEscenario(4, 'Pesimista')"></scenario-card>
+                                        <scenario-card label="Desastroso"      v-bind:value="tTotal5" color-class="danger"      @clicked="mostrarEscenario(5, 'Desastrozo')"></scenario-card>
+                                        <scenario-card label="Tacaño"          v-bind:value="tTotal6" color-class="secondary"   @clicked="mostrarEscenario(6, 'Tacaño')"></scenario-card>
                                     </div>
                                 </div>
                             </div>
