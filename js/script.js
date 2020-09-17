@@ -546,12 +546,12 @@ const app = new Vue({
             this.cnOportunidad5=this.cnControlar5*this.cOportunidadVentas
             this.cnOportunidad6=this.cnControlar6*this.cOportunidadVentas
             //CALCULO COSTO DE NEGOCIO TOTAL
-            this.cn1=this.cnImproductividad1+this.cnOportunidad1+this.cReputacion
-            this.cn2=this.cnImproductividad2+this.cnOportunidad2+this.cReputacion
-            this.cn3=this.cnImproductividad3+this.cnOportunidad3+this.cReputacion+this.cFiltradoInfo
-            this.cn4=this.cnImproductividad4+this.cnOportunidad4+this.cReputacion+this.cFiltradoInfo
-            this.cn5=this.cnImproductividad5+this.cnOportunidad5+this.cReputacion+this.cFiltradoInfo
-            this.cn6=this.cnImproductividad6+this.cnOportunidad6+this.cReputacion+this.cFiltradoInfo
+            this.cn1=this.cnImproductividad1+this.cnOportunidad1+parseInt(this.cReputacion)
+            this.cn2=this.cnImproductividad2+this.cnOportunidad2+parseInt(this.cReputacion)
+            this.cn3=this.cnImproductividad3+this.cnOportunidad3+parseInt(this.cReputacion)+parseInt(this.cFiltradoInfo)
+            this.cn4=this.cnImproductividad4+this.cnOportunidad4+parseInt(this.cReputacion)+parseInt(this.cFiltradoInfo)
+            this.cn5=this.cnImproductividad5+this.cnOportunidad5+parseInt(this.cReputacion)+parseInt(this.cFiltradoInfo)
+            this.cn6=this.cnImproductividad6+this.cnOportunidad6+parseInt(this.cReputacion)+parseInt(this.cFiltradoInfo)
 
         },
         costoTotal: function(){
