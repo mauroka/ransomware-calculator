@@ -377,6 +377,7 @@
                                     <h6 id="card2" class="m-0 font-weight-bold">{{nombreEscenario}}</h6>
                                 </div>
                                 <div class="card-body">
+                                    <!--MEJOR ESCENARIO-->
                                     <div v-if="nombreEscenario === 'Mejor escenario'">
                                         <!--TABLA DE ESCENARIOS-->
                                         <table class="table table-striped table-bordered table-hover specific-scenario-details">
@@ -402,6 +403,14 @@
                                                 <tr>
                                                     <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
                                                     <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Reputación</th>
+                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Filtrado de información</th>
+                                                    <td scope="col">No se filtra información confidencial</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -521,10 +530,15 @@
                                                     <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
                                                     <td scope="col">${{cnOportunidad1}}</td>
                                                 </tr>
+                                                <tr>
+                                                    <th scope="row">Costo de reputación</th>
+                                                    <td scope="col">${{cReputacion}}</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                         </transition>
                                     </div>
+                                    <!--OPTIMISTA-->
                                     <div v-if="nombreEscenario === 'Optimista'">
                                         <table class="table table-striped table-bordered table-hover">
                                             <thead class="thead-dark">
@@ -549,6 +563,14 @@
                                                 <tr>
                                                     <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
                                                     <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Reputación</th>
+                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Filtrado de información</th>
+                                                    <td scope="col">No se filtra información confidencial</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -668,10 +690,15 @@
                                                     <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
                                                     <td scope="col">${{cnOportunidad2}}</td>
                                                 </tr>
+                                                <tr>
+                                                    <th scope="row">Costo de reputación</th>
+                                                    <td scope="col">${{cReputacion}}</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                         </transition>
                                     </div>
+                                    <!--MEDIO-->
                                     <div v-if="nombreEscenario === 'Medio'">
                                         <table class="table table-striped table-bordered table-hover">
                                             <thead class="thead-dark">
@@ -696,6 +723,14 @@
                                                 <tr>
                                                     <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
                                                     <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Reputación</th>
+                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Filtrado de información</th>
+                                                    <td scope="col">Se filtra información confidencial</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -815,10 +850,19 @@
                                                     <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
                                                     <td scope="col">${{cnOportunidad3}}</td>
                                                 </tr>
+                                                <tr>
+                                                    <th scope="row">Costo de reputación</th>
+                                                    <td scope="col">${{cReputacion}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Costo de filtrado de información</th>
+                                                    <td scope="col">${{cFiltradoInfo}}</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </transition>
                                     </div>
+                                    <!--PESIMISTA-->
                                     <div v-if="nombreEscenario === 'Pesimista'">
                                         <table class="table table-striped table-bordered table-hover">
                                             <thead class="thead-dark">
@@ -843,6 +887,14 @@
                                                 <tr>
                                                     <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
                                                     <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Reputación</th>
+                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Filtrado de información</th>
+                                                    <td scope="col">Se filtra información confidencial</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -962,10 +1014,19 @@
                                                     <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
                                                     <td scope="col">${{cnOportunidad4}}</td>
                                                 </tr>
+                                                <tr>
+                                                    <th scope="row">Costo de reputación</th>
+                                                    <td scope="col">${{cReputacion}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Costo de filtrado de información</th>
+                                                    <td scope="col">${{cFiltradoInfo}}</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </transition>
                                     </div>
+                                    <!--DESASTROSO-->
                                     <div v-if="nombreEscenario === 'Desastroso'">
                                         <table class="table table-striped table-bordered table-hover">
                                             <thead class="thead-dark">
@@ -990,6 +1051,14 @@
                                                 <tr>
                                                     <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
                                                     <td scope="col">No hay copias de seguridad disponibles, o las existentes no sirven</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Reputación</th>
+                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Filtrado de información</th>
+                                                    <td scope="col">Se filtra información confidencial</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -1109,10 +1178,19 @@
                                                     <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
                                                     <td scope="col">${{cnOportunidad5}}</td>
                                                 </tr>
+                                                <tr>
+                                                    <th scope="row">Costo de reputación</th>
+                                                    <td scope="col">${{cReputacion}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Costo de filtrado de información</th>
+                                                    <td scope="col">${{cFiltradoInfo}}</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </transition>
                                     </div>
+                                    <!--TACAÑO-->
                                     <div v-if="nombreEscenario === 'Tacaño'">
                                         <table class="table table-striped table-bordered table-hover">
                                             <thead class="thead-dark">
@@ -1137,6 +1215,14 @@
                                                 <tr>
                                                     <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
                                                     <td scope="col">No hay copias de seguridad disponibles, o las existentes no sirven</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Reputación</th>
+                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Filtrado de información</th>
+                                                    <td scope="col">Se filtra información confidencial</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -1256,6 +1342,14 @@
                                                     <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
                                                     <td scope="col">${{cnOportunidad6}}</td>
                                                 </tr>
+                                                <tr>
+                                                    <th scope="row">Costo de reputación</th>
+                                                    <td scope="col">${{cReputacion}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Costo de filtrado de información</th>
+                                                    <td scope="col">${{cFiltradoInfo}}</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -1316,6 +1410,15 @@
                                                                 <td class="align-middle">Copias de seguridad y estado de las mismas </td>
                                                                 <td class="align-middle" colspan="4">Hay copias de seguridad y funcionan</td>
                                                                 <td class="align-middle" colspan="2">No hay copias de seguridad o no sirven</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="align-middle">Costo de reputación</td>
+                                                                <td class="align-middle" colspan="6">Existe un impacto en la imagen de la organización</td>
+                                                            </tr>
+                                                                                                                        <tr>
+                                                                <td class="align-middle">Costo de filtrado de información</td>
+                                                                <td class="align-middle" colspan="2">No se filtra información confidencial</td>
+                                                                <td class="align-middle" colspan="4">Se filtra información confidencial</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
