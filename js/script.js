@@ -198,20 +198,13 @@ const app = new Vue({
             this.costoTotal()
             this.globalChart()
         },
-        removeclass: function(div,div2){
+        removeclass: function(div){
             div.classList.remove("text-primary")
             div.classList.remove("text-success")
             div.classList.remove("text-info")
             div.classList.remove("text-warning")
             div.classList.remove("text-danger")
             div.classList.remove("text-secondary")
-
-            div2.classList.remove("text-primary")
-            div2.classList.remove("text-success")
-            div2.classList.remove("text-info")
-            div2.classList.remove("text-warning")
-            div2.classList.remove("text-danger")
-            div2.classList.remove("text-secondary")
         },
         globalChart(){
             var ctx = document.getElementById('globalchart').getContext('2d');
@@ -337,7 +330,7 @@ const app = new Vue({
                     }
                     break;
                 case 5: //INFORMACION DE NEGOCIO VALIDACION
-                    if (this.isValid(this.porcenEquiposInfectados) && this.isValid(this.cOportunidadVentas)) {
+                    if (this.isValid(this.porcenEquiposInfectados) && this.isValid(this.cOportunidadVentas)  && this.isValid(this.cReputacion)&& this.isValid(this.cFiltradoInfo)) {
                         this.error = false
                         this.mostrar()
                         this.mostrarEscenario(1, 'Mejor escenario');
@@ -354,10 +347,11 @@ const app = new Vue({
             this.mostrar_ct=false
             var div=document.getElementById("card2");
             var div2=document.getElementById("card3");
-            this.removeclass(div,div2)
+            this.removeclass(div)
+            this.removeclass(div2)
+
             switch(nEscenario){
                 case 1:
-                    //llamar a la funcion escenarioChart() y pasarle los parametros correspondientes al escenario
                     div.classList.add("text-primary")
                     div2.classList.add("text-primary")
                     this.escenarioChart(this.ctPorcen1, this.cnPorcen1)
@@ -398,9 +392,9 @@ const app = new Vue({
         ocultaGrafico: function(){
             this.escenario=false
         },
-        ocultaCt: function(oculta){
-            this.mostrar_ct=false;
-        },
+        //ocultaCt: function(oculta){
+          //  this.mostrar_ct=false;
+        //},
         calculoSueltos: function(){
             this.cPromedio=this.chUltiBackup*this.cHorasEmpleado,
             this.cRegeInfo=this.cHorasEmpleado*this.chUltiBackup
