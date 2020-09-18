@@ -28,6 +28,7 @@ Vue.component('scenario-card', {
     </div>
     `
     });
+   
 
 
 const app = new Vue({
@@ -222,6 +223,17 @@ const app = new Vue({
     
 
     methods:{
+        createPdf:function(){
+            alert("da")
+            const { jsPDF } = window.jspdf;
+
+            const doc = new jsPDF();
+            
+            var source = window.document.getElementsByTagName("body")[0];
+            doc.text(source, 10, 10);
+            doc.save("a4.pdf");
+        },
+
         mostrar: function(){
             this.page += 1,
             this.calculoSueltos(),
