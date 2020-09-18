@@ -229,9 +229,16 @@ const app = new Vue({
 
             const doc = new jsPDF();
             
-            var source = window.document.getElementsByTagName("body")[0];
-            doc.text(source, 10, 10);
-            doc.save("a4.pdf");
+            var source;
+
+            html2canvas(document.querySelector("#page-top")).then(canvas => {
+                var source=canvas.toDataURL('image/png');
+
+                console.log('Report Image URL: '+source);
+                doc.addImage(source, 'PNG', 10, 10);
+                doc.save("a4.pdf");
+            });
+            
         },
 
         mostrar: function(){
