@@ -227,7 +227,11 @@ const app = new Vue({
             alert("da")
             const { jsPDF } = window.jspdf;
 
-            const doc = new jsPDF();
+            const doc = new jsPDF({
+                orientation:"landscape",
+                
+                
+            });
             
             var source;
 
@@ -235,7 +239,7 @@ const app = new Vue({
                 var source=canvas.toDataURL('image/png');
 
                 console.log('Report Image URL: '+source);
-                doc.addImage(source, 'PNG', 10, 10);
+                doc.addImage(source, 'PNG', 0, 0);
                 doc.save("a4.pdf");
             });
             
