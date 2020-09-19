@@ -224,22 +224,24 @@ const app = new Vue({
 
     methods:{
         createPdf:function(){
-            alert("da")
+            
             const { jsPDF } = window.jspdf;
 
-            const doc = new jsPDF({
-                orientation:"landscape",
-                
-                
-            });
+            
             
             var source;
 
-            html2canvas(document.querySelector("#page-top")).then(canvas => {
-                var source=canvas.toDataURL('image/png');
-
+            html2canvas(document.querySelector("#page-top"), {windowWidth: 1300}).then(canvas => {
+                //document.querySelector("body").style.width=3000;
+                var largo = canvas.height;
+                var ancho = canvas.width;
+                var source=canvas.toDataURL('image/png').replace("image/png", "image/octet-stream");
+                window.location.href=source; // it will save locally
+                
+                const doc = new jsPDF('p', 'px', [largo,ancho]);
+                
                 console.log('Report Image URL: '+source);
-                doc.addImage(source, 'PNG', 0, 0);
+                doc.addImage(source, 'PNG', 60, 60);
                 doc.save("a4.pdf");
             });
             
