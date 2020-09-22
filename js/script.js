@@ -227,7 +227,6 @@ const app = new Vue({
                 const doc = new jsPDF({
                 orientation:"portrait",
             });
-
             
             const RENDER_SIZE = "1000px";
             document.body.style.width=RENDER_SIZE;
