@@ -223,6 +223,8 @@ const app = new Vue({
     
     methods:{
         createPdf:function(){
+            this.mostrar_cn=true
+            this.mostrar_ct=true
             const { jsPDF } = window.jspdf;
                 const doc = new jsPDF({
                 orientation:"portrait",
@@ -232,19 +234,20 @@ const app = new Vue({
             document.body.style.width=RENDER_SIZE;
             
             var pages = document.getElementsByClassName("report-page");
-
+            console.log(pages);
             function renderPage(pages, currentPage){
                 var elem = pages[currentPage];
                 
                 window.setTimeout(function(){
                     domtoimage.toPng(elem, {bgcolor: '#FFF'})
                         .then(function (dataUrl) {
-                            console.log("rendering page "+page)
+                            
                             var page = doc.addPage()
                             page.addImage(dataUrl, 'JPEG', 0, 0);
+                            console.log("rendering page "+currentPage)
                             
                             if(currentPage+1 < pages.length){
-                                renderPage(currentPage+1);
+                                renderPage(pages, currentPage+1);
                             }else{
                                 // restore element size
                                 document.body.style.removeProperty("width")

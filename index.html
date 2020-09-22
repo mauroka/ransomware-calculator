@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                                 <!--BACKUPS-->
-                                <div class="card shadow mb-4" v-if="page === 2" key="page2">
+                                <div class="card shadow mb-4 " v-if="page === 2" key="page2">
                                     <div class="card-header py-3">
                                         <h6 class="card-title m-0 font-weight-bold text-primary float-left">Copias de seguridad</h6>
                                         <h6 class="card-title m-0 font-weight-bold text-primary float-right step-count">Paso {{page}} de 5</h6>
@@ -238,7 +238,7 @@
                                 </div>
                             </transition>
                             <!--RESULTADOS-->
-                            <div class="row " v-show="page===6">
+                            <div class="row report-page" v-show="page===6">
                                 <div class="col">
                                     <div class="card shadow">
                                         <div class="card-header py-3">
@@ -247,7 +247,7 @@
                                             </h6>
                                         </div>
                                         <!--GRÁFICO RESULTADOS-->
-                                        <div class="card-body offset-lg-2 col-lg-8 col-md-12">
+                                        <div class="card-body offset-lg-2 col-lg-8 col-md-12 ">
                                             <div class="card-body">
                                                 <div class="chart-pie-demo">
                                                     <canvas id="globalchart"></canvas>
@@ -291,7 +291,7 @@
                                     <!--MEJOR ESCENARIO-->
                                     <div v-if="nombreEscenario === 'Mejor escenario'">
                                         <!--TABLA DE ESCENARIOS-->
-                                        <table class="table table-striped table-bordered table-hover specific-scenario-details">
+                                        <table class="table table-striped table-bordered table-hover specific-scenario-details report-page">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Escenario</th>
@@ -368,7 +368,7 @@
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
                                         <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
+                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo Tecnológico</th>
@@ -397,7 +397,7 @@
                                         </transition>
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
                                         <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
+                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_cn">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo De Negocio</th>
@@ -451,7 +451,7 @@
                                     </div>
                                     <!--OPTIMISTA-->
                                     <div v-if="nombreEscenario === 'Optimista'">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-striped table-bordered table-hover report-page">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Escenario</th>
@@ -528,7 +528,7 @@
                                             <!--DESAGREGADO COSTO TECNOLOGICO-->
                                         </div>
                                         <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
+                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo Tecnológico</th>
@@ -557,7 +557,7 @@
                                         </transition>
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
                                         <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
+                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_cn">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo De Negocio</th>
@@ -611,7 +611,7 @@
                                     </div>
                                     <!--MEDIO-->
                                     <div v-if="nombreEscenario === 'Medio'">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-striped table-bordered table-hover report-page">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Escenario</th>
@@ -688,7 +688,7 @@
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
                                         <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
+                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo Tecnológico</th>
@@ -717,7 +717,7 @@
                                         </transition>
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
                                         <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
+                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_cn">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo De Negocio</th>
@@ -775,7 +775,7 @@
                                     </div>
                                     <!--PESIMISTA-->
                                     <div v-if="nombreEscenario === 'Pesimista'">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-striped table-bordered table-hover report-page">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Escenario</th>
@@ -852,7 +852,7 @@
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
                                         <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
+                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo Tecnológico</th>
@@ -881,7 +881,7 @@
                                         </transition>
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
                                         <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
+                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_cn">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo De Negocio</th>
@@ -939,7 +939,7 @@
                                     </div>
                                     <!--DESASTROSO-->
                                     <div v-if="nombreEscenario === 'Desastroso'">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-striped table-bordered table-hover report-page">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Escenario</th>
@@ -1016,7 +1016,7 @@
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
                                         <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
+                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo Tecnológico</th>
@@ -1045,7 +1045,7 @@
                                         </transition>
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
                                         <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
+                                        <table class="table table-striped table-bordered table-hover report-page"  v-show="mostrar_cn">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo De Negocio</th>
@@ -1103,7 +1103,7 @@
                                     </div>
                                     <!--TACAÑO-->
                                     <div v-if="nombreEscenario === 'Tacaño'">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-striped table-bordered table-hover report-page">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Escenario</th>
@@ -1137,14 +1137,14 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <div class="row">
+                                        <div class="row ">
                                             <div class="col-12">
                                                 <div class="alert alert-warning" role="alert">
                                                     Haga clic en los costos mencionados a continuación para ver su detalle.
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row report-page">
+                                        <div class="row">
                                             <!--CARD COSTO TECNOLOGICO-->
                                             <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_ct = !mostrar_ct">
                                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -1179,8 +1179,8 @@
                                             </div>
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <transition name="slide-fade" class="report-page">
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
+                                        <transition name="slide-fade" class="">
+                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo Tecnológico</th>
@@ -1209,7 +1209,7 @@
                                         </transition>
                                         <transition name="slide-fade">
                                         <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <table class="table table-striped table-bordered table-hover" v-show="mostrar_cn">
+                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_cn">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">Costo De Negocio</th>
@@ -1266,7 +1266,7 @@
                                     </div>
                                     </transition>
                                     <!--GRAFICO DE TORTA-->
-                                    <div class="card shadow mb-4">
+                                    <div class="card shadow mb-4 report-page">
                                         <div class="card-header py-3">
                                             <h6 id="card3" class="m-0 font-weight-bold">Comparativa entre costos</h6>
                                         </div>
