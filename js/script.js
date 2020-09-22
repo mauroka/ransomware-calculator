@@ -221,28 +221,45 @@ const app = new Vue({
     secondary:"#858796", 
     },
     
-
     methods:{
         createPdf:function(){
-            alert("da")
             const { jsPDF } = window.jspdf;
-
-            const doc = new jsPDF({
-                orientation:"landscape",
-                
-                
+                const doc = new jsPDF({
+                orientation:"portrait",
             });
-            
-            var source;
 
-            html2canvas(document.querySelector("#page-top")).then(canvas => {
-                var source=canvas.toDataURL('image/png');
-
-                console.log('Report Image URL: '+source);
-                doc.addImage(source, 'PNG', 0, 0);
-                doc.save("a4.pdf");
-            });
             
+            const RENDER_SIZE = "1000px";
+            document.body.style.width=RENDER_SIZE;
+            
+            var pages = document.getElementsByClassName("report-page");
+
+            function renderPage(pages, currentPage){
+                var elem = pages[currentPage];
+                
+                window.setTimeout(function(){
+                    domtoimage.toPng(elem, {bgcolor: '#FFF'})
+                        .then(function (dataUrl) {
+                            console.log("rendering page "+page)
+                            var page = doc.addPage()
+                            page.addImage(dataUrl, 'JPEG', 0, 0);
+                            
+                            if(currentPage+1 < pages.length){
+                                renderPage(currentPage+1);
+                            }else{
+                                // restore element size
+                                document.body.style.removeProperty("width")
+                                doc.save("a4.pdf");
+                            }
+                        })
+                        .catch(function (error) {
+                            alert("Ha ocurrido un error: "+error)
+                            console.error('Ha ocurrido un error', error);
+                        });
+                }, 0.5);
+                
+            }
+            renderPage(pages, 0)            
         },
 
         mostrar: function(){

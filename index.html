@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" id="viewport-meta" >
     <meta name="description" content="El calculador de costos de Ransomware permite, a partir de datos básicos de entrada, conocer los costos en los que incurriría una organización en el caso de una infección por Ransomware.">
     <meta name="author" content="SA-MATE - Phishing and Ransomware in terms of money by Abratte Pablo, Bruna Nicolás, Graziosi Mauro, Quinteros Fabricio y Rodríguez Dante se distribuye bajo una Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional.">
     <meta property="og:image" content="https://ransomware-calculator.smartfense.com/img/ransomware-calculator-illustration.jpg" />
@@ -89,6 +89,7 @@
                         <div class="progress-bar" role="progressbar" v-bind:aria-valuenow="(100/5)*page" v-bind:style="{width: (100/5)*page +'%'}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <!-- Content Row -->
+                    
                     <div class="row">
                         <div class="col-lg-12 mb-4">
                             <transition name="slide-fade" mode="out-in">
@@ -269,7 +270,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row " v-show="resultado">
+                                    <div class="row report-page" v-show="resultado">
                                         <!--ESCENARIOS-->
                                         <scenario-card label="Mejor escenario" v-bind:value="tTotal1" color-class="primary"     @clicked="mostrarEscenario(1, 'Mejor escenario')"></scenario-card>
                                         <scenario-card label="Optimista"       v-bind:value="tTotal2" color-class="success"     @clicked="mostrarEscenario(2, 'Optimista')"></scenario-card>
@@ -1143,7 +1144,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row report-page">
                                             <!--CARD COSTO TECNOLOGICO-->
                                             <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_ct = !mostrar_ct">
                                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -1178,7 +1179,7 @@
                                             </div>
                                         </div>
                                         <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <transition name="slide-fade">
+                                        <transition name="slide-fade" class="report-page">
                                         <table class="table table-striped table-bordered table-hover" v-show="mostrar_ct">
                                             <thead class="thead-dark">
                                                 <tr>
@@ -1392,7 +1393,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <!--PDF library-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
-    <script src="js/html2canvas.js"></script>
+    <script src="js/dom-to-image.min.js"></script>
 
 
     <script src="js/script.js"></script>
