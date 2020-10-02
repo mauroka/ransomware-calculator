@@ -106,15 +106,15 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="hLab">Duración en horas de la jornada laboral en su organización</label>
-                                                    <input v-model="hLab" type="number" class="form-control" id="hLab" placeholder="">
+                                                    <input v-model="user_data.hLab" type="number" class="form-control" id="hLab" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="cHorasEmpleado">Costo promedio por hora de un empleado administrativo de su organización</label>
-                                                    <input v-model="cHorasEmpleado" type="number" class="form-control" id="cHorasEmpleado" placeholder="">
+                                                    <input v-model="user_data.cHorasEmpleado" type="number" class="form-control" id="cHorasEmpleado" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="cantEquipos">Cantidad de equipos informáticos de su organización (PC, ordenadores, desktops)</label>
-                                                    <input v-model="cantEquipos" type="number" class="form-control" id="cantEquipos" placeholder="">
+                                                    <input v-model="user_data.cantEquipos" type="number" class="form-control" id="cantEquipos" placeholder="">
                                                 </div>
                                             </div>
                                         </form>
@@ -132,11 +132,11 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="chUltiBackup">Frecuencia en horas mediante la cual se realizan copias de seguridad en su organización</label>
-                                                    <input v-model="chUltiBackup" type="number" class="form-control" id="chUltiBackup" placeholder="">
+                                                    <input v-model="user_data.chUltiBackup" type="number" class="form-control" id="chUltiBackup" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="chRegeInfoTotal">Suponiendo que el incidente de Ransomware afecta las copias de seguridad de su organización y no es posible recuperar la información perdida. ¿Cuántas horas laborales piensa que necesitaría trabajar <b>cada usuario</b> para regenerar toda la información que se considere relevante en su puesto de trabajo?</label>
-                                                    <input v-model="chRegeInfoTotal" type="number" class="form-control" id="chRegeInfoTotal" placeholder="">
+                                                    <input v-model="user_data.chRegeInfoTotal" type="number" class="form-control" id="chRegeInfoTotal" placeholder="">
                                                 </div>
                                             </div>
                                         </form>
@@ -157,15 +157,15 @@
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="chFormatear" class="">Cantidad de horas necesarias para limpiar cada equipo informático</label>
-                                                    <input v-model="chFormatear" type="number" class="form-control " id="chFormatear" placeholder="">
+                                                    <input v-model="user_data.chFormatear" type="number" class="form-control " id="chFormatear" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="cFormatear" class="">Costo para limpiar cada equipo informático</label>
-                                                    <input v-model="cFormatear" type="number" class="form-control " id="cFormatear" placeholder="">
+                                                    <input v-model="user_data.cFormatear" type="number" class="form-control " id="cFormatear" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="cantEquiposParaleloFormatear" class="">Cantidad de equipos informáticos que se pueden limpiar en paralelo</label>
-                                                    <input v-model="cantEquiposParaleloFormatear" type="number" class="form-control " id="cantEquiposParaleloFormatear" placeholder="">
+                                                    <input v-model="user_data.cantEquiposParaleloFormatear" type="number" class="form-control " id="cantEquiposParaleloFormatear" placeholder="">
                                                 </div>
                                             </div>
                                             <hr>
@@ -175,15 +175,15 @@
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="chRestaurar" class="">Cantidad de horas necesarias para restaurar la información en cada equipo informático</label>
-                                                    <input v-model="chRestaurar" type="number" class="form-control " id="chRestaurar" placeholder="">
+                                                    <input v-model="user_data.chRestaurar" type="number" class="form-control " id="chRestaurar" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="cRestaurar" class="">Costo para restaurar la información en cada equipo informático</label>
-                                                    <input v-model="cRestaurar" type="number" class="form-control " id="cRestaurar" placeholder="">
+                                                    <input v-model="user_data.cRestaurar" type="number" class="form-control " id="cRestaurar" placeholder="">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="cantEquiposParaleloRestaurar" class="">Cantidad de equipos informáticos que se pueden restaurar en paralelo</label>
-                                                    <input v-model="cantEquiposParaleloRestaurar" type="number" class="form-control " id="cantEquiposParaleloRestaurar" placeholder="">
+                                                    <input v-model="user_data.cantEquiposParaleloRestaurar" type="number" class="form-control " id="cantEquiposParaleloRestaurar" placeholder="">
                                                 </div>
                                             </div>
                                         </form>
@@ -200,7 +200,7 @@
                                         <form class="container" id="rescate">
                                             <div class="form-group">
                                                 <label for="cRescate">Costo del rescate solicitado por el ciberdelincuente</label>
-                                                <input v-model="cRescate" type="number" class="form-control" id="cRescate" placeholder="">
+                                                <input v-model="user_data.cRescate" type="number" class="form-control" id="cRescate" placeholder="">
                                             </div>
                                         </form>
                                     </div>
@@ -216,22 +216,22 @@
                                         <form class="container" id="rescate">
                                             <div class="form-group">
                                                 <label for="porcenEquiposInfectados">Porcentaje de equipos informáticos que deben recuperarse para que el incidente se considere controlado</label>
-                                                <input v-model="porcenEquiposInfectados" type="number" class="form-control" id="porcenEquiposInfectados" placeholder="">
+                                                <input v-model="user_data.porcenEquiposInfectados" type="number" class="form-control" id="porcenEquiposInfectados" placeholder="">
                                             </div>
                                             <div class="form-group">
                                                 <label for="cOportunidadVentas">Costo de oportunidad <b>diario</b> producto de tener el negocio parado
                                                     por la falta de disponibilidad tanto de los equipos informáticos, que se encuentran infectados, como del personal, que está tratando de regenerar la información perdida o no tiene su equipo informático</label>
-                                                <input v-model="cOportunidadVentas" type="number" class="form-control" id="cOportunidadVentas" placeholder="">
+                                                <input v-model="user_data.cOportunidadVentas" type="number" class="form-control" id="cOportunidadVentas" placeholder="">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="cReputacion">Ocurrido un incidente de Ransomware ¿Cuál piensa que sería el costo de reputación en el cual incurriría la organización debido a los problemas en su imagen?</label>
-                                                <input v-model="cReputacion" type="number" class="form-control" id="cReputacion" placeholder="">
+                                                <input v-model="user_data.cReputacion" type="number" class="form-control" id="cReputacion" placeholder="">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="cFiltradoInfo">Si los ciberdelincuentes filtran la información secuestrada (práctica conocida como Doxxing) ¿Cuál piensa que sería el costo que esta acción podría implicar para la organización?</label>
-                                                <input v-model="cFiltradoInfo" type="number" class="form-control" id="cFiltradoInfo" placeholder="">
+                                                <input v-model="user_data.cFiltradoInfo" type="number" class="form-control" id="cFiltradoInfo" placeholder="">
                                             </div>
                                         </form>
                                     </div>
@@ -272,1010 +272,31 @@
                                     </div>
                                     <div class="row report-page" v-show="resultado">
                                         <!--ESCENARIOS-->
-                                        <scenario-card label="Mejor escenario" v-bind:value="tTotal1" color-class="primary"     @clicked="mostrarEscenario(1, 'Mejor escenario')"></scenario-card>
+                                        <scenario-card v-for="scenario in data_scenarios" :key="scenario.nombre" :label="scenario.nombre" :value="scenario_totals[scenario.nombre]" color-class="primary">
+                                            
+                                        </scenario-card>
+                                        <!--scenario-card label="Mejor escenario" v-bind:value="tTotal1" color-class="primary"     @clicked="mostrarEscenario(1, 'Mejor escenario')"></scenario-card>
                                         <scenario-card label="Optimista"       v-bind:value="tTotal2" color-class="success"     @clicked="mostrarEscenario(2, 'Optimista')"></scenario-card>
                                         <scenario-card label="Medio"           v-bind:value="tTotal3" color-class="info"        @clicked="mostrarEscenario(3, 'Medio')"></scenario-card>
                                         <scenario-card label="Pesimista"       v-bind:value="tTotal4" color-class="warning"     @clicked="mostrarEscenario(4, 'Pesimista')"></scenario-card>
                                         <scenario-card label="Desastroso"      v-bind:value="tTotal5" color-class="danger"      @clicked="mostrarEscenario(5, 'Desastroso')"></scenario-card>
                                         <scenario-card label="Tacaño"          v-bind:value="tTotal6" color-class="secondary"   @clicked="mostrarEscenario(6, 'Tacaño')"></scenario-card>
+                                        -->
                                     </div>
                                 </div>
                             </div>
                         </transition>
-                        <div id="descripcion-escenarios" v-show="escenario" class="col-lg-12">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 id="card2" class="m-0 font-weight-bold">{{nombreEscenario}}</h6>
-                                </div>
-                                <div class="card-body">
-                                    <!--MEJOR ESCENARIO-->
-                                    <div v-if="nombreEscenario === 'Mejor escenario'">
-                                        <!--TABLA DE ESCENARIOS-->
-                                        <table class="table table-striped table-bordered table-hover specific-scenario-details report-page">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Escenario</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos informáticos de su organización infectados por Ransomware</th>
-                                                    <td scope="col">20%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Descifrador del Ransomware</th>
-                                                    <td scope="col">Existe descifrador</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Pago del rescate</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
-                                                    <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Reputación</th>
-                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Filtrado de información</th>
-                                                    <td scope="col">No se filtra información confidencial</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="alert alert-warning" role="alert">
-                                                    Haga clic en los costos mencionados a continuación para ver su detalle.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <!--CARD COSTO TECNOLOGICO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_ct = !mostrar_ct">
-                                                <div class="card border-left-primary shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct1}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--CARD COSTO DE NEGOCIO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_cn = !mostrar_cn;">
-                                                <div class="card border-left-danger shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn1}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo Tecnológico</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Costo de limpiar los equipos</th>
-                                                    <td scope="col">${{ctFormatear1}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                    <td scope="col">${{ctRestaurar1}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de volver a generar la información perdida</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo del Rescate</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </transition>
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_cn">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo De Negocio</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                    <td scope="col">{{cnFormatear1}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                    <td scope="col">{{cnRestaurar1}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnTotal1}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnEstable1}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                    <td scope="col">{{cnDisponibilidad1}}%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                    <td scope="col">{{cnControlar1}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnImproductividad1}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnOportunidad1}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de reputación</th>
-                                                    <td scope="col">${{cReputacion}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </transition>
-                                    </div>
-                                    <!--OPTIMISTA-->
-                                    <div v-if="nombreEscenario === 'Optimista'">
-                                        <table class="table table-striped table-bordered table-hover report-page">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Escenario</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos informáticos de su organización infectados por Ransomware</th>
-                                                    <td scope="col">50%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Descifrador del Ransomware</th>
-                                                    <td scope="col">Existe descifrador</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Pago del rescate</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
-                                                    <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Reputación</th>
-                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Filtrado de información</th>
-                                                    <td scope="col">No se filtra información confidencial</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="alert alert-warning" role="alert">
-                                                    Haga clic en los costos mencionados a continuación para ver su detalle.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <!--CARD COSTO TECNOLOGICO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_ct = !mostrar_ct">
-                                                <div class="card border-left-primary shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct2}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--CARD COSTO DE NEGOCIO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_cn = !mostrar_cn;">
-                                                <div class="card border-left-danger shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn2}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        </div>
-                                        <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo Tecnológico</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Costo de limpiar los equipos</th>
-                                                    <td scope="col">${{ctFormatear2}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                    <td scope="col">${{ctRestaurar2}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de volver a generar la información perdida</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo del Rescate</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </transition>
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_cn">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo De Negocio</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                    <td scope="col">{{cnFormatear2}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                    <td scope="col">{{cnRestaurar2}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnTotal2}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnEstable2}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                    <td scope="col">{{cnDisponibilidad2}}%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                    <td scope="col">{{cnControlar2}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnImproductividad2}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnOportunidad2}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de reputación</th>
-                                                    <td scope="col">${{cReputacion}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </transition>
-                                    </div>
-                                    <!--MEDIO-->
-                                    <div v-if="nombreEscenario === 'Medio'">
-                                        <table class="table table-striped table-bordered table-hover report-page">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Escenario</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos informáticos de su organización infectados por Ransomware</th>
-                                                    <td scope="col">80%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Descifrador del Ransomware</th>
-                                                    <td scope="col">No existe descrifrador</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Pago del rescate</th>
-                                                    <td scope="col">Paga el rescate y obtiene la clave</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
-                                                    <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Reputación</th>
-                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Filtrado de información</th>
-                                                    <td scope="col">Se filtra información confidencial</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="alert alert-warning" role="alert">
-                                                    Haga clic en los costos mencionados a continuación para ver su detalle.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <!--CARD COSTO TECNOLOGICO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_ct = !mostrar_ct">
-                                                <div class="card border-left-primary shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct3}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--CARD COSTO DE NEGOCIO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_cn = !mostrar_cn;">
-                                                <div class="card border-left-danger shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn3}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo Tecnológico</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Costo de limpiar los equipos</th>
-                                                    <td scope="col">${{ctFormatear3}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                    <td scope="col">${{ctRestaurar3}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de volver a generar la información perdida</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo del Rescate</th>
-                                                    <td scope="col">${{cRescate}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </transition>
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_cn">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo De Negocio</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                    <td scope="col">{{cnFormatear3}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                    <td scope="col">{{cnRestaurar3}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnTotal3}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnEstable3}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                    <td scope="col">{{cnDisponibilidad3}}%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                    <td scope="col">{{cnControlar3}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnImproductividad3}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnOportunidad3}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de reputación</th>
-                                                    <td scope="col">${{cReputacion}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de filtrado de información</th>
-                                                    <td scope="col">${{cFiltradoInfo}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </transition>
-                                    </div>
-                                    <!--PESIMISTA-->
-                                    <div v-if="nombreEscenario === 'Pesimista'">
-                                        <table class="table table-striped table-bordered table-hover report-page">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Escenario</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos informáticos de su organización infectados por Ransomware</th>
-                                                    <td scope="col">80%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Descifrador del Ransomware</th>
-                                                    <td scope="col">No existe descrifrador</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Pago del rescate</th>
-                                                    <td scope="col">No paga el rescate</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
-                                                    <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Reputación</th>
-                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Filtrado de información</th>
-                                                    <td scope="col">Se filtra información confidencial</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="alert alert-warning" role="alert">
-                                                    Haga clic en los costos mencionados a continuación para ver su detalle.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <!--CARD COSTO TECNOLOGICO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_ct = !mostrar_ct">
-                                                <div class="card border-left-primary shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct4}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--CARD COSTO DE NEGOCIO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_cn = !mostrar_cn;">
-                                                <div class="card border-left-danger shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn4}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo Tecnológico</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Costo de limpiar los equipos</th>
-                                                    <td scope="col">${{ctFormatear4}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                    <td scope="col">${{ctRestaurar4}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de volver a generar la información perdida</th>
-                                                    <td scope="col">${{ctRegenerar4}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo del Rescate</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </transition>
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_cn">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo De Negocio</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                    <td scope="col">{{cnFormatear4}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                    <td scope="col">{{cnRestaurar4}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                    <td scope="col">{{cnRegenerar4}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnTotal4}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnEstable4}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                    <td scope="col">{{cnDisponibilidad4}}%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                    <td scope="col">{{cnControlar4}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnImproductividad4}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnOportunidad4}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de reputación</th>
-                                                    <td scope="col">${{cReputacion}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de filtrado de información</th>
-                                                    <td scope="col">${{cFiltradoInfo}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </transition>
-                                    </div>
-                                    <!--DESASTROSO-->
-                                    <div v-if="nombreEscenario === 'Desastroso'">
-                                        <table class="table table-striped table-bordered table-hover report-page">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Escenario</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos informáticos de su organización infectados por Ransomware</th>
-                                                    <td scope="col">100%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Descifrador del Ransomware</th>
-                                                    <td scope="col">No existe descrifrador</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Pago del rescate</th>
-                                                    <td scope="col">Paga el rescate y no obtiene la clave</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
-                                                    <td scope="col">No hay copias de seguridad disponibles, o las existentes no sirven</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Reputación</th>
-                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Filtrado de información</th>
-                                                    <td scope="col">Se filtra información confidencial</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="alert alert-warning" role="alert">
-                                                    Haga clic en los costos mencionados a continuación para ver su detalle.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <!--CARD COSTO TECNOLOGICO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_ct = !mostrar_ct">
-                                                <div class="card border-left-primary shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct5}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--CARD COSTO DE NEGOCIO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_cn = !mostrar_cn;">
-                                                <div class="card border-left-danger shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn5}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo Tecnológico</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Costo de limpiar los equipos</th>
-                                                    <td scope="col">${{ctFormatear5}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de volver a generar la información perdida</th>
-                                                    <td scope="col">${{ctRegenerar5}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo del Rescate</th>
-                                                    <td scope="col">${{cRescate}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </transition>
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <transition name="slide-fade">
-                                        <table class="table table-striped table-bordered table-hover report-page"  v-show="mostrar_cn">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo De Negocio</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                    <td scope="col">{{cnFormatear5}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                    <td scope="col">{{cnRegenerar5}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnTotal5}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnEstable5}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                    <td scope="col">{{cnDisponibilidad5}}%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                    <td scope="col">{{cnControlar5}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnImproductividad5}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnOportunidad5}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de reputación</th>
-                                                    <td scope="col">${{cReputacion}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de filtrado de información</th>
-                                                    <td scope="col">${{cFiltradoInfo}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </transition>
-                                    </div>
-                                    <!--TACAÑO-->
-                                    <div v-if="nombreEscenario === 'Tacaño'">
-                                        <table class="table table-striped table-bordered table-hover report-page">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Escenario</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos informáticos de su organización infectados por Ransomware</th>
-                                                    <td scope="col">100%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Descifrador del Ransomware</th>
-                                                    <td scope="col">No existe descrifrador</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Pago del rescate</th>
-                                                    <td scope="col">No paga el rescate</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
-                                                    <td scope="col">No hay copias de seguridad disponibles, o las existentes no sirven</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Reputación</th>
-                                                    <td scope="col">Existe un impacto en la imagen de la organización</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Filtrado de información</th>
-                                                    <td scope="col">Se filtra información confidencial</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="row ">
-                                            <div class="col-12">
-                                                <div class="alert alert-warning" role="alert">
-                                                    Haga clic en los costos mencionados a continuación para ver su detalle.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <!--CARD COSTO TECNOLOGICO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_ct = !mostrar_ct">
-                                                <div class="card border-left-primary shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{ct6}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--CARD COSTO DE NEGOCIO-->
-                                            <div class="col-6 mb-4 btn-escenario" v-on:click="mostrar_cn = !mostrar_cn;">
-                                                <div class="card border-left-danger shadow h-100 py-2">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters align-items-center">
-                                                            <div class="col mr-2">
-                                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
-                                                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{cn6}}</div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--DESAGREGADO COSTO TECNOLOGICO-->
-                                        <transition name="slide-fade" class="">
-                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_ct">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo Tecnológico</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Costo de limpiar los equipos</th>
-                                                    <td scope="col">${{ctFormatear6}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de volver a generar la información perdida</th>
-                                                    <td scope="col">${{ctRegenerar6}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo del Rescate</th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </transition>
-                                        <transition name="slide-fade">
-                                        <!--DESAGREGADO COSTO DE NEGOCIO-->
-                                        <table class="table table-striped table-bordered table-hover report-page" v-show="mostrar_cn">
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                    <th scope="col">Costo De Negocio</th>
-                                                    <th scope="col">{{nombreEscenario}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para limpiar los equipos</th>
-                                                    <td scope="col">{{cnFormatear6}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                                    <td scope="col">No aplica</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                                    <td scope="col">{{cnRegenerar6}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnTotal6}} horas</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Cantidad de días laborales necesarios para realizar todas las actividades</th>
-                                                    <td scope="col">{{cnEstable6}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                                    <td scope="col">{{cnDisponibilidad6}}%</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Días laborales necesarios para controlar el incidente</th>
-                                                    <td scope="col">{{cnControlar6}} días</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de improductividad, producto de tener empleados ociosos mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnImproductividad6}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de oportunidad, producto de tener el negocio parado mientras se controla el incidente</th>
-                                                    <td scope="col">${{cnOportunidad6}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de reputación</th>
-                                                    <td scope="col">${{cReputacion}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Costo de filtrado de información</th>
-                                                    <td scope="col">${{cFiltradoInfo}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    </transition>
-                                    <!--GRAFICO DE TORTA-->
-                                    <div class="card shadow mb-4 report-page">
-                                        <div class="card-header py-3">
-                                            <h6 id="card3" class="m-0 font-weight-bold">Comparativa entre costos</h6>
-                                        </div>
-                                        <div class="card-body offset-lg-2 col-lg-8 col-md-12">
-                                            <div class="chart-pie-demo">
-                                                <canvas id="chart"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div id="descripcion-escenarios" v-show="1==1" class="col-lg-12">
+                            <scenario-detail v-for="scenario in data_scenarios"
+                                :scenario-data="scenario"
+                                v-on:total="register_scenario_total(scenario, $event)"
+                                :key="scenario.nombre"
+                            >
+
+                            </scenario-detail>
+                            
+                                   
+                                    
                                     <!-- Scenario details -->
                                     <div class="row">
                                         <div class="col-lg-12 mb-4">
@@ -1348,8 +369,8 @@
                                         </div>
                                     </div>
                                     
-                                </div>
-                            </div>
+                                
+                            
                         </div>
                         <button type="button" class="btn btn-outline-primary" v-on:click="createPdf()"role="button">Generar Informe</button>
                     </div>
@@ -1396,6 +417,8 @@
     <script src="js/dom-to-image.min.js"></script>
 
 
+    <script src="js/components/scenario-card.js"></script>
+    <script src="js/components/scenario-detail.js"></script>
     <script src="js/script.js"></script>
 
 </body>
