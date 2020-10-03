@@ -1,16 +1,13 @@
-
-
-
 const app = new Vue({
     el:'#app',
     data:{
         page: 1,
-        resultado:true,
         error:false,
         escenario:false,
         nombreEscenario:"",
         scenario_totals: {},
         data_scenarios: [],
+        x : 0,
         user_data: {
             //DATOS GENERALES
             hLab:undefined,
@@ -29,9 +26,9 @@ const app = new Vue({
             //RECUPERAR RESTAURAR
             chRestaurar:undefined,
             cRestaurar:undefined,
-            
-            //RESCATE
             cantEquiposParaleloRestaurar:undefined,
+
+            //RESCATE
             cRescate:undefined,
             
             //PERDIDA
@@ -162,10 +159,13 @@ const app = new Vue({
                 return true;
             }
         },
+
         register_scenario_total(scenario, total){
-            console.log("scenario"+scenario)
-            console.log("total"+total)
-            this.scenario_totals[scenario.nombre]=total
+            console.log("scenario: "+scenario.nombre)
+            console.log("total: "+total)
+            console.log("color: "+scenario.color)
+            this.data_scenarios[this.x].total=total
+            this.x=this.x+1
         },
         validate: function(){ 
             switch (this.page) {
@@ -206,44 +206,56 @@ const app = new Vue({
                         this.error = false
                         this.mostrar()
                         this.create_scenarios()
-                        this.mostrarEscenario(1, 'Mejor escenario');
+                        this.mostrarEscenario('Mejor escenario');
                     } else {
                         this.error = true
                     }
                     break;
+                 
               }
+              setTimeout('scroll()',100);  
         },
         create_scenarios: function(){
             // mejor escenario
             var dict_mejor_escenario = {}
             Object.assign(dict_mejor_escenario, this.user_data);
-            dict_mejor_escenario['nombre']="Mejor escenario"
+            dict_mejor_escenario['nombre']='Mejor escenario'
             dict_mejor_escenario['decrypt_tool_exists'] = true
             dict_mejor_escenario['rescue_paid'] = 0
             dict_mejor_escenario['infected_terminals'] = 0.2
             dict_mejor_escenario['has_backup'] = true
             dict_mejor_escenario['data_is_exposed'] = false
+            dict_mejor_escenario['color'] = 'primary'
+            dict_mejor_escenario['total'] = 0
             this.data_scenarios.push(dict_mejor_escenario)
 
             // otro
             var otro = {}
             Object.assign(otro, this.user_data);
-            otro['nombre']="Otro"
+            otro['nombre']='Otro'
             otro['decrypt_tool_exists'] = false
             otro['rescue_paid'] = 2
             otro['infected_terminals'] = 0.8
             otro['has_backup'] = false
             otro['data_is_exposed'] = true
+            otro['color'] = 'danger'
+            otro['total'] = 0
             this.data_scenarios.push(otro)
 
         },
-        mostrarEscenario: function(nEscenario, nombre){
+        mostrarEscenario: function(nombre){
             this.nombreEscenario=nombre
             this.escenario=true
         },
         ocultaGrafico: function(){
             this.escenario=false
-        },   
+        },  
     }
 })
+
+function scroll(){
+    var posicion= $("#app").offset().top;
+    $('body,html').animate({ scrollTop:posicion-10 },1000)
+}
+
 

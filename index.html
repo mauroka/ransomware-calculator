@@ -73,8 +73,8 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="app">
                     <!-- Page Heading -->
-                    <div class="align-items-center justify-content-between mb-4">
-                        <h1 class="h3 text-gray-800"><i class="fas fa-money-check-alt"></i> Calculador de costos de Ransomware</h1>
+                    <div class="align-items-center justify-content-between mb-4" >
+                        <h1  class="h3 text-gray-800"><i class="fas fa-money-check-alt"></i> Calculador de costos de Ransomware</h1>
                         <p class="text-gray-800">Conozca los costos directos e indirectos en los que incurriría su organización en el caso de una infección por Ransomware.</p>
                         <div class="alert alert-warning" role="alert">
                             <b>Precaución:</b> Todos los valores monetarios deben ser ingresados en la misma moneda.
@@ -91,7 +91,7 @@
                     <!-- Content Row -->
                     
                     <div class="row">
-                        <div class="col-lg-12 mb-4">
+                        <div  class="col-lg-12 mb-4">
                             <transition name="slide-fade" mode="out-in">
                                 <!-- Illustrations -->
                                 <!-- DATOS GENERALES -->
@@ -270,9 +270,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row report-page" v-show="resultado">
+                                    <div class="row report-page">
                                         <!--ESCENARIOS-->
-                                        <scenario-card v-for="scenario in data_scenarios" :key="scenario.nombre" :label="scenario.nombre" :value="scenario_totals[scenario.nombre]" color-class="primary">
+                                        <scenario-card v-for="scenario in data_scenarios" :key="scenario.nombre" :label="scenario.nombre" :value="scenario.total" :color-class="scenario.color">
                                             
                                         </scenario-card>
                                         <!--scenario-card label="Mejor escenario" v-bind:value="tTotal1" color-class="primary"     @clicked="mostrarEscenario(1, 'Mejor escenario')"></scenario-card>
@@ -382,7 +382,7 @@
                         </div>
                         <div class="col-md-12 mb-3" style="text-align: right;" v-else-if="page != 6">
                             <button type="button" class="btn btn-outline-primary" :disabled="page == 1" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
-                            <button type="button" class="btn btn-outline-primary" :disabled="page == 5" v-on:click="validate()" role="button">Siguiente</button>
+                            <button href="#top" type="button" class="btn btn-outline-primary" :disabled="page == 5" v-on:click="validate()" role="button">Siguiente</button>
                         </div>
                     </div>
                 </div>
