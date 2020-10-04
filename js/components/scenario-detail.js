@@ -189,7 +189,7 @@ Vue.component('scenario-detail', {
                 data: {
                     labels: ['Costo de Negocio', 'Costo Tecnológico'],
                     datasets: [{
-                        data: [this.ctTotal, this.cnTotal],
+                        data: [this.cnPorcen, this.ctPorcen],
                         backgroundColor: [
                             "#4e73df",
                             "#e74a3b",
@@ -243,19 +243,24 @@ Vue.component('scenario-detail', {
                 <tbody>
                     <tr>
                         <th scope="row">Porcentaje de equipos informáticos de su organización infectados por Ransomware</th>
-                        <td scope="col">20%</td>
+                        <td scope="col">{{scenarioData.infected_terminals}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Descifrador del Ransomware</th>
-                        <td scope="col">Existe descifrador</td>
+                            <td scope="col" v-if="scenarioData.decrypt_tool_exists">Existe descifrador</td>
+                            <td scope="col" v-else>No existe descifrador</td>
                     </tr>
                     <tr>
                         <th scope="row">Pago del rescate</th>
-                        <td scope="col">No aplica</td>
+                            <td scope="col" v-if="scenarioData.rescue_paid === 0">No aplica</td>
+                            <td scope="col" v-else-if="scenarioData.rescue_paid === 1">Paga el rescate y obtiene la clave</td>
+                            <td scope="col" v-else-if="scenarioData.rescue_paid === 2">Paga el rescate y no obtiene la clave</td>
+                            <td scope="col" v-else>No paga el rescate</td>
                     </tr>
                     <tr>
                         <th scope="row">Copias de seguridad de su organización y estado de las mismas </th>
-                        <td scope="col">Hay copias de seguridad y funcionan correctamente</td>
+                            <td scope="col" v-if="scenarioData.has_backup">Hay copias de seguridad y funcionan correctamente</td>
+                            <td scope="col" v-else>No hay copias de seguridad o no sirven</td>
                     </tr>
                     <tr>
                         <th scope="row">Reputación</th>
@@ -263,7 +268,8 @@ Vue.component('scenario-detail', {
                     </tr>
                     <tr>
                         <th scope="row">Filtrado de información</th>
-                        <td scope="col">No se filtra información confidencial</td>
+                            <td scope="col" v-if="scenarioData.data_is_exposed">Se filtra información confidencial</td>
+                            <td scope="col" v-else>No se filtra información confidencial</td>   
                     </tr>
                 </tbody>
                 </table>

@@ -109,6 +109,8 @@ const app = new Vue({
             Object.entries(this.scenario_totals).forEach(([key, value]) => {
                 totals.push(value);
             });
+            //ver como recorremos el arreglo data_scenarios y encontrar de cada diccionario el valor de "total"
+            //no usamos más scenario_totals
             new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -216,7 +218,7 @@ const app = new Vue({
               setTimeout('scroll()',100);  
         },
         create_scenarios: function(){
-            // mejor escenario
+            // Mejor Escenario
             var dict_mejor_escenario = {}
             Object.assign(dict_mejor_escenario, this.user_data);
             dict_mejor_escenario['nombre']='Mejor escenario'
@@ -228,6 +230,72 @@ const app = new Vue({
             dict_mejor_escenario['color'] = 'primary'
             dict_mejor_escenario['total'] = 0
             this.data_scenarios.push(dict_mejor_escenario)
+
+            // Optimista
+            var dict_optimista = {}
+            Object.assign(dict_optimista, this.user_data);
+            dict_optimista['nombre']='Optimista'
+            dict_optimista['decrypt_tool_exists'] = true
+            dict_optimista['rescue_paid'] = 0
+            dict_optimista['infected_terminals'] = 0.5
+            dict_optimista['has_backup'] = true
+            dict_optimista['data_is_exposed'] = false
+            dict_optimista['color'] = 'success'
+            dict_optimista['total'] = 0
+            this.data_scenarios.push(dict_optimista)
+
+
+            // Medio
+            var dict_medio = {}
+            Object.assign(dict_medio, this.user_data);
+            dict_medio['nombre']='Medio'
+            dict_medio['decrypt_tool_exists'] = false
+            dict_medio['rescue_paid'] = 1
+            dict_medio['infected_terminals'] = 0.8
+            dict_medio['has_backup'] = true
+            dict_medio['data_is_exposed'] = true
+            dict_medio['color'] = 'info'
+            dict_medio['total'] = 0
+            this.data_scenarios.push(dict_medio)
+
+            // Pesimista
+            var dict_pesimista = {}
+            Object.assign(dict_pesimista, this.user_data);
+            dict_pesimista['nombre']='Pesimista'
+            dict_pesimista['decrypt_tool_exists'] = false
+            dict_pesimista['rescue_paid'] = 3
+            dict_pesimista['infected_terminals'] = 0.8
+            dict_pesimista['has_backup'] = true
+            dict_pesimista['data_is_exposed'] = true
+            dict_pesimista['color'] = 'warning'
+            dict_pesimista['total'] = 0
+            this.data_scenarios.push(dict_pesimista)
+
+            // Desastroso
+            var dict_desastroso = {}
+            Object.assign(dict_desastroso, this.user_data);
+            dict_desastroso['nombre']='Desastroso'
+            dict_desastroso['decrypt_tool_exists'] = false
+            dict_desastroso['rescue_paid'] = 2
+            dict_desastroso['infected_terminals'] = 1
+            dict_desastroso['has_backup'] = false
+            dict_desastroso['data_is_exposed'] = true
+            dict_desastroso['color'] = 'danger'
+            dict_desastroso['total'] = 0
+            this.data_scenarios.push(dict_desastroso)
+
+            // Tacaño
+            var dict_tacanio = {}
+            Object.assign(dict_tacanio, this.user_data);
+            dict_tacanio['nombre']='Tacaño'
+            dict_tacanio['decrypt_tool_exists'] = false
+            dict_tacanio['rescue_paid'] = 3
+            dict_tacanio['infected_terminals'] = 1
+            dict_tacanio['has_backup'] = false
+            dict_tacanio['data_is_exposed'] = true
+            dict_tacanio['color'] = 'secondary'
+            dict_tacanio['total'] = 0
+            this.data_scenarios.push(dict_tacanio)
 
             // otro
             var otro = {}
