@@ -91,8 +91,8 @@ const app = new Vue({
         },
 
         mostrar: function(){
-            this.page += 1,
-            this.globalChart()
+            this.page += 1
+            
         },
         removeclass: function(div){
             div.classList.remove("text-primary")
@@ -106,15 +106,17 @@ const app = new Vue({
             
             var ctx = document.getElementById('globalchart').getContext('2d');
             var totals = [];
-            Object.entries(this.scenario_totals).forEach(([key, value]) => {
-                totals.push(value);
-            });
+            var nombre  = [];
+            for (const escenarios in this.data_scenarios) {
+                totals.push(this.data_scenarios[escenarios].total);
+                nombre.push(this.data_scenarios[escenarios].nombre)
+            }
             //ver como recorremos el arreglo data_scenarios y encontrar de cada diccionario el valor de "total"
             //no usamos más scenario_totals
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: Object.keys(this.scenario_totals),
+                    labels: nombre,
                     datasets: [{
                         data: totals,
                         backgroundColor: [
@@ -168,6 +170,10 @@ const app = new Vue({
             console.log("color: "+scenario.color)
             this.data_scenarios[this.x].total=total
             this.x=this.x+1
+            if (this.x===this.data_scenarios.length){
+                this.globalChart()
+            }
+            
         },
         validate: function(){ 
             switch (this.page) {
@@ -207,7 +213,7 @@ const app = new Vue({
                     if (this.isValid(this.user_data.porcenEquiposInfectados) && this.isValid(this.user_data.cOportunidadVentas)  && this.isValid(this.user_data.cReputacion)&& this.isValid(this.user_data.cFiltradoInfo)) {
                         this.error = false
                         this.mostrar()
-                        this.create_scenarios()
+                        this.create_scenarios()                       
                         this.mostrarEscenario('Mejor escenario');
                     } else {
                         this.error = true
@@ -218,6 +224,8 @@ const app = new Vue({
               setTimeout('scroll()',100);  
         },
         create_scenarios: function(){
+
+            // Falta eliminar los escenarios cuando se vuelve hacia atras una vez calculado.
             // Mejor Escenario
             var dict_mejor_escenario = {}
             Object.assign(dict_mejor_escenario, this.user_data);
