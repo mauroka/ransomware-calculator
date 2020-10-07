@@ -76,194 +76,45 @@
                     <div class="align-items-center justify-content-between mb-4" >
                         <h1  class="h3 text-gray-800"><i class="fas fa-money-check-alt"></i> Calculador de costos de Ransomware</h1>
                         <p class="text-gray-800">Conozca los costos directos e indirectos en los que incurriría su organización en el caso de una infección por Ransomware.</p>
-                        <div class="alert alert-warning" role="alert">
-                            <b>Precaución:</b> Todos los valores monetarios deben ser ingresados en la misma moneda.
-                        </div>
+                        
                     </div>
                     <!-- Content Row -->
                     <div class="row">
                         <!-- Area Chart -->
                         <!-- Pie Chart -->
                     </div>
-                    <div class="progress mb-4" style="height: 10px;">
-                        <div class="progress-bar" role="progressbar" v-bind:aria-valuenow="(100/5)*page" v-bind:style="{width: (100/5)*page +'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                    <user-form v-show="!verResultados" v-on:form-data-ready="onFormDataReady"></user-form>
+                    
+    
                     <!-- Content Row -->
                     
                     <div class="row">
-                        <div  class="col-lg-12 mb-4">
-                            <transition name="slide-fade" mode="out-in">
-                                <!-- Illustrations -->
-                                <!-- DATOS GENERALES -->
-                                <div class="card shadow mb-4" v-if="page === 1" key="page1">
-                                    <div class="card-header py-3">
-                                        <h6 class="card-title m-0 font-weight-bold text-primary float-left">Datos Generales</h6>
-                                        <h6 class="card-title m-0 font-weight-bold text-primary float-right step-count">Paso {{page}} de 5</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en todos los campos</h6>
-                                        <form class="container" id="datosGenerales">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="hLab">Duración en horas de la jornada laboral en su organización</label>
-                                                    <input v-model="user_data.hLab" type="number" class="form-control" id="hLab" placeholder="">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="cHorasEmpleado">Costo promedio por hora de un empleado administrativo de su organización</label>
-                                                    <input v-model="user_data.cHorasEmpleado" type="number" class="form-control" id="cHorasEmpleado" placeholder="">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="cantEquipos">Cantidad de equipos informáticos de su organización (PC, ordenadores, desktops)</label>
-                                                    <input v-model="user_data.cantEquipos" type="number" class="form-control" id="cantEquipos" placeholder="">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!--BACKUPS-->
-                                <div class="card shadow mb-4 " v-if="page === 2" key="page2">
-                                    <div class="card-header py-3">
-                                        <h6 class="card-title m-0 font-weight-bold text-primary float-left">Copias de seguridad</h6>
-                                        <h6 class="card-title m-0 font-weight-bold text-primary float-right step-count">Paso {{page}} de 5</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en todos los campos</h6>
-                                        <form class="container" id="backups">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="chUltiBackup">Frecuencia en horas mediante la cual se realizan copias de seguridad en su organización</label>
-                                                    <input v-model="user_data.chUltiBackup" type="number" class="form-control" id="chUltiBackup" placeholder="">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="chRegeInfoTotal">Suponiendo que el incidente de Ransomware afecta las copias de seguridad de su organización y no es posible recuperar la información perdida. ¿Cuántas horas laborales piensa que necesitaría trabajar <b>cada usuario</b> para regenerar toda la información que se considere relevante en su puesto de trabajo?</label>
-                                                    <input v-model="user_data.chRegeInfoTotal" type="number" class="form-control" id="chRegeInfoTotal" placeholder="">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!--RECUPERACION DE EQUIPOS-->
-                                <div class="card shadow mb-4" v-if="page === 3" key="page3">
-                                    <div class="card-header py-3">
-                                        <h6 class="card-title m-0 font-weight-bold text-primary float-left">Recuperación de equipos</h6>
-                                        <h6 class="card-title m-0 font-weight-bold text-primary float-right step-count">Paso {{page}} de 5</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en todos los campos</h6>
-                                        <form class="container" id="recuperacion">
-                                            <div class="form-row" id="tabla1">
-                                                <div class="form-group col-md-12 ">
-                                                    <p class="mt-4 font-weight-bold text-primary">Limpieza de cada equipo informático afectado. Implica formatear y volver instalar sistema, aplicaciones, y configuraciones del equipo</p>
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="chFormatear" class="">Cantidad de horas necesarias para limpiar cada equipo informático</label>
-                                                    <input v-model="user_data.chFormatear" type="number" class="form-control " id="chFormatear" placeholder="">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="cFormatear" class="">Costo para limpiar cada equipo informático</label>
-                                                    <input v-model="user_data.cFormatear" type="number" class="form-control " id="cFormatear" placeholder="">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="cantEquiposParaleloFormatear" class="">Cantidad de equipos informáticos que se pueden limpiar en paralelo</label>
-                                                    <input v-model="user_data.cantEquiposParaleloFormatear" type="number" class="form-control " id="cantEquiposParaleloFormatear" placeholder="">
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="form-row" id="tabla2">
-                                                <div class="form-group col-md-12 ">
-                                                    <p class="mt-4 font-weight-bold text-primary">Restaurado de la información de cada equipo informático desde las copias de seguridad</p>
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="chRestaurar" class="">Cantidad de horas necesarias para restaurar la información en cada equipo informático</label>
-                                                    <input v-model="user_data.chRestaurar" type="number" class="form-control " id="chRestaurar" placeholder="">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="cRestaurar" class="">Costo para restaurar la información en cada equipo informático</label>
-                                                    <input v-model="user_data.cRestaurar" type="number" class="form-control " id="cRestaurar" placeholder="">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="cantEquiposParaleloRestaurar" class="">Cantidad de equipos informáticos que se pueden restaurar en paralelo</label>
-                                                    <input v-model="user_data.cantEquiposParaleloRestaurar" type="number" class="form-control " id="cantEquiposParaleloRestaurar" placeholder="">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!--RESCATE-->
-                                <div class="card shadow mb-4" v-if="page === 4" key="page4">
-                                    <div class="card-header py-3">
-                                        <h6 class="card-title m-0 font-weight-bold text-primary float-left">Rescate</h6>
-                                        <h6 class="card-title m-0 font-weight-bold text-primary float-right step-count">Paso {{page}} de 5</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en todos los campos</h6>
-                                        <form class="container" id="rescate">
-                                            <div class="form-group">
-                                                <label for="cRescate">Costo del rescate solicitado por el ciberdelincuente</label>
-                                                <input v-model="user_data.cRescate" type="number" class="form-control" id="cRescate" placeholder="">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!--INFORMACION DE NEGOCIO-->
-                                <div class="card shadow mb-4" v-if="page === 5" key="page5">
-                                    <div class="card-header py-3">
-                                        <h6 class="card-title m-0 font-weight-bold text-primary float-left">Información de negocio</h6>
-                                        <h6 class="card-title m-0 font-weight-bold text-primary float-right step-count">Paso {{page}} de 5</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <h6 class="text-danger" v-show="error">* Por favor, ingrese datos válidos en todos los campos</h6>
-                                        <form class="container" id="rescate">
-                                            <div class="form-group">
-                                                <label for="porcenEquiposInfectados">Porcentaje de equipos informáticos que deben recuperarse para que el incidente se considere controlado</label>
-                                                <input v-model="user_data.porcenEquiposInfectados" type="number" class="form-control" id="porcenEquiposInfectados" placeholder="">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cOportunidadVentas">Costo de oportunidad <b>diario</b> producto de tener el negocio parado
-                                                    por la falta de disponibilidad tanto de los equipos informáticos, que se encuentran infectados, como del personal, que está tratando de regenerar la información perdida o no tiene su equipo informático</label>
-                                                <input v-model="user_data.cOportunidadVentas" type="number" class="form-control" id="cOportunidadVentas" placeholder="">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="cReputacion">Ocurrido un incidente de Ransomware ¿Cuál piensa que sería el costo de reputación en el cual incurriría la organización debido a los problemas en su imagen?</label>
-                                                <input v-model="user_data.cReputacion" type="number" class="form-control" id="cReputacion" placeholder="">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="cFiltradoInfo">Si los ciberdelincuentes filtran la información secuestrada (práctica conocida como Doxxing) ¿Cuál piensa que sería el costo que esta acción podría implicar para la organización?</label>
-                                                <input v-model="user_data.cFiltradoInfo" type="number" class="form-control" id="cFiltradoInfo" placeholder="">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </transition>
-                            <!--RESULTADOS-->
-                            <div class="row report-page" v-show="page===6">
-                                <div class="col">
-                                    <div class="card shadow">
-                                        <div class="card-header py-3">
-                                            <h6 class="card-title m-0 font-weight-bold text-primary">
-                                                Resultados
-                                            </h6>
-                                        </div>
-                                        <!--GRÁFICO RESULTADOS-->
-                                        <div class="card-body offset-lg-2 col-lg-8 col-md-12 ">
-                                            <div class="card-body">
-                                                <div class="chart-pie-demo">
-                                                    <canvas id="globalchart"></canvas>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!--CARD ESCENARIOS-->
                         <transition name="slide-fade">
-                            <div class="col-lg-12" v-if="page === 6" key="page6">
+                            <div class="col-lg-12" v-show="verResultados" key="page6">
                                 <!--CARD ESCENARIOS-->
                                 <div>
+                                    
                                     <div class="row">
+                                        <div class="col-12">
+                                            <div class="card shadow mb-4">
+                                                <div class="card-header py-3">
+                                                    <h6 class="card-title m-0 font-weight-bold text-primary">
+                                                        Resultados
+                                                    </h6>
+                                                </div>
+                                                <!--GRÁFICO RESULTADOS-->
+                                                <div class="card-body offset-lg-2 col-lg-8 col-md-12 ">
+                                                    <div class="card-body">
+                                                        <div class="chart-pie-demo">
+                                                            <canvas id="globalchart"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
                                         <div class="col-12">
                                             <div class="alert alert-warning" role="alert">
                                                 Haga clic en los siguientes indicadores para ver su detalle.
@@ -273,15 +124,7 @@
                                     <div class="row report-page">
                                         <!--ESCENARIOS-->
                                         <scenario-card v-for="scenario in data_scenarios" :key="scenario.nombre" :label="scenario.nombre" :value="scenario.total" :color-class="scenario.color">
-                                            
                                         </scenario-card>
-                                        <!--scenario-card label="Mejor escenario" v-bind:value="tTotal1" color-class="primary"     @clicked="mostrarEscenario(1, 'Mejor escenario')"></scenario-card>
-                                        <scenario-card label="Optimista"       v-bind:value="tTotal2" color-class="success"     @clicked="mostrarEscenario(2, 'Optimista')"></scenario-card>
-                                        <scenario-card label="Medio"           v-bind:value="tTotal3" color-class="info"        @clicked="mostrarEscenario(3, 'Medio')"></scenario-card>
-                                        <scenario-card label="Pesimista"       v-bind:value="tTotal4" color-class="warning"     @clicked="mostrarEscenario(4, 'Pesimista')"></scenario-card>
-                                        <scenario-card label="Desastroso"      v-bind:value="tTotal5" color-class="danger"      @clicked="mostrarEscenario(5, 'Desastroso')"></scenario-card>
-                                        <scenario-card label="Tacaño"          v-bind:value="tTotal6" color-class="secondary"   @clicked="mostrarEscenario(6, 'Tacaño')"></scenario-card>
-                                        -->
                                     </div>
                                 </div>
                             </div>
@@ -292,7 +135,6 @@
                                 v-on:total="register_scenario_total(scenario, $event)"
                                 :key="scenario.nombre"
                             >
-
                             </scenario-detail>
                             
                                    
@@ -359,12 +201,12 @@
                                         </div>
                                     </div>
                                     <!--BOTONES PAGINA 6 Y GENERAR INFORME-->
-                                    <div class="row" v-if="page==6">
+                                    <div class="row" v-if="verResultados">
                                         <div class="col" >
                                             <button type="button" class="btn btn-outline-primary" v-on:click="createPdf()" role="button">Generar Informe</button>
                                         </div>
                                         <div class="col" style="text-align: right;">
-                                            <button type="button" class="btn btn-outline-primary" v-on:click="ocultaGrafico(); page -= 1 " role="button">Anterior</button> &nbsp;
+                                            <button type="button" class="btn btn-outline-primary" v-on:click="ocultaGrafico(); verResultados=false; " role="button">Anterior</button> &nbsp;
                                             <button type="button" class="btn btn-outline-primary" disabled v-on:click="validate()" role="button">Calcular</button>
                                         </div>
                                     </div>
@@ -374,17 +216,7 @@
                         </div>
                         <button type="button" class="btn btn-outline-primary" v-on:click="createPdf()"role="button">Generar Informe</button>
                     </div>
-                    <!--BOTONES FORMULARIO-->
-                    <div class="row">
-                        <div class="col-md-12 mb-3" style="text-align: right;" v-if=" page === 5">
-                            <button type="button" class="btn btn-outline-primary" :disabled="page == 1" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
-                            <button type="button" class="btn btn-outline-primary" :disabled="page == 6" v-on:click="validate()" role="button">Calcular</button>
-                        </div>
-                        <div class="col-md-12 mb-3" style="text-align: right;" v-else-if="page != 6">
-                            <button type="button" class="btn btn-outline-primary" :disabled="page == 1" v-on:click="page -= 1;" role="button">Anterior</button> &nbsp;
-                            <button href="#top" type="button" class="btn btn-outline-primary" :disabled="page == 5" v-on:click="validate()" role="button">Siguiente</button>
-                        </div>
-                    </div>
+                    
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -419,6 +251,7 @@
 
     <script src="js/components/scenario-card.js"></script>
     <script src="js/components/scenario-detail.js"></script>
+    <script src="js/components/user-form.js"></script>
     <script src="js/script.js"></script>
 
 </body>

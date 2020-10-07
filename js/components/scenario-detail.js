@@ -169,6 +169,9 @@ Vue.component('scenario-detail', {
                 c = c + parseInt(this.scenarioData.cFiltradoInfo)
             }
             return c
+        },
+        textClass: function(){
+            return "text-"+this.scenarioData.color;
         }        
     },
     data: function(){
@@ -229,7 +232,7 @@ Vue.component('scenario-detail', {
     template: `
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 id="card2" class="m-0 font-weight-bold">{{scenarioData.nombre}}</h6>
+            <h6 id="card2" :class="textClass" class="m-0 font-weight-bold">{{scenarioData.nombre}}</h6>
         </div>
         
         <div class="card-body">
@@ -288,7 +291,7 @@ Vue.component('scenario-detail', {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Costo Tecnológico</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{ct}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{Math.round(ct)}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -304,7 +307,7 @@ Vue.component('scenario-detail', {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Costo de Negocio</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{cn}}</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{Math.round(cn)}}</div>
                                                 </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -375,7 +378,7 @@ Vue.component('scenario-detail', {
                                     </tr>
                                     <tr>
                                         <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                        <td scope="col">{{cnDisponibilidad}}%</td>
+                                        <td scope="col">{{cnDisponibilidad*100}}%</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Días laborales necesarios para controlar el incidente</th>
@@ -398,7 +401,7 @@ Vue.component('scenario-detail', {
                         </transition>
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 id="card3" class="m-0 font-weight-bold text-info">Comparativa entre costos</h6>
+                                <h6 id="card3" :class="textClass" class="m-0 font-weight-bold">Comparativa entre costos</h6>
                             </div>
                             <div class="card-body offset-lg-2 col-lg-8 col-md-12">
                                 <div class="chart-pie-demo">

@@ -1,42 +1,12 @@
 const app = new Vue({
     el:'#app',
     data:{
-        page: 1,
-        error:false,
-        escenario:false,
+        verResultados:false,
         nombreEscenario:"",
         scenario_totals: {},
         data_scenarios: [],
         x : 0,
-        user_data: {
-            //DATOS GENERALES
-            hLab:undefined,
-            cHorasEmpleado:undefined,
-            cantEquipos:undefined,
-            
-            //BACKUPS
-            chUltiBackup:undefined,
-            chRegeInfoTotal:undefined,
-
-            //RECUPERAR FORMATEAR
-            chFormatear:undefined,
-            cFormatear:undefined,
-            cantEquiposParaleloFormatear:undefined,
-
-            //RECUPERAR RESTAURAR
-            chRestaurar:undefined,
-            cRestaurar:undefined,
-            cantEquiposParaleloRestaurar:undefined,
-
-            //RESCATE
-            cRescate:undefined,
-            
-            //PERDIDA
-            porcenEquiposInfectados:undefined,
-            cOportunidadVentas:undefined,
-            cReputacion:undefined,
-            cFiltradoInfo:undefined,
-        },
+        user_data: {},
 
     //COLORS
     primary:"#4e73df",
@@ -89,10 +59,11 @@ const app = new Vue({
             }
             renderPage(pages, 0)            
         },
-
-        mostrar: function(){
-            this.page += 1
-            
+        onFormDataReady(formData){
+            this.user_data = formData;
+            this.verResultados = true;
+            this.create_scenarios()                       
+            this.mostrarEscenario('Mejor escenario');
         },
         removeclass: function(div){
             div.classList.remove("text-primary")
@@ -156,13 +127,7 @@ const app = new Vue({
                 
             });
         },
-        isValid: function(v){
-            if(v === undefined || isNaN(v) || v==="" || v<"1"){
-                return false;
-            }else{
-                return true;
-            }
-        },
+
 
         register_scenario_total(scenario, total){
             console.log("scenario: "+scenario.nombre)
@@ -174,54 +139,6 @@ const app = new Vue({
                 this.globalChart()
             }
             
-        },
-        validate: function(){ 
-            switch (this.page) {
-                case 1: //DATOS GENERALES VALIDACION
-                    if (this.isValid(this.user_data.hLab) && this.isValid(this.user_data.cHorasEmpleado) && this.isValid(this.user_data.cantEquipos)){
-                        this.error=false
-                        this.page += 1
-                    }else{
-                        this.error=true //MUESTRA MENSAJE
-                    }
-                    break;
-                case 2: //BACKUPS VALIDACION
-                    if (this.isValid(this.user_data.chUltiBackup) && this.isValid(this.user_data.chRegeInfoTotal)){
-                        this.error=false
-                        this.page += 1
-                    }else{
-                        this.error=true
-                    }
-                    break;
-                case 3: // RECUPERACION DE INFORMACION VALIDACIOND
-                    if (this.isValid(this.user_data.chFormatear) && this.isValid(this.user_data.cFormatear) && this.isValid(this.user_data.cantEquiposParaleloFormatear) && this.isValid(this.user_data.chRestaurar) && this.isValid(this.user_data.cRestaurar) && this.isValid(this.user_data.cantEquiposParaleloRestaurar)) {
-                        this.error = false
-                        this.page += 1
-                    } else {
-                        this.error = true
-                    }
-                    break;
-                case 4: //RESCATE VALIDACION
-                    if (this.isValid(this.user_data.cRescate)) {
-                        this.error = false
-                        this.page += 1
-                    } else {
-                        this.error = true
-                    }
-                    break;
-                case 5: //INFORMACION DE NEGOCIO VALIDACION
-                    if (this.isValid(this.user_data.porcenEquiposInfectados) && this.isValid(this.user_data.cOportunidadVentas)  && this.isValid(this.user_data.cReputacion)&& this.isValid(this.user_data.cFiltradoInfo)) {
-                        this.error = false
-                        this.mostrar()
-                        this.create_scenarios()                       
-                        this.mostrarEscenario('Mejor escenario');
-                    } else {
-                        this.error = true
-                    }
-                    break;
-                 
-              }
-              setTimeout('scroll()',100);  
         },
         create_scenarios: function(){
 
@@ -321,17 +238,13 @@ const app = new Vue({
         },
         mostrarEscenario: function(nombre){
             this.nombreEscenario=nombre
-            this.escenario=true
+            this.verResultados=true
         },
         ocultaGrafico: function(){
-            this.escenario=false
+            this.verResultados=false
         },  
     }
 })
 
-function scroll(){
-    var posicion= $("#app").offset().top;
-    $('body,html').animate({ scrollTop:posicion-10 },1000)
-}
 
 
