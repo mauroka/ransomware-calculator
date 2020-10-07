@@ -10,7 +10,7 @@ Vue.component('scenario-card', {
     },
     props: ['label', 'value', 'color-class'],
     template: `
-    <div class="col-lg-4 col-md-6 mb-4 btn-escenario" v-on:click="$emit('clicked');">
+    <div class="col-lg-4 col-md-6 mb-4 btn-escenario">
         <div class="card shadow h-100 py-2" :class="borderClass">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">

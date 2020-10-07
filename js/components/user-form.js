@@ -1,6 +1,9 @@
 
 Vue.component('user-form', {
     computed: {
+        debug: function(){
+            return true;
+        },
         formPages: function(){
             return [
                 {
@@ -94,6 +97,33 @@ Vue.component('user-form', {
             var posicion= $("#app").offset().top;
             $('body,html').animate({ scrollTop:posicion-10 },1000);
         },
+        loadDemoData: function(){
+            this.formData = {
+                hLab: 200,
+                cHorasEmpleado: 20,
+                cantEquipos: 30,
+
+                chUltiBackup: 50,
+                chRegeInfoTotal: 200,
+
+                chFormatear: 20,
+                cFormatear: 30,
+                cantEquiposParaleloFormatear: 2,
+
+                chRestaurar: 20,
+                cRestaurar: 20,
+                cantEquiposParaleloRestaurar: 1,
+
+                cRescate: 1000,
+
+                porcenEquiposInfectados: 50,
+                cOportunidadVentas: 100,
+                cReputacion: 100,
+                cFiltradoInfo: 200,
+            }
+            this.currentPage = this.formPages.length
+            this.nextPage()
+        },
         nextPage: function(){
             if(this.validateCurrentPage()){
                 this.error = false;
@@ -173,6 +203,7 @@ Vue.component('user-form', {
         <!--BOTONES FORMULARIO-->
         <div class="row">
             <div class="col-md-12 mb-3" style="text-align: right;">
+                <button type="button" class="btn btn-outline-primary" v-if="debug" v-on:click="loadDemoData()" role="button">Cargar Datos Demo</button> &nbsp;
                 <button type="button" class="btn btn-outline-primary" :disabled="currentPage == 1" v-on:click="currentPage -= 1;" role="button">Anterior</button> &nbsp;
                 <button v-if="currentPage<formPages.length" href="#top" type="button" class="btn btn-outline-primary" :disabled="currentPage == 5" v-on:click="nextPage()" role="button">Siguiente</button>
                 <button v-else type="button" class="btn btn-outline-primary" :disabled="currentPage == 6" v-on:click="nextPage()" role="button">Calcular</button>
