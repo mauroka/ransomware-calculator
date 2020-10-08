@@ -190,9 +190,9 @@ Vue.component('scenario-detail', {
             new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Costo de Negocio', 'Costo Tecnológico'],
+                    labels: ['Costo Tecnológico', 'Costo de Negocio'],
                     datasets: [{
-                        data: [this.cnPorcen, this.ctPorcen],
+                        data: [this.ctPorcen, this.cnPorcen],
                         backgroundColor: [
                             "#4e73df",
                             "#e74a3b",
