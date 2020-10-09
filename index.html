@@ -79,8 +79,8 @@
                         
                     </div>
 
-                    <user-form v-show="!verResultados" v-on:form-data-ready="onFormDataReady"></user-form>
-                    <results-page v-show="verResultados" v-on:results-go-back="onResultsGoBack" ref="results-page"></results-page>
+                    <user-form v-show="!userDataReady" v-on:form-data-ready="onFormDataReady"></user-form>
+                    <results-page v-if="userDataReady" v-on:results-go-back="onResultsGoBack" v-bind:user-data="userData"></results-page>
     
                     
                 </div>

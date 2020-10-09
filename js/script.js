@@ -1,16 +1,19 @@
 const app = new Vue({
     el:'#app',
     data:{
-        verResultados:false,
+        userData: undefined
     },
-    
+    computed: {
+        userDataReady: function(){
+            return this.userData != undefined;
+        }
+    },
     methods:{
         onFormDataReady(userData){
-            this.verResultados = true;
-            this.$refs["results-page"].update_scenarios(userData)
+            this.userData = userData;
         },
         onResultsGoBack(){
-            this.verResultados = false;
+            this.userData = undefined
         },
     }
 })

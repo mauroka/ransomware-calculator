@@ -13,13 +13,18 @@ Vue.component('results-page', {
     },
     data: function () {
         return {
-            nombreEscenario:"",
-            scenario_totals: {},
+            nombreEscenario:"Mejor escenario",
             data_scenarios: [],
-            x : 0,
+            globalChart: undefined,
         }
     },
+    props: ['user-data'],
     
+    mounted: function(){
+        console.log("mounted")
+        this.createGlobalChart()
+        this.update_scenarios()
+    },
     methods: {
         createPdf:function(){
             this.mostrar_cn=true
@@ -62,25 +67,15 @@ Vue.component('results-page', {
             }
             renderPage(pages, 0)            
         },
-        updateGlobalChart(){
+        createGlobalChart(){
             var ctx = document.getElementById('globalchart').getContext('2d');
-            var totals = [];
-            var nombre  = [];
-            var backgroundColors  = [];
-            for (const escenarios in this.data_scenarios) {
-                totals.push(this.data_scenarios[escenarios].total);
-                nombre.push(this.data_scenarios[escenarios].nombre)
-                backgroundColors.push(this.colors[this.data_scenarios[escenarios].color])
-            }
-            //ver como recorremos el arreglo data_scenarios y encontrar de cada diccionario el valor de "total"
-            //no usamos más scenario_totals
-            new Chart(ctx, {
+            this.globalChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: nombre,
+                    labels: [],
                     datasets: [{
-                        data: totals,
-                        backgroundColor: backgroundColors
+                        data: [],
+                        backgroundColor: []
                     }]
                 },
                 options:{
@@ -103,31 +98,53 @@ Vue.component('results-page', {
                           label: function(tooltipItem, chart) {
                             var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
                             return datasetLabel + '$ ' + tooltipItem.yLabel;
-                            }
+                            },
                         }
                     }
                 }
                 
             });
         },
-
-
         register_scenario_total(scenario, total){
-            console.log("scenario: "+scenario.nombre)
-            console.log("total: "+total)
-            console.log("color: "+scenario.color)
-            this.data_scenarios[this.x].total=total
-            this.x=this.x+1
-            if (this.x===this.data_scenarios.length){
-                this.updateGlobalChart()
-            }
-            
+            console.log("Registering total: "+scenario.nombre+" $"+total)
+            var iScenario = this.find_scenario_index(scenario.nombre)
+            this.data_scenarios[iScenario]['total'] = total
+            this.data_scenarios[iScenario]['key'] = scenario.nombre+"_"+total
+            this.updateGlobalChart()
         },
-        update_scenarios: function(user_data){
-            this.data_scenarios = []
+        find_scenario_index(scenario_name){
+            for(var i=0; i<this.data_scenarios.length; i++){
+                if(this.data_scenarios[i].nombre == scenario_name){
+                    return i;
+                }
+            }
+            return -1;
+        },
+        updateGlobalChart: function(){
+            this.globalChart.data.labels = []
+            this.globalChart.data.datasets[0].data = []
+            this.globalChart.data.datasets[0].backgroundColor = []
+            for(var i=0; i<this.data_scenarios.length; i++){
+                console.log("adding "+this.data_scenarios[i].nombre+" "+this.data_scenarios[i].total)
+                this.globalChart.data.labels.push(this.data_scenarios[i].nombre);
+                this.globalChart.data.datasets[0].data.push(this.data_scenarios[i].total)
+                this.globalChart.data.datasets[0].backgroundColor.push(this.colors[this.data_scenarios[i].color])
+            }
+           
+            this.globalChart.update()
+        },
+        update_scenario(scenarioName, scenarioData){
+            var i = this.find_scenario_index(scenarioName);
+            if(i != -1){
+                this.data_scenarios[i] = scenarioData;
+            }else{
+                this.data_scenarios.push(scenarioData);
+            }
+        },
+        update_scenarios: function(){
             // Mejor Escenario
             var dict_mejor_escenario = {}
-            Object.assign(dict_mejor_escenario, user_data);
+            Object.assign(dict_mejor_escenario, this.userData);
             dict_mejor_escenario['nombre']='Mejor escenario'
             dict_mejor_escenario['decrypt_tool_exists'] = true
             dict_mejor_escenario['rescue_paid'] = 0
@@ -136,11 +153,12 @@ Vue.component('results-page', {
             dict_mejor_escenario['data_is_exposed'] = false
             dict_mejor_escenario['color'] = 'primary'
             dict_mejor_escenario['total'] = 0
-            this.data_scenarios.push(dict_mejor_escenario)
+            dict_mejor_escenario['key'] =  dict_mejor_escenario['nombre'] +"_"+ Date.now()
+            this.update_scenario("Mejor escenario", dict_mejor_escenario);
 
             // Optimista
             var dict_optimista = {}
-            Object.assign(dict_optimista, user_data);
+            Object.assign(dict_optimista, this.userData);
             dict_optimista['nombre']='Optimista'
             dict_optimista['decrypt_tool_exists'] = true
             dict_optimista['rescue_paid'] = 0
@@ -149,12 +167,12 @@ Vue.component('results-page', {
             dict_optimista['data_is_exposed'] = false
             dict_optimista['color'] = 'success'
             dict_optimista['total'] = 0
-            this.data_scenarios.push(dict_optimista)
-
+            dict_optimista['key'] =  dict_optimista['nombre'] +"_"+  Date.now()
+            this.update_scenario("Optimista", dict_optimista);
 
             // Medio
             var dict_medio = {}
-            Object.assign(dict_medio, user_data);
+            Object.assign(dict_medio, this.userData);
             dict_medio['nombre']='Medio'
             dict_medio['decrypt_tool_exists'] = false
             dict_medio['rescue_paid'] = 1
@@ -163,11 +181,12 @@ Vue.component('results-page', {
             dict_medio['data_is_exposed'] = true
             dict_medio['color'] = 'info'
             dict_medio['total'] = 0
-            this.data_scenarios.push(dict_medio)
+            dict_medio['key'] =  dict_medio['nombre'] +"_"+  Date.now()
+            this.update_scenario("Medio", dict_medio);
 
             // Pesimista
             var dict_pesimista = {}
-            Object.assign(dict_pesimista, user_data);
+            Object.assign(dict_pesimista, this.userData);
             dict_pesimista['nombre']='Pesimista'
             dict_pesimista['decrypt_tool_exists'] = false
             dict_pesimista['rescue_paid'] = 3
@@ -176,11 +195,12 @@ Vue.component('results-page', {
             dict_pesimista['data_is_exposed'] = true
             dict_pesimista['color'] = 'warning'
             dict_pesimista['total'] = 0
-            this.data_scenarios.push(dict_pesimista)
+            dict_pesimista['key'] =  dict_pesimista['nombre'] +"_"+  Date.now()
+            this.update_scenario("Pesimista", dict_pesimista);
 
             // Desastroso
             var dict_desastroso = {}
-            Object.assign(dict_desastroso, user_data);
+            Object.assign(dict_desastroso, this.userData);
             dict_desastroso['nombre']='Desastroso'
             dict_desastroso['decrypt_tool_exists'] = false
             dict_desastroso['rescue_paid'] = 2
@@ -189,11 +209,12 @@ Vue.component('results-page', {
             dict_desastroso['data_is_exposed'] = true
             dict_desastroso['color'] = 'danger'
             dict_desastroso['total'] = 0
-            this.data_scenarios.push(dict_desastroso)
+            dict_desastroso['key'] =  dict_desastroso['nombre'] +"_"+  Date.now()
+            this.update_scenario("Desastroso", dict_desastroso);
 
             // Tacaño
             var dict_tacanio = {}
-            Object.assign(dict_tacanio, user_data);
+            Object.assign(dict_tacanio, this.userData);
             dict_tacanio['nombre']='Tacaño'
             dict_tacanio['decrypt_tool_exists'] = false
             dict_tacanio['rescue_paid'] = 3
@@ -202,12 +223,13 @@ Vue.component('results-page', {
             dict_tacanio['data_is_exposed'] = true
             dict_tacanio['color'] = 'secondary'
             dict_tacanio['total'] = 0
-            this.data_scenarios.push(dict_tacanio)
-
+            dict_tacanio['key'] =  dict_tacanio['nombre'] +"_"+  Date.now()
+            this.update_scenario("Tacaño", dict_tacanio);
+            //console.log(JSON.stringify(this.data_scenarios))
             // otro
-            var otro = {}
-            Object.assign(otro, this.user_data);
-            otro['nombre']='Otro'
+            /*var otro = {}
+            Object.assign(otro, this.userData);
+            otro['nombre'] = 'Otro'
             otro['decrypt_tool_exists'] = false
             otro['rescue_paid'] = 2
             otro['infected_terminals'] = 0.8
@@ -216,11 +238,9 @@ Vue.component('results-page', {
             otro['color'] = 'secondary'
             otro['total'] = 0
             this.data_scenarios.push(otro)
-            
+            */
+            this.mostrarEscenario(this.nombreEscenario)
             this.updateGlobalChart()
-            // TODO: usar el nombre del escenario actual
-            
-            this.mostrarEscenario("Mejor escenario")
         },
         mostrarEscenario: function(nombre){
             this.nombreEscenario=nombre
@@ -256,7 +276,7 @@ Vue.component('results-page', {
         <div class="row report-page">
             <!--ESCENARIOS-->
             <scenario-card v-for="scenario in data_scenarios"
-                :key="scenario.nombre"
+                :key="scenario.key"
                 :label="scenario.nombre"
                 :value="scenario.total"
                 :color-class="scenario.color"
@@ -267,10 +287,11 @@ Vue.component('results-page', {
 
         <div class="row">
             <div id="descripcion-escenarios" class="col-lg-12">
+
                 <scenario-detail v-for="scenario in data_scenarios"
                     :scenario-data="scenario"
                     v-on:total="register_scenario_total(scenario, $event)"
-                    :key="scenario.nombre"
+                    :key="scenario.key"
                     v-show="scenario.nombre == nombreEscenario"
                     >
                 </scenario-detail>
