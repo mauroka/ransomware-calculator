@@ -228,7 +228,7 @@ Vue.component('scenario-detail', {
     // cn
     // cFormatear
     // cRestaurar
-    props: ['scenario-data'],
+    props: ['scenario-data', 'report-view'],
     template: `
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -278,7 +278,7 @@ Vue.component('scenario-detail', {
                 </table>
                     <div class="row">
                         <div class="col-12">
-                            <div class="alert alert-warning" role="alert">
+                            <div v-show="!reportView" class="alert alert-warning" role="alert">
                                 Haga clic en los costos mencionados a continuación para ver su detalle.
                             </div>
                         </div>
@@ -416,6 +416,7 @@ Vue.component('scenario-detail', {
 
             
         </div>
+        
     </div>
     `
     });

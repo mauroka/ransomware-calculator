@@ -16,6 +16,7 @@ Vue.component('results-page', {
             nombreEscenario:"Mejor escenario",
             data_scenarios: [],
             globalChart: undefined,
+            reportView: false
         }
     },
     props: ['user-data'],
@@ -26,19 +27,65 @@ Vue.component('results-page', {
         this.update_scenarios()
     },
     methods: {
-        createPdf:function(){
-            this.mostrar_cn=true
-            this.mostrar_ct=true
+        createPdf: async function(){
             const { jsPDF } = window.jspdf;
-                const doc = new jsPDF({
-                orientation:"portrait",
-            });
+                
+            const doc = new jsPDF();
             
-            const RENDER_SIZE = "1000px";
-            document.body.style.width=RENDER_SIZE;
+            const RENDER_SIZE = "800px";
+            const H_PADDING = 10;
+            const V_PADDING = 10;
+
+
+            // START report mode
+            //this.$refs['report-process-modal'].show()
+            var wrapper = document.getElementById("content-wrapper")
+            wrapper.style.width=RENDER_SIZE;
+            wrapper.style.fontSize="0.7em";
+            var scale = 'scale(1)';
+                document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
+                document.body.style.msTransform =   scale;       // IE 9
+                document.body.style.transform = scale;     // General
+            this.reportView = true
+
+            // TODO: mostrar modal
             
-            var pages = document.getElementsByClassName("report-page");
-            console.log(pages);
+            // TODO: BORRAR ESTO A LA MIERDA Y METER UN RENDER ELEMENT
+            async function renderRef(doc, elem){
+                
+                return await domtoimage.toPng(elem, {bgcolor: '#FFF', quality: 1})
+                    .then(function (dataUrl) {
+                        var page = doc.addPage()
+                        page.addImage(dataUrl, 'PNG', H_PADDING, V_PADDING);
+                        console.log(`rendering page`)
+                    })
+                    .catch(function (error) {
+                        console.error('Ha ocurrido un error', JSON.stringify(error));
+                    });
+            }
+
+
+            await renderRef(doc, this.$refs["global-chart"])
+
+            for(var i=0; i<this.data_scenarios.length; i++){
+                var scenario_name = this.data_scenarios[i].nombre
+                var elem = this.$refs[scenario_name][0].$vnode.elm
+                this.showOnlyDetails = false
+                await renderRef(doc, elem)
+                this.showOnlyDetails = true
+                await renderRef(doc, elem)
+            }
+
+            // UNDO report mode
+            this.reportViewode = false
+            wrapper.style.removeProperty("width")
+            wrapper.style.fontSize="1em";
+            doc.save("a4.pdf");
+            //this.$refs['report-process-modal'].hide()
+
+            //var pages = data_scenarios.getElementsByClassName("scenario-detail");
+            //var pages = 
+            /*console.log(pages);
             function renderPage(pages, currentPage){
                 var elem = pages[currentPage];
                 
@@ -64,8 +111,8 @@ Vue.component('results-page', {
                         });
                 }, 0.5);
                 
-            }
-            renderPage(pages, 0)            
+            }*/
+            //renderPage(pages, 0)            
         },
         createGlobalChart(){
             var ctx = document.getElementById('globalchart').getContext('2d');
@@ -248,7 +295,7 @@ Vue.component('results-page', {
     },
     template: `
     <div class="col-lg-12">                        
-        <div class="row">
+        <div class="row"  ref="global-chart">
             <div class="col-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -267,13 +314,11 @@ Vue.component('results-page', {
             </div>
                                     
             <div class="col-12">
-                <div class="alert alert-warning" role="alert">
+                <div v-show="!reportView" class="alert alert-warning" role="alert">
                     Haga clic en los siguientes indicadores para ver su detalle.
                 </div>
             </div>
-        </div>
         
-        <div class="row report-page">
             <!--ESCENARIOS-->
             <scenario-card v-for="scenario in data_scenarios"
                 :key="scenario.key"
@@ -292,7 +337,10 @@ Vue.component('results-page', {
                     :scenario-data="scenario"
                     v-on:total="register_scenario_total(scenario, $event)"
                     :key="scenario.key"
-                    v-show="scenario.nombre == nombreEscenario"
+                    v-show="nombreEscenario == scenario.nombre || reportView"
+                    class="scenario-detail"
+                    :ref="scenario.nombre"
+                    v-bind:report-view="reportView"
                     >
                 </scenario-detail>
             </div>
@@ -365,7 +413,7 @@ Vue.component('results-page', {
                 <button type="button" class="btn btn-outline-primary" v-on:click="$emit('results-go-back')" role="button">Anterior</button> &nbsp;
                 <button type="button" class="btn btn-outline-primary" v-on:click="createPdf()" role="button">Generar Informe</button>
             </div>
-        </div>              
+        </div>  
     </div>
     `
 });
