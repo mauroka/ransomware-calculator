@@ -16,7 +16,8 @@ Vue.component('results-page', {
             nombreEscenario:"Mejor escenario",
             data_scenarios: [],
             globalChart: undefined,
-            reportView: false
+            reportView: false,
+            reportViewPage: 1
         }
     },
     props: ['user-data'],
@@ -27,32 +28,42 @@ Vue.component('results-page', {
         this.update_scenarios()
     },
     methods: {
-        createPdf: async function(){
-            const { jsPDF } = window.jspdf;
-                
-            const doc = new jsPDF();
-            
+        enterReportView: function(){
             const RENDER_SIZE = "800px";
-            const H_PADDING = 10;
-            const V_PADDING = 10;
-
-
-            // START report mode
-            //this.$refs['report-process-modal'].show()
-            var wrapper = document.getElementById("content-wrapper")
+            var wrapper = document.getElementById("content-wrapper");
             wrapper.style.width=RENDER_SIZE;
             wrapper.style.fontSize="0.7em";
             var scale = 'scale(1)';
-                document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
-                document.body.style.msTransform =   scale;       // IE 9
-                document.body.style.transform = scale;     // General
+            document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
+            document.body.style.msTransform =   scale;       // IE 9
+            document.body.style.transform = scale;     // General
             this.reportView = true
 
             // TODO: mostrar modal
+        },
+        exitReportView: function(){
+            this.reportView = false
+            var wrapper = document.getElementById("content-wrapper");
+            wrapper.style.removeProperty("width");
+            wrapper.style.fontSize="1em";
+            // TODO: dismiss modal
+        },
+        generateReport: async function(){
+            this.enterReportView();
+            var t = this;
+            setTimeout(async () => {
+                await t.createPdf();
+                t.exitReportView();
+            }, (500));
+        },
+        createPdf: async function(){
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
             
-            // TODO: BORRAR ESTO A LA MIERDA Y METER UN RENDER ELEMENT
+            const H_PADDING = 10;
+            const V_PADDING = 10;
+            
             async function renderRef(doc, elem){
-                
                 return await domtoimage.toPng(elem, {bgcolor: '#FFF', quality: 1})
                     .then(function (dataUrl) {
                         var page = doc.addPage()
@@ -64,54 +75,22 @@ Vue.component('results-page', {
                     });
             }
             await renderRef(doc, this.$refs["global-chart"])
-            await renderRef(doc, this.$refs["inputs"])
-            
-
+            //await renderRef(doc, this.$refs["inputs"])
             
             for(var i=0; i<this.data_scenarios.length; i++){
                 var scenario_name = this.data_scenarios[i].nombre
+                console.log("Rendering: "+this.data_scenarios[i].nombre)
                 var elem = this.$refs[scenario_name][0].$vnode.elm
-                this.showOnlyDetails = false
+                this.reportViewPage = 1
                 await renderRef(doc, elem)
+                this.reportViewPage = 2
+                await renderRef(doc, elem)
+                // TODO: render "second page" of scenario
             }
 
-            // UNDO report mode
-            this.reportView = false
-            wrapper.style.removeProperty("width")
-            wrapper.style.fontSize="1em";
-            doc.save("a4.pdf");
-            //this.$refs['report-process-modal'].hide()
+            // TODO: change file name
+            doc.save("a4.pdf");        
 
-            //var pages = data_scenarios.getElementsByClassName("scenario-detail");
-            //var pages = 
-            /*console.log(pages);
-            function renderPage(pages, currentPage){
-                var elem = pages[currentPage];
-                
-                window.setTimeout(function(){
-                    domtoimage.toPng(elem, {bgcolor: '#FFF'})
-                        .then(function (dataUrl) {
-                            
-                            var page = doc.addPage()
-                            page.addImage(dataUrl, 'JPEG', 0, 0);
-                            console.log("rendering page "+currentPage)
-                            
-                            if(currentPage+1 < pages.length){
-                                renderPage(pages, currentPage+1);
-                            }else{
-                                // restore element size
-                                document.body.style.removeProperty("width")
-                                doc.save("a4.pdf");
-                            }
-                        })
-                        .catch(function (error) {
-                            alert("Ha ocurrido un error: "+error)
-                            console.error('Ha ocurrido un error', error);
-                        });
-                }, 0.5);
-                
-            }*/
-            //renderPage(pages, 0)            
         },
         createGlobalChart(){
             var ctx = document.getElementById('globalchart').getContext('2d');
@@ -466,6 +445,7 @@ Vue.component('results-page', {
                     class="scenario-detail"
                     :ref="scenario.nombre"
                     v-bind:report-view="reportView"
+                    v-bind:report-view-page="reportViewPage"
                     >
                 </scenario-detail>
             </div>
@@ -536,7 +516,7 @@ Vue.component('results-page', {
         <div class="row">
             <div class="col" style="text-align: right;">
                 <button type="button" class="btn btn-outline-primary" v-on:click="$emit('results-go-back')" role="button">Anterior</button> &nbsp;
-                <button type="button" class="btn btn-outline-primary" v-on:click="createPdf()" role="button">Generar Informe</button>
+                <button type="button" class="btn btn-outline-primary" v-on:click="generateReport()" role="button">Generar Informe</button>
             </div>
         </div>  
     </div>
