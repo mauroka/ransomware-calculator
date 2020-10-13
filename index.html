@@ -84,7 +84,7 @@
                     <user-form v-show="!userDataReady" v-on:form-data-ready="onFormDataReady"></user-form>
                     <results-page v-if="userDataReady" v-on:results-go-back="onResultsGoBack" v-bind:user-data="userData"></results-page>
     
-                    
+                    <report-modal></report-modal>
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -113,17 +113,20 @@
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@3.5.1/dist/vuex.js"></script>
     <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
     <!--PDF library-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
     <script src="js/dom-to-image.min.js"></script>
 
-
+    <!-- Components -->
     <script src="js/components/scenario-card.js"></script>
     <script src="js/components/scenario-detail.js"></script>
     <script src="js/components/user-form.js"></script>
     <script src="js/components/results-page.js"></script>
     <script src="js/components/organization-info-report-page.js"></script>
+    <script src="js/components/report-modal.js"></script>
+    <script src="js/store.js"></script>
     <script src="js/script.js"></script>
 
 </body>

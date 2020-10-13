@@ -39,14 +39,16 @@ Vue.component('results-page', {
             document.body.style.transform = scale;     // General
             this.reportView = true
 
-            // TODO: show modal
+            // show modal
+            this.$store.commit("showReportModal")
         },
         exitReportView: function(){
             this.reportView = false
             var wrapper = document.getElementById("content-wrapper");
             wrapper.style.removeProperty("width");
             wrapper.style.fontSize="1em";
-            // TODO: dismiss modal
+            // dismiss modal
+            this.$store.commit("dismissReportModal")
         },
         generateReport: async function(){
             this.enterReportView();

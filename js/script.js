@@ -1,7 +1,9 @@
 const app = new Vue({
     el:'#app',
+    store: store,
     data:{
-        userData: undefined
+        userData: undefined,
+        modalShow: true
     },
     computed: {
         userDataReady: function(){
