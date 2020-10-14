@@ -28,6 +28,13 @@ Vue.component('results-page', {
         this.update_scenarios()
     },
     methods: {
+        enterModalEscenario: function(){
+            this.$store.commit("showEscenarioModal")
+        },
+
+        exitModalEscenario: function(){
+            this.$store.commit("dismissEscenarioModal")
+        },
         enterReportView: function(){
             const RENDER_SIZE = "800px";
             var wrapper = document.getElementById("content-wrapper");
@@ -282,6 +289,7 @@ Vue.component('results-page', {
         },
     },
     template: `
+    
     <div class="col-lg-12">              
         <div class="row"  ref="global-chart">
             <div class="col-12">
@@ -321,8 +329,30 @@ Vue.component('results-page', {
             </scenario-card>
 
             
-        </div>
+            
+            <div  class="col-lg-4 col-md-6 mb-4 btn-escenario" v-on:click="enterModalEscenario()">
+                <div class="card shadow h-100 py-2  border-left-success" >
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1 text-success" >agregar esceneario personalizado</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"> </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-plus fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            
+        </div>
+        
+
+        
+        
+        
         <div class="row">
             <div class="col-12">
                 <organization-info-report-page ref="organization-data" v-bind:user-data="userData" v-bind:report-view-page="reportViewPage" v-show="reportView"></organization-info-report-page>
