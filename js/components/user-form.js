@@ -99,27 +99,27 @@ Vue.component('user-form', {
         },
         loadDemoData: function(){
             this.formData = {
-                hLab: 200,
-                cHorasEmpleado: 20,
-                cantEquipos: 30,
+                hLab: 8,
+                cHorasEmpleado: 350,
+                cantEquipos: 20,
 
-                chUltiBackup: 50,
-                chRegeInfoTotal: 200,
+                chUltiBackup: 20,
+                chRegeInfoTotal: 100,
 
-                chFormatear: 20,
-                cFormatear: 30,
+                chFormatear: 2,
+                cFormatear: 300,
                 cantEquiposParaleloFormatear: 2,
 
-                chRestaurar: 20,
-                cRestaurar: 20,
+                chRestaurar: 2,
+                cRestaurar: 400,
                 cantEquiposParaleloRestaurar: 1,
 
                 cRescate: 1000,
 
                 porcenEquiposInfectados: 50,
-                cOportunidadVentas: 100,
-                cReputacion: 100,
-                cFiltradoInfo: 200,
+                cOportunidadVentas: 1000,
+                cReputacion: 1,
+                cFiltradoInfo: 1,
             }
             this.currentPage = this.formPages.length
             this.nextPage()

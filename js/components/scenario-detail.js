@@ -57,7 +57,7 @@ Vue.component('scenario-detail', {
         },
         // costo de negocio de formatear los equipos infectados
         cnFormatear: function(){
-            if(((this.cantEquipos*this.scenarioData.infected_terminals)/this.scenarioData.cantEquiposParaleloFormatear)>1){
+            if(((this.scenarioData.cantEquipos*this.scenarioData.infected_terminals)/this.scenarioData.cantEquiposParaleloFormatear)>1){
                 return Math.ceil(((this.scenarioData.cantEquipos*this.scenarioData.infected_terminals)/this.scenarioData.cantEquiposParaleloFormatear))*this.scenarioData.chFormatear
             }else{
                 return parseInt(this.scenarioData.chFormatear)
@@ -78,10 +78,7 @@ Vue.component('scenario-detail', {
         },
         // tiempo en horas para volver al estado estable
         cnTotal: function(){
-            var t = this.cnFormatear + this.cnRestaurar;
-            if(!this.hasKey && this.scenarioData.has_backup){
-                t = t + this.cnRegenerar;
-            }
+            var t = this.cnFormatear + this.cnRestaurar + this.cnRegenerar
             return t;
         },
         // cantidad de días para volver al estado estable
@@ -141,7 +138,7 @@ Vue.component('scenario-detail', {
                 return cantEquiposInfectados * this.scenarioData.chRegeInfoTotal * this.scenarioData.cHorasEmpleado
             }
         },
-        // costo de negocio (en $) de regenerar la información
+        // cantidad de horas necesarias para de regenerar la información
         cnRegenerar: function(){
             if (this.hasKey){
                 return 0;       // tiene la clave, no regenera nada
@@ -373,11 +370,15 @@ Vue.component('scenario-detail', {
                                 </tr>
                                 <tr>
                                     <th scope="row">Tiempo en horas necesario para restaurar las copias de seguridad </th>
-                                    <td scope="col">{{cnRestaurar}} horas</td>
+                                    <td v-if="scenarioData.has_backup" scope="col">{{cnRestaurar}} horas</td>
+                                    <td v-else scope="col">No aplica</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Tiempo en horas necesario para volver a generar la información perdida</th>
-                                    <td scope="col">No aplica</td>
+                                    <td v-if="!hasKey" scope="col">{{cnRegenerar}} horas</td>
+                                    <td v-else scope="col">No aplica</td>
+                              
+                                    
                                 </tr>
                                 <tr>
                                     <th scope="row">Tiempo en horas necesario para realizar todas las actividades</th>
