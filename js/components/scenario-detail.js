@@ -79,8 +79,7 @@ Vue.component('scenario-detail', {
         // tiempo en horas para volver al estado estable
         cnTotal: function(){
             var t = this.cnFormatear + this.cnRestaurar;
-            var has_key = this.scenarioData.decrypt_tool_exists || this.scenarioData.rescue_paid == 2; //paga_y_obtiene_clave 
-            if(!has_key && this.scenarioData.has_backup){
+            if(!this.hasKey && this.scenarioData.has_backup){
                 t = t + this.cnRegenerar;
             }
             return t;
@@ -91,7 +90,7 @@ Vue.component('scenario-detail', {
         },
         // razón de equipos listos por día
         cnDisponibilidad: function(){
-            return (((this.scenarioData.cantEquipos*this.scenarioData.infected_terminals)/this.cnEstable)*100)/(this.scenarioData.cantEquipos*this.scenarioData.infected_terminals)
+            return (((this.scenarioData.cantEquipos*this.scenarioData.infected_terminals)/this.cnEstable))/(this.scenarioData.cantEquipos*this.scenarioData.infected_terminals)
         },
         // días para controlar el incidente
         cnControlar: function(){
@@ -125,11 +124,15 @@ Vue.component('scenario-detail', {
                 return 0;
             }
         },
+        // si se obtiene la clave, ya sea por pago o por descifrador
+        hasKey: function(){ 
+            return this.scenarioData.decrypt_tool_exists || this.scenarioData.rescue_paid == 1;
+        },
         // costo tecnológico (en $) de regenerar la información
         ctRegenerar: function(){
             var cantEquiposInfectados = this.scenarioData.cantEquipos*this.scenarioData.infected_terminals;
-            var has_key = this.scenarioData.decrypt_tool_exists || this.scenarioData.rescue_paid == 2; //paga_y_obtiene_clave 
-            if (has_key){
+            
+            if (this.hasKey){
                 return 0;
             }else if(this.scenarioData.has_backup){
                 return cantEquiposInfectados * this.cPromedio;
@@ -140,8 +143,7 @@ Vue.component('scenario-detail', {
         },
         // costo de negocio (en $) de regenerar la información
         cnRegenerar: function(){
-            var has_key = this.scenarioData.decrypt_tool_exists || this.scenarioData.rescue_paid == 2; //paga_y_obtiene_clave 
-            if (has_key){
+            if (this.hasKey){
                 return 0;       // tiene la clave, no regenera nada
             }else if(this.scenarioData.has_backup){
                 return parseInt(this.scenarioData.chUltiBackup); // solo regenera informacion no respaldada
@@ -247,7 +249,7 @@ Vue.component('scenario-detail', {
                 <tbody>
                     <tr>
                         <th scope="row">Porcentaje de equipos informáticos de su organización infectados por Ransomware</th>
-                        <td scope="col">{{scenarioData.infected_terminals}}</td>
+                        <td scope="col">{{scenarioData.infected_terminals*100}}%</td>
                     </tr>
                     <tr>
                         <th scope="row">Descifrador del Ransomware</th>
@@ -338,15 +340,18 @@ Vue.component('scenario-detail', {
                                 </tr>
                                 <tr>
                                     <th scope="row">Costo de restaurar las copias de seguridad</th>
-                                    <td scope="col">$ {{ctRestaurar}}</td>
+                                    <td v-if="scenarioData.has_backup" scope="col">$ {{ctRestaurar}}</td>
+                                    <td v-else scope="col">No aplica</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Costo de volver a generar la información perdida</th>
-                                    <td scope="col">No aplica</td>
+                                    <td v-if="!hasKey" scope="col">$ {{ctRegenerar}}</td>
+                                    <td v-else scope="col">No aplica</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Costo del Rescate</th>
-                                    <td scope="col">No aplica</td>
+                                    <td v-if="scenarioData.rescue_paid == 1 || scenarioData.rescue_paid == 2" scope="col">$ {{scenarioData.cRescate}}</td>
+                                    <td v-else scope="col">No aplica</td>
                                 </tr>
                             </tbody>
                         </table>
