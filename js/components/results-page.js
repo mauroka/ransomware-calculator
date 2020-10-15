@@ -359,7 +359,7 @@ Vue.component('results-page', {
 
             
         </div>
-        <button type="button" class="btn btn-outline-primary" v-on:click="update_scenarios()" role="button">Anterior</button>
+        <button type="button" class="btn btn-outline-primary" v-on:click="update_scenarios()" role="button">ACTUALIZAR</button>
 
         
         
