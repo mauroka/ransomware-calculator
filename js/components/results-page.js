@@ -17,7 +17,8 @@ Vue.component('results-page', {
             data_scenarios: [],
             globalChart: undefined,
             reportView: false,
-            reportViewPage: 1
+            reportViewPage: 1,
+            actualizar: this.$store.state.updateEscenario
         }
     },
     props: ['user-data'],
@@ -28,8 +29,10 @@ Vue.component('results-page', {
         this.update_scenarios()
     },
     methods: {
+        
         enterModalEscenario: function(){
             this.$store.commit("showEscenarioModal")
+            
         },
 
         exitModalEscenario: function(){
@@ -268,21 +271,29 @@ Vue.component('results-page', {
             this.update_scenario("Tacaño", dict_tacanio);
             //console.log(JSON.stringify(this.data_scenarios))
             
-            // otro
-            /*var otro = {}
+            var otro = {}
             Object.assign(otro, this.userData);
-            otro['nombre'] = 'Otro'
-            otro['decrypt_tool_exists'] = false
-            otro['rescue_paid'] = 2
-            otro['infected_terminals'] = 0.8
-            otro['has_backup'] = false
-            otro['data_is_exposed'] = true
+            otro['nombre'] = this.$store.state.dataEscenarioPer['nombre']
+            otro['decrypt_tool_exists'] = this.$store.state.dataEscenarioPer['activo']
+            otro['rescue_paid'] = this.$store.state.dataEscenarioPer['rescate']
+            otro['infected_terminals'] = this.$store.state.dataEscenarioPer['porcenEquiposInfectados']
+            otro['has_backup'] = this.$store.state.dataEscenarioPer['backup']
+            otro['data_is_exposed'] = this.$store.state.dataEscenarioPer['informacionConfidencial']
             otro['color'] = 'secondary'
             otro['total'] = 0
-            this.data_scenarios.push(otro)
-            */
-            this.mostrarEscenario(this.nombreEscenario)
-            this.updateGlobalChart()
+            otro['key'] =  otro['nombre'] +"_"+  Date.now()
+            this.update_scenario(otro.nombre, otro);
+            
+           this.mostrarEscenario(this.nombreEscenario)
+           this.updateGlobalChart()
+           console.log("ATENCION")
+           console.log(otro.nombre)
+           console.log(otro.decrypt_tool_exists)
+           console.log(otro.rescue_paid)
+           console.log(otro.infected_terminals)
+           console.log(otro.has_backup)
+           console.log(otro.data_is_exposed)
+           console.log("/////ATENCION") 
         },
         mostrarEscenario: function(nombre){
             this.nombreEscenario=nombre
@@ -348,7 +359,7 @@ Vue.component('results-page', {
 
             
         </div>
-        
+        <button type="button" class="btn btn-outline-primary" v-on:click="update_scenarios()" role="button">Anterior</button>
 
         
         
