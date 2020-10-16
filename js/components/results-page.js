@@ -30,9 +30,11 @@ Vue.component('results-page', {
     methods: {
         enterReportView: function(){
             const RENDER_SIZE = "800px";
+            //document.body.style.width = "2000px"
             var wrapper = document.getElementById("content-wrapper");
+            
             wrapper.style.width=RENDER_SIZE;
-            wrapper.style.fontSize="0.7em";
+            wrapper.style.fontSize="0.8em";
             var scale = 'scale(1)';
             document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
             document.body.style.msTransform =   scale;       // IE 9
@@ -60,34 +62,58 @@ Vue.component('results-page', {
         },
         createPdf: async function(){
             const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+            // portrait a4 page in mm
+            const doc = new jsPDF('p', 'mm', 'a4');
             
+            const PAGE_WIDTH = 210;
+            const PAGE_HEIGHT = 297;
             const H_PADDING = 10;
-            const V_PADDING = 10;
+            const V_PADDING = 20;
             
-            async function renderRef(doc, elem){
-                return await domtoimage.toPng(elem, {bgcolor: '#FFF', quality: 1})
+            var currentPageNum = 0;
+            var date="";
+
+            async function renderRef(doc, elem, newPage=true, h_padding=H_PADDING, v_padding=V_PADDING){
+                return await domtoimage.toPng(elem, {quality: 1})
                     .then(function (dataUrl) {
-                        var page = doc.addPage()
-                        page.addImage(dataUrl, 'PNG', H_PADDING, V_PADDING);
-                        console.log(`rendering page`)
+                        var page;
+                        if(newPage){
+                            page = doc.addPage();
+                        }else{
+                            page = doc;
+                        }
+                        
+                        var imgRatio = elem.offsetWidth / elem.offsetHeight;
+                        console.log("RATIO: "+imgRatio)
+
+                        var IMAGE_WIDTH = PAGE_WIDTH-h_padding*2
+                        
+                        if(currentPageNum != 0){
+                            page.setTextColor("#999");
+                            page.setFontSize(10)
+                            var a = "Informe de costos por infección de Ransomware\nGenerado el dd/mm/aaaa";
+                            var c = "Página "+currentPageNum
+                            page.text(a, h_padding, v_padding);
+                            page.text(c, h_padding, PAGE_HEIGHT-v_padding);
+                        }
+                        currentPageNum = currentPageNum + 1
+                        
+                        page.addImage(dataUrl, 'PNG', h_padding, v_padding, IMAGE_WIDTH, IMAGE_WIDTH/imgRatio, "", "NONE");
+
                     })
                     .catch(function (error) {
                         console.error('Ha ocurrido un error'+error);
                     });
             }
 
-            // render organization data
-            this.reportViewPage = 1
-            await renderRef(doc, this.$refs["organization-data"].$vnode.elm)
-            this.reportViewPage = 2
-            await renderRef(doc, this.$refs["organization-data"].$vnode.elm)
-
+            // render title page
+            await renderRef(doc, this.$refs["report-title-page"], false, 0, 0)
+            
             // render global chart and scenario cards
             await renderRef(doc, this.$refs["global-chart"])
 
             // render scenario details
-            for(var i=0; i<this.data_scenarios.length; i++){
+            /*for(var i=0; i<this.data_scenarios.length; i++){
                 var scenario_name = this.data_scenarios[i].nombre
                 console.log("Rendering: "+this.data_scenarios[i].nombre)
                 var elem = this.$refs[scenario_name][0].$vnode.elm
@@ -95,10 +121,16 @@ Vue.component('results-page', {
                 await renderRef(doc, elem)
                 this.reportViewPage = 2
                 await renderRef(doc, elem)
-            }
+            }*/
+
+            // render organization data
+            this.reportViewPage = 1
+            await renderRef(doc, this.$refs["organization-data"].$vnode.elm)
+            this.reportViewPage = 2
+            await renderRef(doc, this.$refs["organization-data"].$vnode.elm)
 
             // TODO: change file name
-            doc.save("a4.pdf");        
+            doc.save("  Informe de costos por infección de Ransomware.pdf");        
 
         },
         createGlobalChart(){
@@ -288,7 +320,7 @@ Vue.component('results-page', {
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="card-title m-0 font-weight-bold text-primary">
-                            Resultados
+                            Escenarios posibles
                         </h6>
                     </div>
                     <div class="card-body offset-lg-2 col-lg-8 col-md-12 ">
@@ -413,7 +445,32 @@ Vue.component('results-page', {
                 <button type="button" class="btn btn-outline-primary" v-on:click="$emit('results-go-back')" role="button">Anterior</button> &nbsp;
                 <button type="button" class="btn btn-outline-primary" v-on:click="generateReport()" role="button">Generar Informe</button>
             </div>
-        </div>  
+        </div>
+
+        <div v-show="reportView" ref="report-title-page" class="report-title-page" style="position: relative; min-width: 2100px !important; min-height: 2970px !important; background-color: #4e73df; color: white; text-align: center;">
+            <div style="position: absolute; top: 50%; left:50%; transform: translate(-50%, -50%); ">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" style="color: white;">
+                <div class="sidebar-brand-icon" style="font-size: 256px;">
+                    <i class="fas fa-chess-rook"></i>
+                </div>
+                &nbsp;
+                &nbsp;
+                <div class="sidebar-brand-text mx-3" style="font-size: 144px; font-weight: bold;">SA-MATE</div>
+            </a>   
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1 style="font-size: 88px; line-height: 140px;">
+                Informe de costos por infección de Ransomware
+            </h1>
+            </div>
+        </div>
     </div>
     `
 });

@@ -390,7 +390,7 @@ Vue.component('scenario-detail', {
                                 </tr>
                                 <tr>
                                     <th scope="row">Porcentaje de equipos habilitados por día (Razón de disponibilidad)</th>
-                                    <td scope="col">{{cnDisponibilidad*100}}%</td>
+                                    <td scope="col">{{(cnDisponibilidad*100).toFixed(2)}}%</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Días laborales necesarios para controlar el incidente</th>
