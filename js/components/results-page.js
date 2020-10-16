@@ -87,7 +87,6 @@ Vue.component('results-page', {
                         }
                         
                         var imgRatio = elem.offsetWidth / elem.offsetHeight;
-                        console.log("RATIO: "+imgRatio)
 
                         var IMAGE_WIDTH = PAGE_WIDTH-h_padding*2
                         
