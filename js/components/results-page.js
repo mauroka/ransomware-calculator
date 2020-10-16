@@ -68,10 +68,13 @@ Vue.component('results-page', {
             const PAGE_WIDTH = 210;
             const PAGE_HEIGHT = 297;
             const H_PADDING = 10;
-            const V_PADDING = 20;
+            const V_PADDING = 25;
             
             var currentPageNum = 0;
-            var date="";
+            var d = new Date()
+            var date=(""+d.getDate()).padStart('0',2)+"/"+(""+d.getMonth()).padStart('0',2)+"/"+d.getFullYear()
+
+            var totalPages = this.data_scenarios.length*2 + 2 + 1
 
             async function renderRef(doc, elem, newPage=true, h_padding=H_PADDING, v_padding=V_PADDING){
                 return await domtoimage.toPng(elem, {quality: 1})
@@ -90,11 +93,11 @@ Vue.component('results-page', {
                         
                         if(currentPageNum != 0){
                             page.setTextColor("#999");
-                            page.setFontSize(10)
-                            var a = "Informe de costos por infección de Ransomware\nGenerado el dd/mm/aaaa";
-                            var c = "Página "+currentPageNum
-                            page.text(a, h_padding, v_padding);
-                            page.text(c, h_padding, PAGE_HEIGHT-v_padding);
+                            page.setFontSize(9)
+                            var a = "Informe de costos por infección de Ransomware\nGenerado el "+date;
+                            var c = "Página "+currentPageNum+ " de "+totalPages
+                            page.text(a, h_padding, v_padding*0.7);
+                            page.text(c, PAGE_WIDTH-h_padding, PAGE_HEIGHT-10, "right");
                         }
                         currentPageNum = currentPageNum + 1
                         
@@ -113,7 +116,7 @@ Vue.component('results-page', {
             await renderRef(doc, this.$refs["global-chart"])
 
             // render scenario details
-            /*for(var i=0; i<this.data_scenarios.length; i++){
+            for(var i=0; i<this.data_scenarios.length; i++){
                 var scenario_name = this.data_scenarios[i].nombre
                 console.log("Rendering: "+this.data_scenarios[i].nombre)
                 var elem = this.$refs[scenario_name][0].$vnode.elm
@@ -121,7 +124,7 @@ Vue.component('results-page', {
                 await renderRef(doc, elem)
                 this.reportViewPage = 2
                 await renderRef(doc, elem)
-            }*/
+            }
 
             // render organization data
             this.reportViewPage = 1
