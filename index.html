@@ -82,9 +82,10 @@
                     </div>
 
                     <user-form v-show="!userDataReady" v-on:form-data-ready="onFormDataReady"></user-form>
-                    <results-page v-if="userDataReady" v-on:results-go-back="onResultsGoBack" v-bind:user-data="userData"></results-page>
+                    <results-page ref="results-page" v-if="userDataReady" v-on:results-go-back="onResultsGoBack" v-bind:user-data="userData"></results-page>
     
                     <report-modal></report-modal>
+                    <create-escenario v-on:update-scenarios="$refs['results-page'].update_scenarios()"></create-escenario>
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -126,6 +127,7 @@
     <script src="js/components/results-page.js"></script>
     <script src="js/components/organization-info-report-page.js"></script>
     <script src="js/components/report-modal.js"></script>
+    <script src="js/components/create-escenario.js"></script>
     <script src="js/store.js"></script>
     <script src="js/script.js"></script>
 

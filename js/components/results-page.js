@@ -17,7 +17,7 @@ Vue.component('results-page', {
             data_scenarios: [],
             globalChart: undefined,
             reportView: false,
-            reportViewPage: 1
+            reportViewPage: 1,
         }
     },
     props: ['user-data'],
@@ -28,6 +28,15 @@ Vue.component('results-page', {
         this.update_scenarios()
     },
     methods: {
+        
+        enterModalEscenario: function(){
+            this.$store.commit("showEscenarioModal")
+            
+        },
+
+        exitModalEscenario: function(){
+            this.$store.commit("dismissEscenarioModal")
+        },
         enterReportView: function(){
             const RENDER_SIZE = "800px";
             //document.body.style.width = "2000px"
@@ -175,7 +184,7 @@ Vue.component('results-page', {
             });
         },
         register_scenario_total(scenario, total){
-            console.log("Registering total: "+scenario.nombre+" $"+total)
+            //console.log("Registering total: "+scenario.nombre+" $"+total)
             var iScenario = this.find_scenario_index(scenario.nombre)
             this.data_scenarios[iScenario]['total'] = total
             this.data_scenarios[iScenario]['key'] = scenario.nombre+"_"+total
@@ -194,7 +203,7 @@ Vue.component('results-page', {
             this.globalChart.data.datasets[0].data = []
             this.globalChart.data.datasets[0].backgroundColor = []
             for(var i=0; i<this.data_scenarios.length; i++){
-                console.log("adding "+this.data_scenarios[i].nombre+" "+this.data_scenarios[i].total)
+                //console.log("adding "+this.data_scenarios[i].nombre+" "+this.data_scenarios[i].total)
                 this.globalChart.data.labels.push(this.data_scenarios[i].nombre);
                 this.globalChart.data.datasets[0].data.push(this.data_scenarios[i].total)
                 this.globalChart.data.datasets[0].backgroundColor.push(this.colors[this.data_scenarios[i].color])
@@ -296,27 +305,29 @@ Vue.component('results-page', {
             this.update_scenario("Tacaño", dict_tacanio);
             //console.log(JSON.stringify(this.data_scenarios))
             
-            // otro
-            /*var otro = {}
-            Object.assign(otro, this.userData);
-            otro['nombre'] = 'Otro'
-            otro['decrypt_tool_exists'] = false
-            otro['rescue_paid'] = 2
-            otro['infected_terminals'] = 0.8
-            otro['has_backup'] = false
-            otro['data_is_exposed'] = true
-            otro['color'] = 'secondary'
-            otro['total'] = 0
-            this.data_scenarios.push(otro)
-            */
-            this.mostrarEscenario(this.nombreEscenario)
-            this.updateGlobalChart()
+            for(var i=0; i<this.$store.state.customScenarios.length; i++){
+                var custom = {}
+                var scenario = this.$store.state.customScenarios[i]
+                console.log("Adding custom scenario: "+scenario.nombre)
+                Object.assign(custom, this.userData);
+                custom['nombre'] = scenario.nombre
+                custom['decrypt_tool_exists'] = scenario.decrypt_tool_exists
+                custom['rescue_paid'] = scenario.rescue_paid
+                custom['infected_terminals'] = scenario.infected_terminals
+                custom['has_backup'] = scenario.has_backup
+                custom['data_is_exposed'] = scenario.data_is_exposed
+                custom['color'] = 'secondary'
+                custom['total'] = 0
+                custom['key'] =  scenario.nombre +"_"+  Date.now()
+                this.update_scenario(custom.nombre, custom);
+            }
         },
         mostrarEscenario: function(nombre){
             this.nombreEscenario=nombre
         },
     },
     template: `
+    
     <div class="col-lg-12">              
         <div class="row"  ref="global-chart">
             <div class="col-12">
@@ -356,8 +367,25 @@ Vue.component('results-page', {
             </scenario-card>
 
             
+            
+            <div v-if="$store.state.customScenarios.length<2" class="col-lg-4 col-md-6 mb-4 btn-escenario" v-on:click="enterModalEscenario()">
+                <div class="card shadow h-100 py-2  border-left-success" >
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1 text-success" >Agregar esceneario personalizado</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"> </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-plus fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
         </div>
-
+        
+        
         <div class="row">
             <div class="col-12">
                 <organization-info-report-page ref="organization-data" v-bind:user-data="userData" v-bind:report-view-page="reportViewPage" v-show="reportView"></organization-info-report-page>
