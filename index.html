@@ -73,7 +73,7 @@
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                <div class="container-fluid" id="app">
+                <div class="container-fluid" id="container-fluid">
                     <!-- Page Heading -->
                     <div class="align-items-center justify-content-between mb-4" >
                         <h1  class="h3 text-gray-800"><i class="fas fa-money-check-alt"></i> Calculador de costos de Ransomware</h1>
@@ -82,13 +82,18 @@
                     </div>
 
                     <user-form v-show="!userDataReady" v-on:form-data-ready="onFormDataReady"></user-form>
-                    <results-page v-if="userDataReady" v-on:results-go-back="onResultsGoBack" v-bind:user-data="userData"></results-page>
+                    <results-page v-if="userDataReady"
+                        v-on:results-go-back="onResultsGoBack"
+                        v-on:update-report-progress="onUpdateReportProgress"
+                        v-bind:user-data="userData">
+                    </results-page>
     
-                    <report-modal></report-modal>
+                   
 
                 </div>
                 <!-- /.container-fluid -->
             </div>
+            <report-modal v-bind:report-progress="reportProgress"></report-modal>
             <!-- End of Main Content -->
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
