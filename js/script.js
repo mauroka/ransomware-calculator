@@ -1,9 +1,10 @@
 const app = new Vue({
-    el:'#app',
+    el:'#content-wrapper',
     store: store,
     data:{
         userData: undefined,
-        modalShow: true
+        modalShow: true,
+        reportProgress: 0,
     },
     computed: {
         userDataReady: function(){
@@ -16,6 +17,9 @@ const app = new Vue({
         },
         onResultsGoBack(){
             this.userData = undefined
+        },
+        onUpdateReportProgress($event){
+            this.reportProgress = $event
         },
     }
 })

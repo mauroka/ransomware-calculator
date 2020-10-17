@@ -94,7 +94,7 @@ Vue.component('user-form', {
     },
     methods: {
         scrollUp: function(){
-            var posicion= $("#app").offset().top;
+            var posicion= $("#content-wrapper").offset().top;
             $('body,html').animate({ scrollTop:posicion-10 },1000);
         },
         loadDemoData: function(){

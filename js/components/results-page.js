@@ -38,16 +38,15 @@ Vue.component('results-page', {
             this.$store.commit("dismissEscenarioModal")
         },
         enterReportView: function(){
+            
+            // show modal
             const RENDER_SIZE = "800px";
             //document.body.style.width = "2000px"
-            var wrapper = document.getElementById("content-wrapper");
+            var wrapper = document.getElementById("container-fluid");
             
             wrapper.style.width=RENDER_SIZE;
             wrapper.style.fontSize="0.8em";
-            var scale = 'scale(1)';
-            document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
-            document.body.style.msTransform =   scale;       // IE 9
-            document.body.style.transform = scale;     // General
+
             this.reportView = true
 
             // show modal
@@ -55,7 +54,7 @@ Vue.component('results-page', {
         },
         exitReportView: function(){
             this.reportView = false
-            var wrapper = document.getElementById("content-wrapper");
+            var wrapper = document.getElementById("container-fluid");
             wrapper.style.removeProperty("width");
             wrapper.style.fontSize="1em";
             // dismiss modal
@@ -64,10 +63,11 @@ Vue.component('results-page', {
         generateReport: async function(){
             this.enterReportView();
             var t = this;
+            this.$emit("update-report-progress", 0)
             setTimeout(async () => {
                 await t.createPdf();
                 t.exitReportView();
-            }, (500));
+            }, (1000));
         },
         createPdf: async function(){
             const { jsPDF } = window.jspdf;
@@ -85,6 +85,7 @@ Vue.component('results-page', {
 
             var totalPages = this.data_scenarios.length*2 + 2 + 1
 
+            var self = this;
             async function renderRef(doc, elem, newPage=true, h_padding=H_PADDING, v_padding=V_PADDING){
                 return await domtoimage.toPng(elem, {quality: 1})
                     .then(function (dataUrl) {
@@ -96,7 +97,6 @@ Vue.component('results-page', {
                         }
                         
                         var imgRatio = elem.offsetWidth / elem.offsetHeight;
-                        console.log("RATIO: "+imgRatio)
 
                         var IMAGE_WIDTH = PAGE_WIDTH-h_padding*2
                         
@@ -109,7 +109,8 @@ Vue.component('results-page', {
                             page.text(c, PAGE_WIDTH-h_padding, PAGE_HEIGHT-10, "right");
                         }
                         currentPageNum = currentPageNum + 1
-                        
+                        var reportProgress = currentPageNum / totalPages;
+                        self.$emit("update-report-progress", reportProgress)
                         page.addImage(dataUrl, 'PNG', h_padding, v_padding, IMAGE_WIDTH, IMAGE_WIDTH/imgRatio, "", "NONE");
 
                     })
