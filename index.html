@@ -83,6 +83,7 @@
 
                     <user-form v-show="!userDataReady" v-on:form-data-ready="onFormDataReady"></user-form>
                     <results-page v-if="userDataReady"
+                    	 ref="results-page"
                         v-on:results-go-back="onResultsGoBack"
                         v-on:update-report-progress="onUpdateReportProgress"
                         v-bind:user-data="userData">
