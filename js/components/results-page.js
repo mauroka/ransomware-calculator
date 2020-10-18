@@ -23,7 +23,6 @@ Vue.component('results-page', {
     props: ['user-data'],
     
     mounted: function(){
-        console.log("mounted")
         this.createGlobalChart()
         this.update_scenarios()
     },
@@ -38,16 +37,15 @@ Vue.component('results-page', {
             this.$store.commit("dismissEscenarioModal")
         },
         enterReportView: function(){
+            
+            // show modal
             const RENDER_SIZE = "800px";
             //document.body.style.width = "2000px"
-            var wrapper = document.getElementById("content-wrapper");
+            var wrapper = document.getElementById("container-fluid");
             
             wrapper.style.width=RENDER_SIZE;
             wrapper.style.fontSize="0.8em";
-            var scale = 'scale(1)';
-            document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
-            document.body.style.msTransform =   scale;       // IE 9
-            document.body.style.transform = scale;     // General
+
             this.reportView = true
 
             // show modal
@@ -55,7 +53,7 @@ Vue.component('results-page', {
         },
         exitReportView: function(){
             this.reportView = false
-            var wrapper = document.getElementById("content-wrapper");
+            var wrapper = document.getElementById("container-fluid");
             wrapper.style.removeProperty("width");
             wrapper.style.fontSize="1em";
             // dismiss modal
@@ -64,10 +62,11 @@ Vue.component('results-page', {
         generateReport: async function(){
             this.enterReportView();
             var t = this;
+            this.$emit("update-report-progress", 0)
             setTimeout(async () => {
                 await t.createPdf();
                 t.exitReportView();
-            }, (500));
+            }, (1000));
         },
         createPdf: async function(){
             const { jsPDF } = window.jspdf;
@@ -85,6 +84,7 @@ Vue.component('results-page', {
 
             var totalPages = this.data_scenarios.length*2 + 2 + 1
 
+            var self = this;
             async function renderRef(doc, elem, newPage=true, h_padding=H_PADDING, v_padding=V_PADDING){
                 return await domtoimage.toPng(elem, {quality: 1})
                     .then(function (dataUrl) {
@@ -96,7 +96,6 @@ Vue.component('results-page', {
                         }
                         
                         var imgRatio = elem.offsetWidth / elem.offsetHeight;
-                        console.log("RATIO: "+imgRatio)
 
                         var IMAGE_WIDTH = PAGE_WIDTH-h_padding*2
                         
@@ -109,7 +108,8 @@ Vue.component('results-page', {
                             page.text(c, PAGE_WIDTH-h_padding, PAGE_HEIGHT-10, "right");
                         }
                         currentPageNum = currentPageNum + 1
-                        
+                        var reportProgress = currentPageNum / totalPages;
+                        self.$emit("update-report-progress", reportProgress)
                         page.addImage(dataUrl, 'PNG', h_padding, v_padding, IMAGE_WIDTH, IMAGE_WIDTH/imgRatio, "", "NONE");
 
                     })
@@ -127,7 +127,6 @@ Vue.component('results-page', {
             // render scenario details
             for(var i=0; i<this.data_scenarios.length; i++){
                 var scenario_name = this.data_scenarios[i].nombre
-                console.log("Rendering: "+this.data_scenarios[i].nombre)
                 var elem = this.$refs[scenario_name][0].$vnode.elm
                 this.reportViewPage = 1
                 await renderRef(doc, elem)
@@ -308,7 +307,6 @@ Vue.component('results-page', {
             for(var i=0; i<this.$store.state.customScenarios.length; i++){
                 var custom = {}
                 var scenario = this.$store.state.customScenarios[i]
-                console.log("Adding custom scenario: "+scenario.nombre)
                 Object.assign(custom, this.userData);
                 custom['nombre'] = scenario.nombre
                 custom['decrypt_tool_exists'] = scenario.decrypt_tool_exists
@@ -328,7 +326,13 @@ Vue.component('results-page', {
     },
     template: `
     
-    <div class="col-lg-12">              
+    <div class="col-lg-12">
+        <div class="row  mb-4">
+            <div class="col-12" style="text-align: left;">
+                <button type="button" class="btn btn-outline-primary" v-on:click="generateReport()" role="button"><i class="fas fa-print"></i>&nbsp;Imprimir informe</button>
+            </div>
+        </div>
+
         <div class="row"  ref="global-chart">
             <div class="col-12">
                 <div class="card shadow mb-4">
@@ -368,12 +372,12 @@ Vue.component('results-page', {
 
             
             
-            <div v-if="$store.state.customScenarios.length<2" class="col-lg-4 col-md-6 mb-4 btn-escenario" v-on:click="enterModalEscenario()">
+            <div v-if="$store.state.customScenarios.length<2 && !reportView" class="col-lg-4 col-md-6 mb-4 btn-escenario" v-on:click="enterModalEscenario()">
                 <div class="card shadow h-100 py-2  border-left-success" >
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-uppercase mb-1 text-success" >Agregar esceneario personalizado</div>
+                                <div class="text-xs font-weight-bold text-uppercase mb-1 text-success" >Agregar escenario personalizado</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"> </div>
                             </div>
                             <div class="col-auto">
@@ -474,7 +478,6 @@ Vue.component('results-page', {
         <div class="row">
             <div class="col" style="text-align: right;">
                 <button type="button" class="btn btn-outline-primary" v-on:click="$emit('results-go-back')" role="button">Anterior</button> &nbsp;
-                <button type="button" class="btn btn-outline-primary" v-on:click="generateReport()" role="button">Generar Informe</button>
             </div>
         </div>
 

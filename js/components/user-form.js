@@ -2,7 +2,7 @@
 Vue.component('user-form', {
     computed: {
         debug: function(){
-            return true;
+            return false;
         },
         formPages: function(){
             return [
@@ -93,10 +93,6 @@ Vue.component('user-form', {
         }
     },
     methods: {
-        scrollUp: function(){
-            var posicion= $("#app").offset().top;
-            $('body,html').animate({ scrollTop:posicion-10 },1000);
-        },
         loadDemoData: function(){
             this.formData = {
                 hLab: 8,
@@ -136,8 +132,12 @@ Vue.component('user-form', {
             }else{
                 this.error = true;
             }
-            setTimeout(this.scrollUp, 100);
+            this.$emit("scroll-up");
             
+        },
+        formerPage: function(){
+            this.currentPage -= 1;
+            this.$emit("scroll-up");
         },
         validateCurrentPage: function(){
             var p = this.formPages[this.currentPage-1]
@@ -204,7 +204,7 @@ Vue.component('user-form', {
         <div class="row">
             <div class="col-md-12 mb-3" style="text-align: right;">
                 <button type="button" class="btn btn-outline-primary" v-if="debug" v-on:click="loadDemoData()" role="button">Cargar Datos Demo</button> &nbsp;
-                <button type="button" class="btn btn-outline-primary" :disabled="currentPage == 1" v-on:click="currentPage -= 1;" role="button">Anterior</button> &nbsp;
+                <button type="button" class="btn btn-outline-primary" :disabled="currentPage == 1" v-on:click="formerPage()" role="button">Anterior</button> &nbsp;
                 <button v-if="currentPage<formPages.length" href="#top" type="button" class="btn btn-outline-primary" :disabled="currentPage == 5" v-on:click="nextPage()" role="button">Siguiente</button>
                 <button v-else type="button" class="btn btn-outline-primary" :disabled="currentPage == 6" v-on:click="nextPage()" role="button">Calcular</button>
             </div>
