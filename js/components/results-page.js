@@ -23,7 +23,6 @@ Vue.component('results-page', {
     props: ['user-data'],
     
     mounted: function(){
-        console.log("mounted")
         this.createGlobalChart()
         this.update_scenarios()
     },
@@ -128,7 +127,6 @@ Vue.component('results-page', {
             // render scenario details
             for(var i=0; i<this.data_scenarios.length; i++){
                 var scenario_name = this.data_scenarios[i].nombre
-                console.log("Rendering: "+this.data_scenarios[i].nombre)
                 var elem = this.$refs[scenario_name][0].$vnode.elm
                 this.reportViewPage = 1
                 await renderRef(doc, elem)
@@ -309,7 +307,6 @@ Vue.component('results-page', {
             for(var i=0; i<this.$store.state.customScenarios.length; i++){
                 var custom = {}
                 var scenario = this.$store.state.customScenarios[i]
-                console.log("Adding custom scenario: "+scenario.nombre)
                 Object.assign(custom, this.userData);
                 custom['nombre'] = scenario.nombre
                 custom['decrypt_tool_exists'] = scenario.decrypt_tool_exists
