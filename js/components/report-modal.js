@@ -17,7 +17,7 @@ Vue.component('report-modal', {
         </p>
         
         <p style="text-align: center;">
-            Generando reporte ({{(reportProgress*100).toFixed(0)}} %)<br>
+            Generando informe ({{(reportProgress*100).toFixed(0)}} %)<br>
             <!--progress value="32" max="100" style="height: 2px; border: none; background-color: red;"> 32% </progress-->
             
         </p>

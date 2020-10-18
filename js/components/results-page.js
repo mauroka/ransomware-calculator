@@ -329,7 +329,13 @@ Vue.component('results-page', {
     },
     template: `
     
-    <div class="col-lg-12">              
+    <div class="col-lg-12">
+        <div class="row  mb-4">
+            <div class="col-12" style="text-align: left;">
+                <button type="button" class="btn btn-outline-primary" v-on:click="generateReport()" role="button"><i class="fas fa-print"></i>&nbsp;Imprimir informe</button>
+            </div>
+        </div>
+
         <div class="row"  ref="global-chart">
             <div class="col-12">
                 <div class="card shadow mb-4">
@@ -369,12 +375,12 @@ Vue.component('results-page', {
 
             
             
-            <div v-if="$store.state.customScenarios.length<2" class="col-lg-4 col-md-6 mb-4 btn-escenario" v-on:click="enterModalEscenario()">
+            <div v-if="$store.state.customScenarios.length<2 && !reportView" class="col-lg-4 col-md-6 mb-4 btn-escenario" v-on:click="enterModalEscenario()">
                 <div class="card shadow h-100 py-2  border-left-success" >
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-uppercase mb-1 text-success" >Agregar esceneario personalizado</div>
+                                <div class="text-xs font-weight-bold text-uppercase mb-1 text-success" >Agregar escenario personalizado</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"> </div>
                             </div>
                             <div class="col-auto">
@@ -475,7 +481,6 @@ Vue.component('results-page', {
         <div class="row">
             <div class="col" style="text-align: right;">
                 <button type="button" class="btn btn-outline-primary" v-on:click="$emit('results-go-back')" role="button">Anterior</button> &nbsp;
-                <button type="button" class="btn btn-outline-primary" v-on:click="generateReport()" role="button">Generar Informe</button>
             </div>
         </div>
 
