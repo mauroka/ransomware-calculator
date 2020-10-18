@@ -2,7 +2,7 @@
 Vue.component('user-form', {
     computed: {
         debug: function(){
-            return true;
+            return false;
         },
         formPages: function(){
             return [
