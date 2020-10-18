@@ -39,6 +39,7 @@ Vue.component('create-escenario', {
             this.$store.commit("addCustomScenario", this.customScenarioData)
             this.$emit("update-scenarios")
             this.$bvModal.hide('bv-modal-example')
+            this.$emit("scroll-up")
         },
         onModalShow: function(){
             this.triedValidation = false

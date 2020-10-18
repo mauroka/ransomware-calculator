@@ -12,11 +12,18 @@ const app = new Vue({
         }
     },
     methods:{
+        scrollUp: function(){
+            setTimeout(function(){
+                var posicion= $("#content-wrapper").offset().top;
+                $('body,html').animate({ scrollTop:posicion-10 },1000);
+            }, 100);
+        },
         onFormDataReady(userData){
             this.userData = userData;
         },
         onResultsGoBack(){
             this.userData = undefined
+            this.scrollUp()
         },
         onUpdateReportProgress($event){
             this.reportProgress = $event
