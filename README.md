@@ -61,11 +61,10 @@ El calculador de Ransomware es la primera de una serie de herramientas relaciona
 
 ## Próximos features
 
-- Calculador con escenario personalizado
 - Calculador de costos de Phishing
 - Calculador de Retorno de la inversión en concientización de usuarios
-- Generación de informes
 - Analítica según Industria, cantidad de colaboradores y país
+- Soporte para múltiples lenguajes
 
 # Licencia
 
